@@ -36,7 +36,7 @@ const FormMaterials = () => {
     console.log(data);
 
     if (router.query.id)
-      update("tco", router.query.id, data).then(() =>
+      update("materials", router.query.id, data).then(() =>
         router.push("/materials")
       );
     else create("materials", data).then(() => router.push("/materials"));
@@ -45,11 +45,19 @@ const FormMaterials = () => {
   useEffect(() => {
     console.log(defaultDate());
     if (Object.keys(router.query).length !== 0) {
-      console.log("estou chegando aqui");
-      setValue("title", router.query.title);
-      setValue("value", router.query.value);
-      setValue("type", router.query.type);
-      setValue("date", router.query.date);
+      setValue("id", router.query.id);
+      setValue("date_apreensao", router.query.date_apreensao);
+      setValue("city", router.query.city);
+      setValue("cop", router.query.cop);
+      setValue("autor", router.query.autor);
+      setValue("marca_tipo", router.query.marca_tipo);
+      setValue("modelo", router.query.modelo);
+      setValue("deposito", router.query.deposito);
+      setValue("n_process", router.query.n_process);
+      setValue("pm_name", router.query.pm_name);
+      setValue("pm_mat", router.query.pm_mat);
+      setValue("status", router.query.status);
+      setValue("date_freedom", router.query.date_freedom);
     }
   }, []);
 
@@ -67,12 +75,6 @@ const FormMaterials = () => {
           {...register("date_apreensao")}
           defaultValue={defaultDate()}
         />
-        <Input
-          title="Infração Penal"
-          type="text"
-          errors={errors?.infracao_penal}
-          {...register("infracao_penal")}
-        />
         <Select title="City" {...register("city")}>
           <option value="maceio">Maceió</option>
           <option value="penedo">Penedo</option>
@@ -80,8 +82,8 @@ const FormMaterials = () => {
         <Input
           title="COP"
           type="text"
-          errors={errors?.COP}
-          {...register("COP")}
+          errors={errors?.cop}
+          {...register("cop")}
         />
         <Input
           title="Autor"

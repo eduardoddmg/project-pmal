@@ -13,11 +13,7 @@ import * as Chakra from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FiRefreshCcw } from "react-icons/fi";
 import { parseDateToEn, sortByDateBr, sortByValue } from "@/utils";
-
-const badgeColor = {
-  entrada: "green",
-  saida: "red",
-};
+import queryString from "query-string";
 
 const MaterialsPage = () => {
   const [materialList, setMaterialList] = useState(null);
@@ -43,11 +39,23 @@ const MaterialsPage = () => {
   }, []);
 
   const edit = (data) => {
-    router.push(
-      `/materials/form?id=${data.id}&title=${data.title}&value=${data.value}&type=${
-        data.type
-      }&date=${parseDateToEn(data.date)}`
-    );
+    const parsed = {
+      id: data.id,
+      date_apreensao: parseDateToEn(data.date_apreensao),
+      city: data.city,
+      cop: data.cop,
+      autor: data.autor,
+      marca_tipo: data.marca_tipo,
+      modelo: data.modelo,
+      deposito: data.deposito,
+      n_process: data.n_process,
+      pm_name: data.pm_name,
+      pm_mat: data.pm_mat,
+      status: data.status,
+      data_freedom: data.date_freedom,
+    };
+
+    router.push(`/materials/form?${queryString.stringify(parsed)}`);
   };
 
   const remove = (id) => {
@@ -71,12 +79,6 @@ const MaterialsPage = () => {
           <FiRefreshCcw />
         </Chakra.Button>
       </Chakra.HStack>
-      <SearchBar
-        data={materialList}
-        collection="tco"
-        field="name"
-        setData={setMaterialListFilter}
-      />
       <Table
         variant="striped"
         colorScheme="gray"
@@ -100,39 +102,43 @@ const MaterialsPage = () => {
         </Chakra.Thead>
         <Chakra.Tbody>
           {materialListFilter &&
-            sortByDateBr(materialListFilter, "date_apreensao", false).map((item, key) => {
-              return (
-                <Chakra.Tr key={item.id}>
-                  <Chakra.Td>{item.date_apreensao}</Chakra.Td>
-                  <Chakra.Td>{item.city}</Chakra.Td>
-                  <Chakra.Td>{item.cop}</Chakra.Td>
-                  <Chakra.Td>{item.autor}</Chakra.Td>
-                  <Chakra.Td>{item.marca_tipo}</Chakra.Td>
-                  <Chakra.Td>{item.modelo}</Chakra.Td>
-                  <Chakra.Td>{item.deposito}</Chakra.Td>
-                  <Chakra.Td>{item.n_process}</Chakra.Td>
-                  <Chakra.Td>{item.pm_name} - {item.pm_mat}</Chakra.Td>
-                  <Chakra.Td>{item.status}</Chakra.Td>
-                  <Chakra.Td>{item.date_freedom}</Chakra.Td>
-                  <Chakra.Td>
-                    <Chakra.Button
-                      colorScheme="orange"
-                      onClick={() => edit(item)}
-                    >
-                      Editar
-                    </Chakra.Button>
-                  </Chakra.Td>
-                  <Chakra.Td>
-                    <Chakra.Button
-                      colorScheme="red"
-                      onClick={() => remove(item.id)}
-                    >
-                      Apagar
-                    </Chakra.Button>
-                  </Chakra.Td>
-                </Chakra.Tr>
-              );
-            })}
+            sortByDateBr(materialListFilter, "date_apreensao", false).map(
+              (item, key) => {
+                return (
+                  <Chakra.Tr key={item.id}>
+                    <Chakra.Td>{item.date_apreensao}</Chakra.Td>
+                    <Chakra.Td>{item.city}</Chakra.Td>
+                    <Chakra.Td>{item.cop}</Chakra.Td>
+                    <Chakra.Td>{item.autor}</Chakra.Td>
+                    <Chakra.Td>{item.marca_tipo}</Chakra.Td>
+                    <Chakra.Td>{item.modelo}</Chakra.Td>
+                    <Chakra.Td>{item.deposito}</Chakra.Td>
+                    <Chakra.Td>{item.n_process}</Chakra.Td>
+                    <Chakra.Td>
+                      {item.pm_name} - {item.pm_mat}
+                    </Chakra.Td>
+                    <Chakra.Td>{item.status}</Chakra.Td>
+                    <Chakra.Td>{item.date_freedom}</Chakra.Td>
+                    <Chakra.Td>
+                      <Chakra.Button
+                        colorScheme="orange"
+                        onClick={() => edit(item)}
+                      >
+                        Editar
+                      </Chakra.Button>
+                    </Chakra.Td>
+                    <Chakra.Td>
+                      <Chakra.Button
+                        colorScheme="red"
+                        onClick={() => remove(item.id)}
+                      >
+                        Apagar
+                      </Chakra.Button>
+                    </Chakra.Td>
+                  </Chakra.Tr>
+                );
+              }
+            )}
         </Chakra.Tbody>
       </Table>
     </Chakra.Stack>

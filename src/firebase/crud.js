@@ -16,7 +16,7 @@ export const readAll = async (collectionName) => {
   const querySnapshot = await getDocs(collection(db, collectionName));
   const dataArray = querySnapshot.docs.map((doc) => {
     const data = doc.data();
-    data.id = doc.id;
+    data.id = doc.id; 
     data.updatedAt = parseSecondsToDate(data.updatedAt.seconds);
     return data;
   });
@@ -62,7 +62,9 @@ export const remove = async (collectionName, documentId) => {
 
 export const update = async (collectionName, documentId, newData) => {
   try {
+
     newData.updatedAt = serverTimestamp();
+    console.log(newData)
     await updateDoc(doc(db, collectionName, documentId), newData);
   } catch (error) {
     console.error("Erro ao atualizar documento:", error);
