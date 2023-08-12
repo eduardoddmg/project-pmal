@@ -1,0 +1,20 @@
+/* Estilização da barra de rolagem */
+::-webkit-scrollbar {
+    width: 4px; /* Largura da barra de rolagem */
+    height: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Cor de fundo da trilha da barra de rolagem */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #3498db; /* Cor do indicador da barra de rolagem */
+    height: 3px;
+    border-radius: 5px; /* Bordas arredondadas */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2980b9; /* Cor do indicador ao passar o mouse */
+  }
+  
