@@ -13,6 +13,7 @@ import * as Chakra from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FiRefreshCcw } from "react-icons/fi";
 import { parseDateToEn, sortByDateBr, sortByValue } from "@/utils";
+import queryString from "query-string";
 
 const badgeColor = {
   entrada: "green",
@@ -43,13 +44,21 @@ const TcoPage = () => {
   }, []);
 
   const edit = (data) => {
-    router.push(
-      `/tco/form?id=${data.id}&title=${data.title}&value=${data.value}&type=${
-        data.type
-      }&date=${parseDateToEn(data.date)}`
-    );
-  };
 
+    const parsed = {
+      id: data.id,
+      date: parseDateToEn(data.date),
+      infracao_penal: data.infracao_penal,
+      bairro: data.bairro,
+      n_tco: data.n_tco,
+      n_process: data.n_process,
+      obs: data.obs,
+      city: data.city,
+      responsavel_peticionamento: data.responsavel_peticionamento,
+    };
+
+    router.push(`/tco/form?${queryString.stringify(parsed)}`);
+  };
   const remove = (id) => {
     removeDoc("tco", id);
     fetchData();
@@ -92,7 +101,7 @@ const TcoPage = () => {
             <Chakra.Th>Bairro</Chakra.Th>
             <Chakra.Th>Nº TCO</Chakra.Th>
             <Chakra.Th>Nº Processo</Chakra.Th>
-            <Chakra.Th>responsavel_peticionamento</Chakra.Th>
+            <Chakra.Th>Responsavel Peticionamento</Chakra.Th>
             <Chakra.Th>Observação</Chakra.Th>
           </Chakra.Tr>
         </Chakra.Thead>

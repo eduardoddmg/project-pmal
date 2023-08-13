@@ -28,7 +28,9 @@ const Login = () => {
     setLoading(true);
     
     console.log(data);
-    auth.login(data.email, data.password);
+    await auth.login(data.email, data.password);
+
+    setLoading(false);
   };
 
   return (

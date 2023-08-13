@@ -20,9 +20,13 @@ const FormMaterials = () => {
   const auth = useAuth();
   const router = useRouter();
 
+  const [loading, setLoading] = useState(false);
+
   const showInput = watch("status", "cust");
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    setLoading(true);
+    
     console.log(data);
     data.userId = auth.token;
     data.date_apreensao = parseDateToBr(data.date_apreensao);
@@ -36,10 +40,12 @@ const FormMaterials = () => {
     console.log(data);
 
     if (router.query.id)
-      update("materials", router.query.id, data).then(() =>
+      await update("materials", router.query.id, data).then(() =>
         router.push("/materials")
       );
-    else create("materials", data).then(() => router.push("/materials"));
+    else await create("materials", data).then(() => router.push("/materials"));
+    
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -62,7 +68,7 @@ const FormMaterials = () => {
   }, []);
 
   return (
-    <Stack p={[2, 20]} w="90%" mx="auto">
+    <Stack p={[2, 20]} w="95%" mx="auto">
       <HeadComp title="Apreensão de materiais" />
       <Heading as="h2" textAlign="center" mb={6}>
         Registro - Apreensão de Materiais
@@ -138,7 +144,7 @@ const FormMaterials = () => {
             defaultValue={defaultDate()}
           />
         )}
-        <Button colorScheme="blue" size="lg" width="100%" mb={4} type="submit">
+        <Button isLoading={loading} colorScheme="blue" size="lg" width="100%" mb={4} type="submit">
           Registro
         </Button>
       </form>
