@@ -1,26 +1,34 @@
 import React from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import GoogleMapReact from 'google-map-react';
 import { WithAuth } from "@/hooks";
 
-const Index = () => {
-  const position = [-9.649849, -35.708949]; // Coordenadas de Maceió, Alagoas
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+const SimpleMap = () =>{
+  const defaultProps = {
+    center: {
+      lat: -9.648139,
+      lng: -35.717239
+    },
+    zoom: 11
+  };
 
   return (
-    <MapContainer
-      center={position}
-      zoom={13}
-      style={{ width: "100%", height: "500px" }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <Marker position={position}>
-        <Popup>Maceió, Alagoas</Popup>
-      </Marker>
-    </MapContainer>
+    // Important! Always set the container height explicitly
+    <div style={{ height: '100vh', width: '100%' }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "" }}
+        defaultCenter={defaultProps.center}
+        defaultZoom={defaultProps.zoom}
+      >
+        <AnyReactComponent
+          lat={59.955413}
+          lng={30.337844}
+          text="My Marker"
+        />
+      </GoogleMapReact>
+    </div>
   );
-};
+}
 
-export default WithAuth(Index);
+export default WithAuth(SimpleMap)
