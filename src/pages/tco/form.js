@@ -17,6 +17,7 @@ import { defaultDate, parseDateToBr, parseSecondsToDate } from "@/utils";
 import * as schema from "@/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import estado from "@/data/cidades";
+import delegacias from "@/data/delegacias";
 
 const FormExpenses = () => {
   const {
@@ -125,6 +126,13 @@ const FormExpenses = () => {
         >
           <option value="corregedoria">Corregedoria</option>
           <option value="1-bpm">1 BPM</option>
+        </Select>
+        <Select title="Delegacia" {...register("delegacia")}>
+          {delegacias.features.map((item) => (
+            <option value={item.properties.nome}>
+              {item.properties.nome}
+            </option>
+          ))}
         </Select>
         <Button
           isLoading={loading}

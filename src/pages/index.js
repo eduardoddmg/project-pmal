@@ -2,9 +2,7 @@ import { Card, HeadComp } from "@/components";
 import { useAuth } from "@/context";
 import { WithAuth, WithoutAuth } from "@/hooks";
 import * as Chakra from "@chakra-ui/react";
-import { MdDashboardCustomize } from "react-icons/md";
-import { BsFillEnvelopePaperFill } from "react-icons/bs";
-import { FaMoneyCheckAlt, FaQuestionCircle } from "react-icons/fa";
+import { BsFillEnvelopePaperFill, BsFillGeoAltFill } from "react-icons/bs";
 import { SiMaterialdesign } from "react-icons/si";
 
 const Home = () => {
@@ -36,6 +34,14 @@ const Home = () => {
           bg="orange.500"
           icon={<SiMaterialdesign fontSize="50px" color="white" />}
         />
+        <Card
+          href="/map"
+          title="Localização da polícia"
+          subtitle="Conheça toda a localização da polícia"
+          bg="red.500"
+          icon={<BsFillGeoAltFill fontSize="50px" color="white" />}
+        />
+        
       </Chakra.Wrap>
     </Chakra.Flex>
   );

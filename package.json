@@ -28,6 +28,7 @@
     "react-animated-numbers": "^0.16.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
+    "react-leaflet": "^4.2.1",
     "react-number-format": "^5.2.2",
     "react-spring": "^9.7.2",
     "use-debounce": "^9.0.4",
