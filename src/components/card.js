@@ -61,9 +61,7 @@ export const CardValue = ({ title, value, color }) => {
           <Chakra.Badge colorScheme={color || "white"}>{title}</Chakra.Badge>
         </Chakra.StatLabel>
         <Chakra.StatNumber>
-          <animated.span>
-            {springProps.number.to((x) => x.toFixed(0))}
-          </animated.span>
+            {value.toFixed(2)}
         </Chakra.StatNumber>
       </Chakra.Stat>
     </Chakra.Card>

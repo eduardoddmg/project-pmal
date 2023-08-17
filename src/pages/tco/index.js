@@ -5,6 +5,7 @@ import {
   CardMoney,
   HeadComp,
   Navigation,
+  CardValue,
 } from "@/components";
 import { readAll, remove as removeDoc, update } from "@/firebase";
 import { WithAuth } from "@/hooks";
@@ -54,7 +55,9 @@ const TcoPage = () => {
       n_process: data.n_process,
       obs: data.obs,
       city: data.city,
-      responsavel_peticionamento: data.responsavel_peticionamento,
+      lat: data.lat,
+      long: data.long,
+      delegacia: data.delegacia,
     };
 
     router.push(`/tco/form?${queryString.stringify(parsed)}`);
@@ -67,6 +70,21 @@ const TcoPage = () => {
   return (
     <Chakra.Stack p={5}>
       <HeadComp title="TCO" />
+      <Chakra.Wrap>
+
+      <CardValue 
+        title="Km economizados"
+        value={tcoList ? tcoList?.reduce((total, item)=> item.dist+total, 0) : 0}
+        />
+        <CardValue 
+        title="Litros de gasolina"
+        value={tcoList ? tcoList?.reduce((total, item)=> item.dist+total, 0)/11 : 0}
+        />
+        <CardValue 
+        title="Dinheiro economizado"
+        value={tcoList ? (tcoList?.reduce((total, item)=> item.dist+total, 0)/11)*5 : 0}
+        />
+        </Chakra.Wrap>
       <Chakra.HStack>
         <ButtonLink
           w="80%"
@@ -97,6 +115,7 @@ const TcoPage = () => {
             <Chakra.Th>QTD</Chakra.Th>
             <Chakra.Th>Data</Chakra.Th>
             <Chakra.Th>Infração Penal</Chakra.Th>
+            <Chakra.Th>Distância</Chakra.Th>
             <Chakra.Th>Cidade</Chakra.Th>
             <Chakra.Th>Bairro</Chakra.Th>
             <Chakra.Th>Nº TCO</Chakra.Th>
@@ -113,6 +132,7 @@ const TcoPage = () => {
                   <Chakra.Td>{key + 1}</Chakra.Td>
                   <Chakra.Td>{item.date}</Chakra.Td>
                   <Chakra.Td>{item.infracao_penal}</Chakra.Td>
+                  <Chakra.Td>{item.dist.toFixed(1)} KM</Chakra.Td>
                   <Chakra.Td>{item.city}</Chakra.Td>
                   <Chakra.Td>{item.bairro}</Chakra.Td>
                   <Chakra.Td>{item.n_tco}</Chakra.Td>

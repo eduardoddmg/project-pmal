@@ -18,6 +18,7 @@ import * as schema from "@/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import estado from "@/data/cidades";
 import delegacias from "@/data/delegacias";
+import * as util from "@/utils";
 
 const FormExpenses = () => {
   const {
@@ -40,6 +41,24 @@ const FormExpenses = () => {
 
     console.log(data);
 
+    data.lat = parseFloat(data.lat);
+    data.long = parseFloat(data.long);
+
+    const coord_delegacias = delegacias.features.find(
+      (item) => item.properties.nome === data.delegacia
+    ).geometry.coordinates;
+
+    console.log(coord_delegacias);
+
+    data.dist = util.dist(
+      data.lat,
+      data.long,
+      coord_delegacias[1],
+      coord_delegacias[0]
+    );
+
+    console.log("coordenadas ", data.lat, data.long);
+
     if (router.query.id)
       await update("tco", router.query.id, data).then(() =>
         router.push("/tco")
@@ -50,21 +69,17 @@ const FormExpenses = () => {
   };
 
   useEffect(() => {
-    console.log(defaultDate());
-    if (Object.keys(router.query).length !== 0) {
-      setValue("id", router.query.id);
-      setValue("date", router.query.date);
-      setValue("infracao_penal", router.query.infracao_penal);
-      setValue("bairro", router.query.bairro);
-      setValue("n_tco", router.query.n_tco);
-      setValue("n_process", router.query.n_process);
-      setValue("obs", router.query.obs);
-      setValue("city", router.query.city);
-      setValue(
-        "responsavel_peticionamento",
-        router.query.responsavel_peticionamento
-      );
-    }
+    const routerQuery = router.query;
+
+    const routerQueryKeys = Object.keys(routerQuery);
+
+    routerQueryKeys.forEach((key) => {
+      setValue(key, routerQuery[key]);
+    });
+
+    routerQueryKeys.forEach((key) => {
+      setValue(key, routerQuery[key]);
+    });
   }, []);
 
   return (
@@ -91,9 +106,7 @@ const FormExpenses = () => {
           <option value="maceio">Maceió</option>
           <option value="penedo">Penedo</option>
           {estado.cidades.map((item) => (
-            <option value={item}>
-              {item}
-            </option>
+            <option value={item}>{item}</option>
           ))}
         </Select>
         <Input
@@ -120,6 +133,18 @@ const FormExpenses = () => {
           errors={errors?.obs}
           {...register("obs")}
         />
+        <Input
+          title="Latitude"
+          type="text"
+          errors={errors.lat}
+          {...register("lat")}
+        />
+        <Input
+          title="Longitude"
+          type="text"
+          errors={errors.long}
+          {...register("long")}
+        />
         <Select
           title="Responsável peticionamento"
           {...register("responsavel_peticionamento")}
@@ -129,9 +154,7 @@ const FormExpenses = () => {
         </Select>
         <Select title="Delegacia" {...register("delegacia")}>
           {delegacias.features.map((item) => (
-            <option value={item.properties.nome}>
-              {item.properties.nome}
-            </option>
+            <option value={item.properties.nome}>{item.properties.nome}</option>
           ))}
         </Select>
         <Button

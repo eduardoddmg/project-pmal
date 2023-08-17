@@ -82,12 +82,12 @@ export const InputNumberMoney = forwardRef((props, ref) => {
 });
 
 export const InputNumber = forwardRef((props, ref) => {
-  const { children, title, defaultValue, ...rest } = props;
+  const { children, title, defaultValue, precision, ...rest } = props;
 
   return (
     <FormControl mb={5}>
       <FormLabel>{title}</FormLabel>
-      <NumberInput defaultValue={defaultValue}>
+      <NumberInput defaultValue={defaultValue} precision={precision}>
         <NumberInputField ref={ref} {...rest} />
         <NumberInputStepper>
           <NumberIncrementStepper />
