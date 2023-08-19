@@ -49,22 +49,13 @@ const FormMaterials = () => {
   };
 
   useEffect(() => {
-    console.log(defaultDate());
-    if (Object.keys(router.query).length !== 0) {
-      setValue("id", router.query.id);
-      setValue("date_apreensao", router.query.date_apreensao);
-      setValue("city", router.query.city);
-      setValue("cop", router.query.cop);
-      setValue("autor", router.query.autor);
-      setValue("marca_tipo", router.query.marca_tipo);
-      setValue("modelo", router.query.modelo);
-      setValue("deposito", router.query.deposito);
-      setValue("n_process", router.query.n_process);
-      setValue("pm_name", router.query.pm_name);
-      setValue("pm_mat", router.query.pm_mat);
-      setValue("status", router.query.status);
-      setValue("date_freedom", router.query.date_freedom);
-    }
+    const routerQuery = router.query;
+
+    const routerQueryKeys = Object.keys(routerQuery);
+
+    routerQueryKeys.forEach((key) => {
+      setValue(key, routerQuery[key]);
+    });
   }, []);
 
   return (

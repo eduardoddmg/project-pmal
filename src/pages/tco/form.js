@@ -19,6 +19,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import estado from "@/data/cidades";
 import delegacias from "@/data/delegacias";
 import * as util from "@/utils";
+import axios from "axios";
+
+const token = "1i9DXC0Fw1tw6Kkioshc1ODowiqrd";
+
+const url = (lat1, long1, lat2, long2) =>
+  `https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${lat1},${long1}&destinations=${lat2},${long2}&key=${token}`;
 
 const FormExpenses = () => {
   const {
@@ -38,9 +44,6 @@ const FormExpenses = () => {
 
     data.userId = auth.token;
     data.date = parseDateToBr(data.date);
-
-    console.log(data);
-
     data.lat = parseFloat(data.lat);
     data.long = parseFloat(data.long);
 
@@ -48,16 +51,14 @@ const FormExpenses = () => {
       (item) => item.properties.nome === data.delegacia
     ).geometry.coordinates;
 
-    console.log(coord_delegacias);
-
-    data.dist = util.dist(
-      data.lat,
-      data.long,
-      coord_delegacias[1],
-      coord_delegacias[0]
+    const result = await axios.get(
+      url(data.lat, data.long, coord_delegacias[1], coord_delegacias[0])
     );
 
-    console.log("coordenadas ", data.lat, data.long);
+    data.dist = result.data.rows[0].elements[0].distance.value / 1000;
+    data.duration = result.data.rows[0].elements[0].duration.value / 60;
+
+    console.log(result);
 
     if (router.query.id)
       await update("tco", router.query.id, data).then(() =>
@@ -72,10 +73,6 @@ const FormExpenses = () => {
     const routerQuery = router.query;
 
     const routerQueryKeys = Object.keys(routerQuery);
-
-    routerQueryKeys.forEach((key) => {
-      setValue(key, routerQuery[key]);
-    });
 
     routerQueryKeys.forEach((key) => {
       setValue(key, routerQuery[key]);
