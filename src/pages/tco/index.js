@@ -25,8 +25,6 @@ import { CSVLink } from "react-csv";
 
 const TcoPage = () => {
   const [tcoList, setTcoList] = useState(null);
-  const [tcoListFilter, setTcoListFilter] = useState(null);
-
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
@@ -35,9 +33,7 @@ const TcoPage = () => {
     setLoading(true);
 
     const result = await readAll("tco");
-
     setTcoList(result);
-    setTcoListFilter(result);
 
     setLoading(false);
   };
@@ -71,23 +67,16 @@ const TcoPage = () => {
   return (
     <Chakra.Stack p={5}>
       <HeadComp title="TCO" />
-      <CSVLink data={tcoList || []} filename="tco">
-        <Chakra.Button
-          leftIcon={<AiFillFileExcel />}
-          colorScheme="green"
-          alignSelf="start"
-        >
-          Baixar
-        </Chakra.Button>
-      </CSVLink>
       <Chakra.Wrap>
         <CardValue
+          color="green"
           title="Km economizados"
           value={
             tcoList ? tcoList?.reduce((total, item) => item.dist + total, 0) : 0
           }
-        />
+          />
         <CardValue
+          color="yellow"
           title="Litros de gasolina"
           value={
             tcoList
@@ -96,6 +85,7 @@ const TcoPage = () => {
           }
         />
         <CardValue
+          color="blue"
           title="Dinheiro economizado"
           value={
             tcoList
@@ -105,6 +95,7 @@ const TcoPage = () => {
           }
         />
         <CardValue
+            color="purple"
           title="Minutos economizado"
           value={
             tcoList
@@ -114,24 +105,22 @@ const TcoPage = () => {
         />
       </Chakra.Wrap>
       <Chakra.HStack>
-        <ButtonLink
-          w="80%"
-          colorScheme="green"
-          alignSelf={["stretch", "start"]}
-          href="/tco/form"
-        >
+        <CSVLink data={tcoList || []} filename="tco">
+          <Chakra.Button
+            leftIcon={<AiFillFileExcel />}
+            colorScheme="green"
+            alignSelf="start"
+          >
+            Baixar
+          </Chakra.Button>
+        </CSVLink>
+        <ButtonLink colorScheme="green" alignSelf="start" href="/tco/form">
           Criar
         </ButtonLink>
         <Chakra.Button onClick={fetchData}>
           <FiRefreshCcw />
         </Chakra.Button>
       </Chakra.HStack>
-      <SearchBar
-        data={tcoList}
-        collection="tco"
-        field="name"
-        setData={setTcoListFilter}
-      />
       <Table
         variant="striped"
         colorScheme="gray"
@@ -147,8 +136,8 @@ const TcoPage = () => {
           </Chakra.Tr>
         </Chakra.Thead>
         <Chakra.Tbody>
-          {tcoListFilter &&
-            sortByDateBr(tcoListFilter, "date", false).map((item, key) => {
+          {tcoList &&
+            tcoList.map((item, key) => {
               return (
                 <Chakra.Tr key={item.id}>
                   <Chakra.Td>{item.date}</Chakra.Td>

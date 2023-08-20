@@ -1,13 +1,6 @@
 import { Box, Button, Flex, Heading, Link, Stack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import {
-  HeadComp,
-  Input,
-  InputNumber,
-  InputNumberMoney,
-  Navigation,
-  Select,
-} from "@/components";
+import { HeadComp, Input, Select, SignaturePad } from "@/components";
 import { create, signUp, update } from "@/firebase";
 import { WithAuth } from "@/hooks";
 import { useAuth } from "@/context";
@@ -18,8 +11,17 @@ import * as schema from "@/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import estado from "@/data/cidades";
 import delegacias from "@/data/delegacias";
+import opm from "@/data/opm";
 import * as util from "@/utils";
 import axios from "axios";
+import SelectReact  from "react-select";
+
+const options = [
+  { value: "option1", label: "Option 1" },
+  { value: "option2", label: "Option 2" },
+  { value: "option3", label: "Option 3" },
+  // Add more options
+];
 
 const token = "1i9DXC0Fw1tw6Kkioshc1ODowiqrd";
 
@@ -79,6 +81,9 @@ const FormExpenses = () => {
     });
   }, []);
 
+  console.log(opm.find((item) => item.value === auth.opm));
+  console.log(auth);
+
   return (
     <Stack p={[2, 20]} w="95%" mx="auto">
       <HeadComp title="TCO" />
@@ -100,10 +105,10 @@ const FormExpenses = () => {
           {...register("infracao_penal")}
         />
         <Select title="City" {...register("city")}>
-          <option value="maceio">Maceió</option>
-          <option value="penedo">Penedo</option>
-          {estado.cidades.map((item) => (
-            <option value={item}>{item}</option>
+          {estado.cidades.map((item, index) => (
+            <option value={item} key={index}>
+              {item}
+            </option>
           ))}
         </Select>
         <Input
@@ -146,14 +151,25 @@ const FormExpenses = () => {
           title="Responsável peticionamento"
           {...register("responsavel_peticionamento")}
         >
-          <option value="corregedoria">Corregedoria</option>
-          <option value="1-bpm">1 BPM</option>
+          {opm
+            .find((item) => item.value === auth.opm)
+            .sub.map((item, index) => {
+              const result = opm.find((obj) => obj.value === item);
+              return (
+                <option value={result.value} key={index}>
+                  {result.name}
+                </option>
+              );
+            })}
         </Select>
         <Select title="Delegacia" {...register("delegacia")}>
-          {delegacias.features.map((item) => (
-            <option value={item.properties.nome}>{item.properties.nome}</option>
+          {delegacias.features.map((item, index) => (
+            <option value={item.properties.nome} key={index}>
+              {item.properties.nome}
+            </option>
           ))}
         </Select>
+        <SignaturePad />
         <Button
           isLoading={loading}
           colorScheme="blue"

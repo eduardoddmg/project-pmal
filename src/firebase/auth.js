@@ -4,11 +4,12 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "./config";
+import { auth, db } from "./config";
 import { message } from "@/utils";
-import { create } from "./crud";
+import { create, readOne } from "./crud";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
-export const signUp = async (email, password, username) => {
+export const signUp = async (email, password, opm) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -17,13 +18,10 @@ export const signUp = async (email, password, username) => {
     );
     const user = userCredential.user;
 
-    await updateProfile(user, { displayName: username });
     create("users", {
       idUser: user.uid,
-      name: username,
-      address: null,
-      age: null,
-      imgUrl: null
+      email,
+      opm,
     });
 
     console.log("Usuário registrado com sucesso:", user.uid);
@@ -52,13 +50,18 @@ export const login = async (email, password) => {
       password
     );
     const user = userCredential.user;
-    console.log(user);
+
+    const q = query(collection(db, "users"), where("idUser", "==", user.uid));
+    const querySnapshot = await getDocs(q);
+    const result = querySnapshot.docs.map((doc) => doc.data())[0];
+    console.log(result);
     return {
       success: true,
       username: user.displayName,
       token: user.uid,
       message: message.success.accountLoggedIn,
       status: "success",
+      opm: result.opm
     };
   } catch (error) {
     const errorCode = error.code;

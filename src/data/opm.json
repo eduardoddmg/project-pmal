@@ -1,0 +1,217 @@
+[
+  {
+    "value": "1bpm",
+    "name": "1º Batalhão",
+    "sub": [
+        "1bpm"
+    ]
+  },
+  {
+    "value": "2bpm",
+    "name": "2º Batalhão",
+    "sub": [
+        "2bpm"
+    ]
+  },
+  {
+    "value": "3bpm",
+    "name": "3º Batalhão",
+    "sub": [
+        "3bpm"
+    ]
+  },
+  {
+    "value": "4bpm",
+    "name": "4º Batalhão",
+    "sub": [
+        "4bpm"
+    ]
+  },
+  {
+    "value": "5bpm",
+    "name": "5º Batalhão",
+    "sub": [
+        "5bpm"
+    ]
+  },
+  {
+    "value": "5bpm",
+    "name": "5º Batalhão",
+    "sub": [
+        "5bpm"
+    ]
+  },
+  {
+    "value": "6bpm",
+    "name": "6º Batalhão",
+    "sub": [
+        "6bpm"
+    ]
+  },
+  {
+    "value": "7bpm",
+    "name": "7º Batalhão",
+    "sub": [
+        "7bpm"
+    ]
+  },
+  {
+    "value": "8bpm",
+    "name": "8º Batalhão",
+    "sub": [
+        "8bpm"
+    ]
+  },
+  {
+    "value": "9bpm",
+    "name": "9º Batalhão",
+    "sub": [
+        "9bpm"
+    ]
+  },
+  {
+    "value": "10bpm",
+    "name": "10º Batalhão",
+    "sub": [
+        "10bpm"
+    ]
+  },
+  {
+    "value": "11bpm",
+    "name": "11º Batalhão",
+    "sub": [
+        "11bpm"
+    ]
+  },
+  {
+    "value": "1cia",
+    "name": "1º CIA",
+    "sub": [
+        "1cia"
+    ]
+  },
+  {
+    "value": "2cia",
+    "name": "2º CIA",
+    "sub": [
+        "2cia"
+    ]
+  },
+  {
+    "value": "3cia",
+    "name": "3º CIA",
+    "sub": [
+        "3cia"
+    ]
+  },
+  {
+    "value": "4cia",
+    "name": "4º CIA",
+    "sub": [
+        "4cia"
+    ]
+  },
+  {
+    "value": "5cia",
+    "name": "5º CIA",
+    "sub": [
+        "5cia"
+    ]
+  },
+  {
+    "value": "bope",
+    "name": "BOPE",
+    "sub": [
+        "bope"
+    ]
+  },
+  {
+    "value": "rotam",
+    "name": "ROTAM",
+    "sub": [
+        "rotam"
+    ]
+  },
+  {
+    "value": "bpa",
+    "name": "BPA",
+    "sub": [
+        "bpa"
+    ]
+  },
+  {
+    "value": "bprv",
+    "name": "BPRV",
+    "sub": [
+        "bprv"
+    ]
+  },
+  {
+    "value": "bptran",
+    "name": "BPTRAN",
+    "sub": [
+        "bptran"
+    ]
+  },
+  {
+    "value": "rpmon",
+    "name": "RPMON",
+    "sub": [
+        "rpmon"
+    ]
+  },
+  {
+    "value": "bpgd",
+    "name": "BPGD",
+    "sub": [
+        "bpgd"
+    ]
+  },
+  {
+    "value": "cpc",
+    "name": "CPC",
+    "sub": [
+        "1bpm",
+        "4bpm",
+        "5bpm",
+        "8bpm",
+        "bpgd",
+        "rotam", 
+        "bope", 
+        "rpmon"
+    ]
+  },
+  {
+    "value": "cpa1",
+    "name": "CPA-1",
+    "sub": [
+        "bprv",
+        "bpa",
+        "7bpm",
+        "9bpm"
+    ]
+  },
+  {
+    "value": "cpa2",
+    "name": "CPA-2",
+    "sub": [
+        "3bpm",
+        "10bpm",
+        "11bpm",
+        "1cia"
+    ]
+  },
+  {
+    "value": "cpa3",
+    "name": "CPA-3",
+    "sub": [
+        "2bpm",
+        "6bpm",
+        "2cia"
+    ]
+  },
+  {
+    "value": "cpi",
+    "name": "CPI"
+  }
+]

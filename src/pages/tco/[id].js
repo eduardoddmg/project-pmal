@@ -12,6 +12,8 @@ import {
   Document,
   View,
 } from "@react-pdf/renderer";
+import { parseDateToEn } from "@/utils";
+import queryString from "query-string";
 
 const MyPdfDocument = ({ data }) => (
   <Document>
@@ -66,7 +68,23 @@ const PageId = () => {
     fetchData();
   }, []);
 
-  const edit = () => console.log("ola");
+  const edit = () => {
+    const parsed = {
+      id: data.id,
+      date: parseDateToEn(data.date),
+      infracao_penal: data.infracao_penal,
+      bairro: data.bairro,
+      n_tco: data.n_tco,
+      n_process: data.n_process,
+      obs: data.obs,
+      city: data.city,
+      lat: data.lat,
+      long: data.long,
+      delegacia: data.delegacia,
+    };
+
+    router.push(`/tco/form?${queryString.stringify(parsed)}`);
+  };
   const remove = async () => {
     setLoading(true);
     await removeDoc("tco", router.query.id);

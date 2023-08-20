@@ -10,7 +10,7 @@ export const ButtonLink = ({ href, children, ...rest }) => {
   };
 
   return (
-    <Button onClick={handleClick} {...rest} fontWeight="normal">
+    <Button onClick={handleClick} {...rest} fontWeight="bold">
       {children}
     </Button>
   );

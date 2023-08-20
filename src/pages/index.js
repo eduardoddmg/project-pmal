@@ -4,6 +4,7 @@ import { WithAuth, WithoutAuth } from "@/hooks";
 import * as Chakra from "@chakra-ui/react";
 import { BsFillEnvelopePaperFill, BsFillGeoAltFill } from "react-icons/bs";
 import { SiMaterialdesign } from "react-icons/si";
+import opm from "@/data/opm";
 
 const Home = () => {
   const auth = useAuth();
@@ -14,7 +15,7 @@ const Home = () => {
     <Chakra.Flex p={10} direction="column" align="center" justify="center">
       <HeadComp title="Sistema faz-tudo" />
       <Chakra.Heading as="h1" size="xl" textAlign="center" mb={3}>
-        Bem-vindo {auth.username} ao Sistema PMAL New
+        {opm.find(item => item.value === auth.opm).name}
       </Chakra.Heading>
       <Chakra.Text fontSize="lg" textAlign="center">
         Aqui você pode gerenciar algumas coisas importantes

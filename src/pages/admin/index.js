@@ -1,135 +1,13 @@
 import * as Chakra from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { ButtonLink, HeadComp, Input, Select } from "@/components";
-import { login } from "@/firebase";
 import { useAuth } from "@/context";
-import { WithoutAuth } from "@/hooks";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as schema from "@/schema";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import dotenv from "dotenv";
-
-dotenv.config();
-
-const opm = [
-  {
-    value: "1bpm",
-    name: "1º Batalhão",
-  },
-  {
-    value: "2bpm",
-    name: "2º Batalhão",
-  },
-  {
-    value: "3bpm",
-    name: "3º Batalhão",
-  },
-  {
-    value: "4bpm",
-    name: "4º Batalhão",
-  },
-  {
-    value: "5bpm",
-    name: "5º Batalhão",
-  },
-  {
-    value: "5bpm",
-    name: "5º Batalhão",
-  },
-  {
-    value: "6bpm",
-    name: "6º Batalhão",
-  },
-  {
-    value: "7bpm",
-    name: "7º Batalhão",
-  },
-  {
-    value: "8bpm",
-    name: "8º Batalhão",
-  },
-  {
-    value: "9bpm",
-    name: "9º Batalhão",
-  },
-  {
-    value: "10bpm",
-    name: "10º Batalhão",
-  },
-  {
-    value: "11bpm",
-    name: "11º Batalhão",
-  },
-  {
-    value: "1cia",
-    name: "1º CIA",
-  },
-  {
-    value: "2cia",
-    name: "2º CIA",
-  },
-  {
-    value: "3cia",
-    name: "3º CIA",
-  },
-  {
-    value: "3cia",
-    name: "3º CIA",
-  },
-  {
-    value: "4cia",
-    name: "4º CIA",
-  },
-  {
-    value: "5cia",
-    name: "5º CIA",
-  },
-  {
-    value: "bope",
-    name: "BOPE",
-  },
-  {
-    value: "rotam",
-    name: "ROTAM",
-  },
-  {
-    value: "bpa",
-    name: "BPA",
-  },
-  {
-    value: "bprv",
-    name: "BPRV",
-  },
-  {
-    value: "bptran",
-    name: "BPTRAN",
-  },
-  {
-    value: "rpmon",
-    name: "RPMON",
-  },
-  {
-    value: "cpc",
-    name: "CPC",
-  },
-  {
-    value: "cpa1",
-    name: "CPA-1",
-  },
-  {
-    value: "cpa2",
-    name: "CPA-2",
-  },
-  {
-    value: "cpa3",
-    name: "CPA-3",
-  },
-  {
-    value: "cpi",
-    name: "CPI",
-  },
-];
+import opm from "@/data/opm.json";
+import { signUp } from "@/firebase";
 
 const Admin = () => {
   const {
@@ -143,10 +21,19 @@ const Admin = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const toast = Chakra.useToast();
+
   const onSubmit = async (data) => {
     setLoading(true);
 
-    console.log(data);
+    const result = await signUp(data.email, data.password, data.opm);
+    toast({
+      title: result.message,
+      status: result.success ? "success" : "error",
+      duration: 9000,
+      isClosable: true,
+    });
+    console.log(data, result);
 
     setLoading(false);
   };

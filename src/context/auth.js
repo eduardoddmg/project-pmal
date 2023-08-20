@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 export const AuthProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [token, setToken] = useState("");
+  const [opm, setOpm] = useState("");
 
   const toast = useToast();
 
@@ -24,6 +25,7 @@ export const AuthProvider = ({ children }) => {
     if (result.success) {
       setUsername(result.username);
       setToken(result.token);
+      setOpm(result.opm);
       router.push("/");
     }
   };
@@ -40,6 +42,7 @@ export const AuthProvider = ({ children }) => {
         token,
         login,
         logout,
+        opm
       }}
     >
       {children}
