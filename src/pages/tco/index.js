@@ -1,46 +1,41 @@
-import {
-  ButtonLink,
-  Table,
-  SearchBar,
-  CardMoney,
-  HeadComp,
-  Navigation,
-  CardValue,
-} from "@/components";
-import { readAll, remove as removeDoc, update } from "@/firebase";
+import { ButtonLink, Table, HeadComp, CardValue, Select, ModalFilterTco } from "@/components";
+import { readAll, remove as removeDoc } from "@/firebase";
 import { WithAuth } from "@/hooks";
 import React, { useEffect, useState } from "react";
 import * as Chakra from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FiRefreshCcw } from "react-icons/fi";
-import {
-  AiFillInfoCircle,
-  AiFillEdit,
-  AiFillCloseCircle,
-  AiFillFileExcel,
-} from "react-icons/ai";
-import { parseDateToEn, sortByDateBr, sortByValue } from "@/utils";
+import { AiFillFileExcel, AiFillFilter } from "react-icons/ai";
+import { parseDateToEn, columns, cards } from "@/utils";
 import queryString from "query-string";
 import { CSVLink } from "react-csv";
+import { useForm } from "react-hook-form";
+import opm from "@/data/opm";
+import { useAuth } from "@/context";
+
 
 const TcoPage = () => {
   const [tcoList, setTcoList] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const auth = useAuth();
+
   const router = useRouter();
 
   const fetchData = async () => {
     setLoading(true);
-
     const result = await readAll("tco");
     setTcoList(result);
-
     setLoading(false);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const { isOpen, onOpen, onClose } = Chakra.useDisclosure();
+
+  const view = (id) => router.push(`/tco/${id}`);
 
   const edit = (data) => {
     const parsed = {
@@ -68,41 +63,13 @@ const TcoPage = () => {
     <Chakra.Stack p={5}>
       <HeadComp title="TCO" />
       <Chakra.Wrap>
-        <CardValue
-          color="green"
-          title="Km economizados"
-          value={
-            tcoList ? tcoList?.reduce((total, item) => item.dist + total, 0) : 0
-          }
+        {cards.map((card) => (
+          <CardValue
+            color={card.color}
+            title={card.title}
+            value={card.value(tcoList)}
           />
-        <CardValue
-          color="yellow"
-          title="Litros de gasolina"
-          value={
-            tcoList
-              ? tcoList?.reduce((total, item) => item.dist + total, 0) / 11
-              : 0
-          }
-        />
-        <CardValue
-          color="blue"
-          title="Dinheiro economizado"
-          value={
-            tcoList
-              ? (tcoList?.reduce((total, item) => item.dist + total, 0) / 11) *
-                5
-              : 0
-          }
-        />
-        <CardValue
-            color="purple"
-          title="Minutos economizado"
-          value={
-            tcoList
-              ? tcoList?.reduce((total, item) => item.duration + total, 0)
-              : 0
-          }
-        />
+        ))}
       </Chakra.Wrap>
       <Chakra.HStack>
         <CSVLink data={tcoList || []} filename="tco">
@@ -120,65 +87,26 @@ const TcoPage = () => {
         <Chakra.Button onClick={fetchData}>
           <FiRefreshCcw />
         </Chakra.Button>
+        <Chakra.Button
+          leftIcon={<AiFillFilter />}
+          colorScheme="blue"
+          alignSelf="start"
+          onClick={onOpen}
+        >
+          Filtros
+        </Chakra.Button>
       </Chakra.HStack>
       <Table
         variant="striped"
         colorScheme="gray"
         loading={loading}
         data={tcoList}
-      >
-        <Chakra.Thead>
-          <Chakra.Tr>
-            <Chakra.Th>Data</Chakra.Th>
-            <Chakra.Th>Infração Penal</Chakra.Th>
-            <Chakra.Th>Cidade</Chakra.Th>
-            <Chakra.Th>Nº TCO</Chakra.Th>
-          </Chakra.Tr>
-        </Chakra.Thead>
-        <Chakra.Tbody>
-          {tcoList &&
-            tcoList.map((item, key) => {
-              return (
-                <Chakra.Tr key={item.id}>
-                  <Chakra.Td>{item.date}</Chakra.Td>
-                  <Chakra.Td>{item.infracao_penal}</Chakra.Td>
-                  <Chakra.Td>{item.city}</Chakra.Td>
-                  <Chakra.Td>{item.n_tco}</Chakra.Td>
-                  <Chakra.Td>
-                    <Chakra.Button
-                      colorScheme="blue"
-                      variant="ghost"
-                      fontSize="30px"
-                      onClick={() => router.push(`/tco/${item.id}`)}
-                    >
-                      <AiFillInfoCircle />
-                    </Chakra.Button>
-                  </Chakra.Td>
-                  <Chakra.Td>
-                    <Chakra.Button
-                      colorScheme="orange"
-                      variant="ghost"
-                      fontSize="30px"
-                      onClick={() => edit(item)}
-                    >
-                      <AiFillEdit />
-                    </Chakra.Button>
-                  </Chakra.Td>
-                  <Chakra.Td>
-                    <Chakra.Button
-                      colorScheme="red"
-                      variant="ghost"
-                      fontSize="30px"
-                      onClick={() => remove(item.id)}
-                    >
-                      <AiFillCloseCircle />
-                    </Chakra.Button>
-                  </Chakra.Td>
-                </Chakra.Tr>
-              );
-            })}
-        </Chakra.Tbody>
-      </Table>
+        columns={columns}
+        view={view}
+        edit={edit}
+        remove={remove}
+      />
+      <ModalFilterTco opms={opm.find(item => auth.opm === item.value).sub} isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
     </Chakra.Stack>
   );
 };

@@ -104,7 +104,7 @@ const FormExpenses = () => {
           errors={errors?.infracao_penal}
           {...register("infracao_penal")}
         />
-        <Select title="City" {...register("city")}>
+        <Select title="Cidade" {...register("city")}>
           {estado.cidades.map((item, index) => (
             <option value={item} key={index}>
               {item}

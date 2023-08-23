@@ -1,8 +1,18 @@
 import React from "react";
 import * as Chakra from "@chakra-ui/react";
 import { Loading } from "./loading";
+import { AiFillCloseCircle, AiFillEdit, AiFillInfoCircle } from "react-icons/ai";
 
-export const Table = ({ loading, data, columns, children, ...rest }) => {
+export const Table = ({
+  loading,
+  data,
+  columns,
+  view,
+  edit,
+  remove,
+  children,
+  ...rest
+}) => {
   if (!loading && data?.length === 0)
     return (
       <Chakra.Center py={10}>
@@ -13,7 +23,6 @@ export const Table = ({ loading, data, columns, children, ...rest }) => {
     return (
       <Chakra.TableContainer>
         <Chakra.Table overflow="scroll" {...rest}>
-          {children}
           <Chakra.Thead>
             <Chakra.Tr>
               {columns?.map((item) => (
@@ -22,11 +31,45 @@ export const Table = ({ loading, data, columns, children, ...rest }) => {
             </Chakra.Tr>
           </Chakra.Thead>
           <Chakra.Tbody>
-            <Chakra.Tr>
-              {data?.map(item => {
-                {columns?.map(column => <Chakra.Td>{item[column.accessor]}</Chakra.Td>)}
-              })}
-            </Chakra.Tr>
+            {data?.map((item) => {
+              return (
+                <Chakra.Tr>
+                  {columns?.map((column) => {
+                    return <Chakra.Td>{item[column.accessor]}</Chakra.Td>;
+                  })}
+                  <Chakra.Td>
+                    <Chakra.Button
+                      colorScheme="blue"
+                      variant="ghost"
+                      fontSize="30px"
+                      onClick={() => view(item.id)}
+                    >
+                      <AiFillInfoCircle />
+                    </Chakra.Button>
+                  </Chakra.Td>
+                  <Chakra.Td>
+                    <Chakra.Button
+                      colorScheme="orange"
+                      variant="ghost"
+                      fontSize="30px"
+                      onClick={() => edit(item)}
+                    >
+                      <AiFillEdit />
+                    </Chakra.Button>
+                  </Chakra.Td>
+                  <Chakra.Td>
+                    <Chakra.Button
+                      colorScheme="red"
+                      variant="ghost"
+                      fontSize="30px"
+                      onClick={() => remove(item.id)}
+                    >
+                      <AiFillCloseCircle />
+                    </Chakra.Button>
+                  </Chakra.Td>
+                </Chakra.Tr>
+              );
+            })}
           </Chakra.Tbody>
         </Chakra.Table>
       </Chakra.TableContainer>
