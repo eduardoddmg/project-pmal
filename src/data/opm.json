@@ -1,217 +1,144 @@
 [
   {
-    "value": "1bpm",
     "name": "1º Batalhão",
-    "sub": [
-        "1bpm"
-    ]
+    "sub": ["1º Batalhão"]
   },
   {
-    "value": "2bpm",
     "name": "2º Batalhão",
-    "sub": [
-        "2bpm"
-    ]
+    "sub": ["2º Batalhão"]
   },
   {
-    "value": "3bpm",
     "name": "3º Batalhão",
-    "sub": [
-        "3bpm"
-    ]
+    "sub": ["3º Batalhão"]
   },
   {
-    "value": "4bpm",
     "name": "4º Batalhão",
-    "sub": [
-        "4bpm"
-    ]
+    "sub": ["4º Batalhão"]
   },
   {
-    "value": "5bpm",
     "name": "5º Batalhão",
-    "sub": [
-        "5bpm"
-    ]
+    "sub": ["5º Batalhão"]
   },
   {
-    "value": "5bpm",
-    "name": "5º Batalhão",
-    "sub": [
-        "5bpm"
-    ]
-  },
-  {
-    "value": "6bpm",
     "name": "6º Batalhão",
-    "sub": [
-        "6bpm"
-    ]
+    "sub": ["6º Batalhão"]
   },
   {
-    "value": "7bpm",
     "name": "7º Batalhão",
-    "sub": [
-        "7bpm"
-    ]
+    "sub": ["7º Batalhão"]
   },
   {
-    "value": "8bpm",
     "name": "8º Batalhão",
-    "sub": [
-        "8bpm"
-    ]
+    "sub": ["8º Batalhão"]
   },
   {
-    "value": "9bpm",
     "name": "9º Batalhão",
-    "sub": [
-        "9bpm"
-    ]
+    "sub": ["9º Batalhão"]
   },
   {
-    "value": "10bpm",
     "name": "10º Batalhão",
-    "sub": [
-        "10bpm"
-    ]
+    "sub": ["10º Batalhão"]
   },
   {
-    "value": "11bpm",
     "name": "11º Batalhão",
-    "sub": [
-        "11bpm"
-    ]
+    "sub": ["11º Batalhão"]
   },
   {
-    "value": "1cia",
     "name": "1º CIA",
-    "sub": [
-        "1cia"
-    ]
+    "sub": ["1º CIA"]
   },
   {
-    "value": "2cia",
     "name": "2º CIA",
-    "sub": [
-        "2cia"
-    ]
+    "sub": ["2º CIA"]
   },
   {
-    "value": "3cia",
     "name": "3º CIA",
-    "sub": [
-        "3cia"
-    ]
+    "sub": ["3º CIA"]
   },
   {
-    "value": "4cia",
     "name": "4º CIA",
-    "sub": [
-        "4cia"
-    ]
+    "sub": ["4º CIA"]
   },
   {
-    "value": "5cia",
     "name": "5º CIA",
-    "sub": [
-        "5cia"
-    ]
+    "sub": ["5º CIA"]
   },
   {
-    "value": "bope",
     "name": "BOPE",
-    "sub": [
-        "bope"
-    ]
+    "sub": ["BOPE"]
   },
   {
-    "value": "rotam",
     "name": "ROTAM",
-    "sub": [
-        "rotam"
-    ]
+    "sub": ["ROTAM"]
   },
   {
-    "value": "bpa",
     "name": "BPA",
-    "sub": [
-        "bpa"
-    ]
+    "sub": ["BPA"]
   },
   {
-    "value": "bprv",
+    "name": "BPE",
+    "sub": ["BPE"]
+  },
+  {
     "name": "BPRV",
-    "sub": [
-        "bprv"
-    ]
+    "sub": ["BPRV"]
   },
   {
-    "value": "bptran",
     "name": "BPTRAN",
-    "sub": [
-        "bptran"
-    ]
+    "sub": ["BPTRAN"]
   },
   {
-    "value": "rpmon",
     "name": "RPMON",
-    "sub": [
-        "rpmon"
-    ]
+    "sub": ["RPMON"]
   },
   {
-    "value": "bpgd",
     "name": "BPGD",
-    "sub": [
-        "bpgd"
-    ]
+    "sub": ["BPGD"]
   },
   {
-    "value": "cpc",
     "name": "CPC",
     "sub": [
-        "1bpm",
-        "4bpm",
-        "5bpm",
-        "8bpm",
-        "bpgd",
-        "rotam", 
-        "bope", 
-        "rpmon"
+      "1º Batalhão",
+      "4º Batalhão",
+      "5º Batalhão",
+      "8º Batalhão",
+      "BPGD",
+      "ROTAM",
+      "BOPE",
+      "RPMON",
+      "BPTRAN",
+      "BPE",
+      "5º CIA",
+      "3º CIA",
+      "4º CIA"
     ]
   },
   {
-    "value": "cpa1",
     "name": "CPA-1",
-    "sub": [
-        "bprv",
-        "bpa",
-        "7bpm",
-        "9bpm"
-    ]
+    "sub": ["BPRV", "BPA", "7º Batalhão", "9º Batalhão"]
   },
   {
-    "value": "cpa2",
     "name": "CPA-2",
-    "sub": [
-        "3bpm",
-        "10bpm",
-        "11bpm",
-        "1cia"
-    ]
+    "sub": ["3º Batalhão", "10º Batalhão", "11º Batalhão", "1º CIA"]
   },
   {
-    "value": "cpa3",
     "name": "CPA-3",
-    "sub": [
-        "2bpm",
-        "6bpm",
-        "2cia"
-    ]
+    "sub": ["2º Batalhão", "6º Batalhão", "2º CIA"]
   },
   {
-    "value": "cpi",
-    "name": "CPI"
+    "name": "CPI",
+    "sub": [
+      "BPRV",
+      "BPA",
+      "7º Batalhão",
+      "9º Batalhão",
+      "3º Batalhão",
+      "10º Batalhão",
+      "11º Batalhão",
+      "1º CIA",
+      "2º Batalhão",
+      "6º Batalhão",
+      "2º CIA"
+    ]
   }
 ]

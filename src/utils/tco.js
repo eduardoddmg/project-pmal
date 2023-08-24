@@ -8,6 +8,10 @@ export const columns = [
     accessor: "infracao_penal",
   },
   {
+    Header: "OPM",
+    accessor: "responsavel_peticionamento",
+  },
+  {
     Header: "Cidade",
     accessor: "city",
   },

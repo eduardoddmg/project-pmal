@@ -1,4 +1,11 @@
-import { ButtonLink, Table, HeadComp, CardValue, Select, ModalFilterTco } from "@/components";
+import {
+  ButtonLink,
+  Table,
+  HeadComp,
+  CardValue,
+  Select,
+  ModalFilterTco,
+} from "@/components";
 import { readAll, remove as removeDoc } from "@/firebase";
 import { WithAuth } from "@/hooks";
 import React, { useEffect, useState } from "react";
@@ -13,9 +20,9 @@ import { useForm } from "react-hook-form";
 import opm from "@/data/opm";
 import { useAuth } from "@/context";
 
-
 const TcoPage = () => {
   const [tcoList, setTcoList] = useState(null);
+  const [tcoListFilter, setTcoListFilter] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const auth = useAuth();
@@ -63,8 +70,9 @@ const TcoPage = () => {
     <Chakra.Stack p={5}>
       <HeadComp title="TCO" />
       <Chakra.Wrap>
-        {cards.map((card) => (
+        {cards.map((card, index) => (
           <CardValue
+            key={index}
             color={card.color}
             title={card.title}
             value={card.value(tcoList)}
@@ -106,7 +114,14 @@ const TcoPage = () => {
         edit={edit}
         remove={remove}
       />
-      <ModalFilterTco opms={opm.find(item => auth.opm === item.value).sub} isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+      <ModalFilterTco
+        opms={opm.find((item) => auth.opm === item.name).sub}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        tcoList={tcoList}
+        setTcoList={setTcoList}
+      />
     </Chakra.Stack>
   );
 };

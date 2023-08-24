@@ -14,3 +14,7 @@ export const dist = (lat1, lon1, lat2, lon2) => {
 
     return distance;
 };
+
+export const getCoord = () => {
+    console.log("Chegou aqui");
+}

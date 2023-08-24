@@ -25,8 +25,8 @@ export const Table = ({
         <Chakra.Table overflow="scroll" {...rest}>
           <Chakra.Thead>
             <Chakra.Tr>
-              {columns?.map((item) => (
-                <Chakra.Th>{item.Header}</Chakra.Th>
+              {columns?.map((item, index) => (
+                <Chakra.Th key={index}>{item.Header}</Chakra.Th>
               ))}
             </Chakra.Tr>
           </Chakra.Thead>
@@ -34,8 +34,8 @@ export const Table = ({
             {data?.map((item) => {
               return (
                 <Chakra.Tr>
-                  {columns?.map((column) => {
-                    return <Chakra.Td>{item[column.accessor]}</Chakra.Td>;
+                  {columns?.map((column, index) => {
+                    return <Chakra.Td key={index}>{item[column.accessor]}</Chakra.Td>;
                   })}
                   <Chakra.Td>
                     <Chakra.Button

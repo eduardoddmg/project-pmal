@@ -1,34 +1,22 @@
 import React from "react";
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact from "google-map-react";
 import { WithAuth } from "@/hooks";
+import { Stack } from "@chakra-ui/react";
+import { Card } from "@/components";
+import { BsMap } from "react-icons/bs";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-const SimpleMap = () =>{
-  const defaultProps = {
-    center: {
-      lat: -9.648139,
-      lng: -35.717239
-    },
-    zoom: 11
-  };
-
+const SimpleMap = () => {
   return (
-    // Important! Always set the container height explicitly
-    <div style={{ height: '100vh', width: '100%' }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      >
-        <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text="My Marker"
-        />
-      </GoogleMapReact>
-    </div>
+    <Stack p={10}>
+      <Card
+        href="/map/map-intensidade"
+        title="Implantação TCO"
+        subtitle="Veja o mapa de intensidade da implantação do TCO"
+        bg="green.600"
+        icon={<BsMap fontSize="50px" color="white" />}
+      />
+    </Stack>
   );
-}
+};
 
-export default WithAuth(SimpleMap)
+export default WithAuth(SimpleMap);

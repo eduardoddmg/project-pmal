@@ -67,7 +67,7 @@ const Admin = () => {
           />
           <Select title="OPM" {...register("opm")}>
             {opm.map((item) => (
-              <option value={item.value}>{item.name}</option>
+              <option value={item.name}>{item.name}</option>
             ))}
           </Select>
           <Chakra.Button

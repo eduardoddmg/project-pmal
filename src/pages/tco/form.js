@@ -12,16 +12,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import estado from "@/data/cidades";
 import delegacias from "@/data/delegacias";
 import opm from "@/data/opm";
+import infracoes from "@/data/infracoes";
 import * as util from "@/utils";
 import axios from "axios";
-import SelectReact  from "react-select";
+import SelectReact from "react-select";
 
-const options = [
-  { value: "option1", label: "Option 1" },
-  { value: "option2", label: "Option 2" },
-  { value: "option3", label: "Option 3" },
-  // Add more options
-];
+const options = (list) => list.map((item) => ({ value: item, label: item }));
 
 const token = "1i9DXC0Fw1tw6Kkioshc1ODowiqrd";
 
@@ -52,15 +48,13 @@ const FormExpenses = () => {
     const coord_delegacias = delegacias.features.find(
       (item) => item.properties.nome === data.delegacia
     ).geometry.coordinates;
-
     const result = await axios.get(
       url(data.lat, data.long, coord_delegacias[1], coord_delegacias[0])
     );
+    console.log(result);
 
     data.dist = result.data.rows[0].elements[0].distance.value / 1000;
     data.duration = result.data.rows[0].elements[0].duration.value / 60;
-
-    console.log(result);
 
     if (router.query.id)
       await update("tco", router.query.id, data).then(() =>
@@ -98,12 +92,13 @@ const FormExpenses = () => {
           {...register("date")}
           defaultValue={defaultDate()}
         />
-        <Input
-          title="Infração Penal"
-          type="text"
-          errors={errors?.infracao_penal}
-          {...register("infracao_penal")}
-        />
+        <Select title="Infração Penal" {...register("infracao_penal")}>
+          {infracoes.map((item, index) => (
+            <option value={item.name} key={index}>
+              {item.name}
+            </option>
+          ))}
+        </Select>
         <Select title="Cidade" {...register("city")}>
           {estado.cidades.map((item, index) => (
             <option value={item} key={index}>
@@ -147,17 +142,17 @@ const FormExpenses = () => {
           errors={errors.long}
           {...register("long")}
         />
+        <Button colorScheme="blue" onClick={util.getCoord}>Gerar coordenadas</Button>
         <Select
           title="Responsável peticionamento"
           {...register("responsavel_peticionamento")}
         >
           {opm
-            .find((item) => item.value === auth.opm)
+            .find((item) => item.name === auth.opm)
             .sub.map((item, index) => {
-              const result = opm.find((obj) => obj.value === item);
               return (
-                <option value={result.value} key={index}>
-                  {result.name}
+                <option value={item} key={index}>
+                  {item}
                 </option>
               );
             })}
