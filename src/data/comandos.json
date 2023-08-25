@@ -1,0 +1,161 @@
+[
+  {
+    "name": "CPC",
+    "opms": []
+  },
+  {
+    "name": "CPAI-1",
+    "opms": [
+      {
+        "name": "7º BPM",
+        "cities": [
+          "SANTANA DO IPANEMA (SEDE)",
+          "BATALHA",
+          "BELO MONTE",
+          "CARNEIROS",
+          "DOIS RIACHOS",
+          "JACARÉ DOS HOMENS",
+          "MAJOR IZIDORO",
+          "MARAVILHA",
+          "MONTEIRÓPOLIS",
+          "OLHO D’ÁGUA DAS FLORES",
+          "OLIVENÇA",
+          "OURO BRANCO",
+          "PALESTINA",
+          "PÃO DE AÇÚCAR",
+          "POÇO DAS TRINCHEIRAS",
+          "SÃO JOSÉ DA TAPERA",
+          "SENADOR RUI PALMEIRA"
+        ]
+      },
+      {
+        "name": "9º BPM",
+        "cities": [
+          "DELMIRO GOUVEIA (SEDE)",
+          "ÁGUA BRANCA",
+          "CANAPI",
+          "INHAPI",
+          "OLHO D’ÁGUA DO CASADO",
+          "PARICONHA",
+          "PIRANHAS"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CPAI-2",
+    "opms": [
+      {
+        "name": "1º CIA",
+        "cities": [
+          "SÃO MIGUEL DOS CAMPOS (SEDE)",
+          "ANADIA",
+          "BOCA DA MATA",
+          "CAMPO ALEGRE",
+          "JEQUIÁ DA PRAIA",
+          "ROTEIRO"
+        ]
+      },
+      {
+        "name": "4º CIA",
+        "cities": [
+          "ATALAIA (SEDE)",
+          "CAJUEIRO",
+          "CAPELA",
+          "CHÃ PRETA",
+          "PINDOBA",
+          "VIÇOSA"
+        ]
+      },
+      {
+        "name": "3º BPM",
+        "cities": [
+          "ARAPIRACA (SEDE)",
+          "CAMPO GRANDE",
+          "COITÉ DO NÓIA",
+          "CRÁIBAS",
+          "FEIRA GRANDE",
+          "GIRAU DO PONCIANO",
+          "JARAMATAIA",
+          "JUNQUEIRO",
+          "LAGOA DA CANOA",
+          "LIMOEIRO DE ANADIA",
+          "OLHO D’ÁGUA GRANDE",
+          "SÃO SEBASTIÃO",
+          "TAQUARANIA",
+          "TEOTÔNIO VILELA",
+          "TRAIPU"
+        ]
+      },
+      {
+        "name": "10º BPM",
+        "cities": [
+          "PALMEIRA DOS ÍNDIOS (SEDE)",
+          "BELÉM",
+          "CACIMBINHAS",
+          "ESTRELA DE ALAGOAS",
+          "IGACI",
+          "MAR VERMELHO",
+          "MARIBONDO",
+          "MINADOR DO NEGRÃO",
+          "PAULO JACINTO",
+          "QUEBRANGULO",
+          "TANQUE D’ARCA"
+        ]
+      },
+      {
+        "name": "11º BPM",
+        "cities": [
+          "PENEDO (SEDE)",
+          "CORURIPE",
+          "FELIZ DESERTO",
+          "IGREJA NOVA",
+          "PIAÇABUÇU",
+          "PORTO REAL DO COLÉGIO",
+          "SÃO BRÁS"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CPAI-3",
+    "opms": [
+      {
+        "name": "2º BPM",
+        "cities": [
+          "UNIÃO DOS PALMARES (SEDE)",
+          "BRANQUINHA",
+          "IBATEGUARA",
+          "MURICI",
+          "SANTANA DO MUNDAÚ",
+          "SÃO JOSÉ DA LAJE"
+        ]
+      },
+      {
+        "name": "2º CIA",
+        "cities": [
+          "JOAQUIM GOMES (SEDE)",
+          "CAMPESTRE",
+          "COLÔNIA LEOPOLDINA",
+          "FLEXEIRAS",
+          "JACUÍPE",
+          "JUNDIÁ",
+          "NOVO LINO"
+        ]
+      },
+      {
+        "name": "6º BPM",
+        "cities": [
+          "MARAGOGI (SEDE)",
+          "JAPARATINGA",
+          "MATRIZ DE CAMARAGIBE",
+          "PASSO DE CAMARAGIBE",
+          "PORTO CALVO",
+          "PORTO DE PEDRAS",
+          "SÃO LUÍS DO QUITUNDE",
+          "SÃO MIGUEL DOS MILAGRES"
+        ]
+      }
+    ]
+  }
+]

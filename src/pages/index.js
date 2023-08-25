@@ -3,7 +3,7 @@ import { useAuth } from "@/context";
 import { WithAuth, WithoutAuth } from "@/hooks";
 import * as Chakra from "@chakra-ui/react";
 import { BsFillEnvelopePaperFill, BsFillGeoAltFill } from "react-icons/bs";
-import { SiMaterialdesign } from "react-icons/si";
+import { SiAdminer, SiMaterialdesign } from "react-icons/si";
 import opm from "@/data/opm";
 
 const Home = () => {
@@ -42,7 +42,13 @@ const Home = () => {
           bg="red.500"
           icon={<BsFillGeoAltFill fontSize="50px" color="white" />}
         />
-        
+        {auth.admin && <Card
+          href="/admin"
+          title="Controle do administrador"
+          subtitle="Controle todo o workflow do sistema"
+          bg="purple.500"
+          icon={<SiAdminer fontSize="50px" color="white" />}
+        />}
       </Chakra.Wrap>
     </Chakra.Flex>
   );

@@ -61,7 +61,8 @@ export const login = async (email, password) => {
       token: user.uid,
       message: message.success.accountLoggedIn,
       status: "success",
-      opm: result.opm
+      opm: result.opm,
+      admin: result.admin || false,
     };
   } catch (error) {
     const errorCode = error.code;

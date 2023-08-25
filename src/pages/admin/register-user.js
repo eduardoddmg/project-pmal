@@ -1,18 +1,15 @@
 import * as Chakra from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { ButtonLink, HeadComp, Input } from "@/components";
-import { login } from "@/firebase";
+import { ButtonLink, HeadComp, Input, Select } from "@/components";
 import { useAuth } from "@/context";
-import { WithoutAuth } from "@/hooks";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as schema from "@/schema";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import dotenv from "dotenv";
+import opm from "@/data/opm.json";
+import { signUp } from "@/firebase";
 
-dotenv.config();
-
-const Login = () => {
+const Admin = () => {
   const {
     handleSubmit,
     register,
@@ -24,11 +21,19 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const toast = Chakra.useToast();
+
   const onSubmit = async (data) => {
     setLoading(true);
 
-    console.log(data);
-    await auth.login(data.email, data.password);
+    const result = await signUp(data.email, data.password, data.opm);
+    toast({
+      title: result.message,
+      status: result.success ? "success" : "error",
+      duration: 9000,
+      isClosable: true,
+    });
+    console.log(data, result);
 
     setLoading(false);
   };
@@ -36,7 +41,6 @@ const Login = () => {
   return (
     <Chakra.Flex py={20} align="center" justify="center">
       <HeadComp title="Login" description="Faça login no nosso sistema" />
-
       <Chakra.Box
         bg="white"
         p={8}
@@ -46,7 +50,7 @@ const Login = () => {
         width="100%"
       >
         <Chakra.Heading as="h2" textAlign="center" mb={6}>
-          Login
+          Cadastro
         </Chakra.Heading>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
@@ -61,27 +65,25 @@ const Login = () => {
             errors={errors?.password}
             {...register("password")}
           />
+          <Select title="OPM" {...register("opm")}>
+            {opm.map((item) => (
+              <option value={item.name}>{item.name}</option>
+            ))}
+          </Select>
           <Chakra.Button
             colorScheme="blue"
             size="lg"
             width="100%"
-            mb={4}
+            my={4}
             type="submit"
             isLoading={loading}
           >
-            Login
+            Criar
           </Chakra.Button>
         </form>
-        <Chakra.Text textAlign="center" pt={3}>
-          Esqueceu a sua senha?{" "}
-          <ButtonLink variant="link" href="/forgot-password" color="blue.500">
-            {" "}
-            Clique aqui{" "}
-          </ButtonLink>
-        </Chakra.Text>
       </Chakra.Box>
     </Chakra.Flex>
   );
 };
 
-export default WithoutAuth(Login);
+export default Admin;

@@ -1,89 +1,61 @@
-import * as Chakra from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
-import { ButtonLink, HeadComp, Input, Select } from "@/components";
-import { useAuth } from "@/context";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as schema from "@/schema";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import opm from "@/data/opm.json";
-import { signUp } from "@/firebase";
+import React from "react";
+import GoogleMapReact from "google-map-react";
+import { WithAuth } from "@/hooks";
+import { Flex, Heading, Stack, VStack, Wrap } from "@chakra-ui/react";
+import { Card } from "@/components";
+import { BsMap, BsPeople } from "react-icons/bs";
+import { AiFillDashboard } from "react-icons/ai";
 
 const Admin = () => {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schema.login) });
-
-  const auth = useAuth();
-  const router = useRouter();
-
-  const [loading, setLoading] = useState(false);
-
-  const toast = Chakra.useToast();
-
-  const onSubmit = async (data) => {
-    setLoading(true);
-
-    const result = await signUp(data.email, data.password, data.opm);
-    toast({
-      title: result.message,
-      status: result.success ? "success" : "error",
-      duration: 9000,
-      isClosable: true,
-    });
-    console.log(data, result);
-
-    setLoading(false);
-  };
-
   return (
-    <Chakra.Flex py={20} align="center" justify="center">
-      <HeadComp title="Login" description="Faça login no nosso sistema" />
-      <Chakra.Box
-        bg="white"
-        p={8}
-        rounded="md"
-        shadow="md"
-        w={["100%", "80%", "50%"]}
-        width="100%"
-      >
-        <Chakra.Heading as="h2" textAlign="center" mb={6}>
-          Cadastro
-        </Chakra.Heading>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Input
-            title="Email"
-            type="email"
-            errors={errors?.email}
-            {...register("email")}
-          />
-          <Input
-            title="Senha"
-            type="password"
-            errors={errors?.password}
-            {...register("password")}
-          />
-          <Select title="OPM" {...register("opm")}>
-            {opm.map((item) => (
-              <option value={item.name}>{item.name}</option>
-            ))}
-          </Select>
-          <Chakra.Button
-            colorScheme="blue"
-            size="lg"
-            width="100%"
-            my={4}
-            type="submit"
-            isLoading={loading}
-          >
-            Criar
-          </Chakra.Button>
-        </form>
-      </Chakra.Box>
-    </Chakra.Flex>
+    <VStack my={10}>
+      <Heading>Administrador</Heading>
+      <Wrap p={10} w="full" spacing={5}>
+        <Card
+          href="/admin/register-user"
+          title="Cadastrar usuários"
+          subtitle="Cadastre usuários de comando ou OPM"
+          bg="green.600"
+          icon={<BsPeople fontSize="50px" color="white" />}
+        />
+        <Card
+          href="/admin/cpc"
+          title="CPC"
+          subtitle="Confira o relatório de implantação do TCO"
+          bg="red.600"
+          icon={<AiFillDashboard fontSize="50px" color="white" />}
+        />
+        <Card
+          href="/admin/cpi"
+          title="CPI"
+          subtitle="Confira o relatório de implantação do TCO"
+          bg="orange.600"
+          icon={<AiFillDashboard fontSize="50px" color="white" />}
+        />
+        <Card
+          href="/admin/cpai1"
+          title="CPAI-1"
+          subtitle="Confira o relatório de implantação do TCO"
+          bg="yellow.600"
+          icon={<AiFillDashboard fontSize="50px" color="white" />}
+        />
+        <Card
+          href="/admin/cpai2"
+          title="CPAI-2"
+          subtitle="Confira o relatório de implantação do TCO"
+          bg="green.600"
+          icon={<AiFillDashboard fontSize="50px" color="white" />}
+        />
+        <Card
+          href="/admin/cpai3"
+          title="CPAI-3"
+          subtitle="Confira o relatório de implantação do TCO"
+          bg="gray.600"
+          icon={<AiFillDashboard fontSize="50px" color="white" />}
+        />
+      </Wrap>
+    </VStack>
   );
 };
 
-export default Admin;
+export default WithAuth(Admin);

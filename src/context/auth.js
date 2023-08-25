@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [token, setToken] = useState("");
   const [opm, setOpm] = useState("");
+  const [admin, setAdmin] = useState(false);
 
   const toast = useToast();
 
@@ -19,13 +20,20 @@ export const AuthProvider = ({ children }) => {
     const result = await loginFirebase(username, password);
     toast({
       title: result.message,
-      status: result.status,
+        status: result.status,
       duration: 2000,
     });
+
+    console.log(result);
+
     if (result.success) {
       setUsername(result.username);
       setToken(result.token);
       setOpm(result.opm);
+
+
+      if (result.admin) setAdmin(true);
+      else setAdmin(false);
       router.push("/");
     }
   };
@@ -33,6 +41,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUsername("");
     setToken("");
+    setOpm("");
+    setAdmin(false);
   };
 
   return (
@@ -42,7 +52,8 @@ export const AuthProvider = ({ children }) => {
         token,
         login,
         logout,
-        opm
+        opm,
+        admin
       }}
     >
       {children}

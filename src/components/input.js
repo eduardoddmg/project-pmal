@@ -17,10 +17,10 @@ import { forwardRef } from "react";
 import { PatternFormat } from "react-number-format";
 
 export const Input = forwardRef((props, ref) => {
-  const { title, errors, type, ...rest } = props;
+  const { title, errors, type, isRequired, ...rest } = props;
 
   return (
-    <FormControl mb={3} isInvalid={errors}>
+    <FormControl isRequired={isRequired} mb={3} isInvalid={errors}>
       <FormLabel>{title}</FormLabel>
       <InputChakra
         ref={ref}
@@ -44,10 +44,10 @@ export const Checkbox = forwardRef((props, ref) => {
 });
 
 export const Select = forwardRef((props, ref) => {
-  const { children, title, ...rest } = props;
+  const { children, title, isRequired, ...rest } = props;
 
   return (
-    <FormControl mb={5}>
+    <FormControl mb={5} isRequired={isRequired}>
       <FormLabel>{title}</FormLabel>
       <SelectChakra ref={ref} {...rest}>
         {children}
@@ -57,10 +57,10 @@ export const Select = forwardRef((props, ref) => {
 });
 
 export const InputNumberMoney = forwardRef((props, ref) => {
-  const { children, title, defaultValue, precision, step, ...rest } = props;
+  const { isRequired, children, title, defaultValue, precision, step, ...rest } = props;
 
   return (
-    <FormControl mb={5}>
+    <FormControl mb={5} isRequired={isRequired}>
       <FormLabel>{title}</FormLabel>
       <InputGroup w="full">
         <InputLeftAddon children="R$" />

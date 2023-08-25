@@ -17,4 +17,18 @@ export const dist = (lat1, lon1, lat2, lon2) => {
 
 export const getCoord = () => {
     console.log("Chegou aqui");
-}
+    
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const lat = position.coords.latitude;
+          const long = position.coords.longitude;
+          resolve({ lat, long });
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
+  };
+  

@@ -7,17 +7,14 @@ import { useAuth } from "@/context";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { defaultDate, parseDateToBr, parseSecondsToDate } from "@/utils";
-import * as schema from "@/schema";
-import { yupResolver } from "@hookform/resolvers/yup";
 import estado from "@/data/cidades";
 import delegacias from "@/data/delegacias";
 import opm from "@/data/opm";
 import infracoes from "@/data/infracoes";
 import * as util from "@/utils";
 import axios from "axios";
-import SelectReact from "react-select";
-
-const options = (list) => list.map((item) => ({ value: item, label: item }));
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as schema from "@/schema";
 
 const token = "1i9DXC0Fw1tw6Kkioshc1ODowiqrd";
 
@@ -30,12 +27,13 @@ const FormExpenses = () => {
     register,
     formState: { errors },
     setValue,
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema.tco) });
 
   const auth = useAuth();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
+  const [loadingCoord, setLoadingCoord] = useState(false);
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -78,6 +76,22 @@ const FormExpenses = () => {
   console.log(opm.find((item) => item.value === auth.opm));
   console.log(auth);
 
+  const setCoord = async () => {
+    setLoadingCoord(true);
+
+    await util
+      .getCoord()
+      .then((coords) => {
+        console.log("Coordenadas:", coords);
+        setValue("lat", coords.lat);
+        setValue("long", coords.long);
+      })
+      .catch((error) => {
+        console.error("Erro:", error.message);
+      });
+    setLoadingCoord(false);
+  };
+
   return (
     <Stack p={[2, 20]} w="95%" mx="auto">
       <HeadComp title="TCO" />
@@ -86,20 +100,21 @@ const FormExpenses = () => {
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
+          isRequired
           title="Data"
           type="date"
           errors={errors?.date}
           {...register("date")}
           defaultValue={defaultDate()}
         />
-        <Select title="Infração Penal" {...register("infracao_penal")}>
+        <Select title="Infração Penal" {...register("infracao_penal")} isRequired>
           {infracoes.map((item, index) => (
             <option value={item.name} key={index}>
               {item.name}
             </option>
           ))}
         </Select>
-        <Select title="Cidade" {...register("city")}>
+        <Select title="Cidade" {...register("city")} isRequired>
           {estado.cidades.map((item, index) => (
             <option value={item} key={index}>
               {item}
@@ -107,18 +122,21 @@ const FormExpenses = () => {
           ))}
         </Select>
         <Input
+          isRequired
           title="Bairro"
           type="text"
           errors={errors?.bairro}
           {...register("bairro")}
         />
         <Input
+          isRequired
           title="Nº TCO"
           type="text"
           errors={errors?.n_tco}
           {...register("n_tco")}
         />
         <Input
+          isRequired
           title="Nº processo"
           type="text"
           errors={errors?.n_process}
@@ -131,19 +149,24 @@ const FormExpenses = () => {
           {...register("obs")}
         />
         <Input
+          isRequired
           title="Latitude"
           type="text"
           errors={errors.lat}
           {...register("lat")}
         />
         <Input
+          isRequired
           title="Longitude"
           type="text"
           errors={errors.long}
           {...register("long")}
         />
-        <Button colorScheme="blue" onClick={util.getCoord}>Gerar coordenadas</Button>
+        <Button colorScheme="blue" onClick={setCoord} isLoading={loadingCoord} mb={5}>
+          Gerar coordenadas
+        </Button>
         <Select
+          isRequired
           title="Responsável peticionamento"
           {...register("responsavel_peticionamento")}
         >
@@ -157,7 +180,7 @@ const FormExpenses = () => {
               );
             })}
         </Select>
-        <Select title="Delegacia" {...register("delegacia")}>
+        <Select title="Delegacia" {...register("delegacia")} isRequired>
           {delegacias.features.map((item, index) => (
             <option value={item.properties.nome} key={index}>
               {item.properties.nome}
