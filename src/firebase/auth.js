@@ -93,3 +93,27 @@ export const forgotPassword = async (email) => {
     };
   }
 };
+
+export const getUserByToken = async (token) => {
+  try {
+    const q = query(collection(db, "users"), where("idUser", "==", token));
+    const querySnapshot = await getDocs(q);
+    const result = querySnapshot.docs.map((doc) => doc.data())[0];
+    return {
+      success: true,
+      token,
+      message: "Bem-vindo de volta",
+      status: "success",
+      opm: result.opm,
+      admin: result.admin || false,
+    };
+  } catch (error) {
+    const errorCode = error.code;
+
+    return {
+      success: false,
+      message: message.error[errorCode],
+      status: "error",
+    };
+  }
+};

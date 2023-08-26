@@ -14,8 +14,10 @@
     "@choc-ui/chakra-autocomplete": "^5.2.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@heroicons/react": "^1.0.6",
     "@hookform/resolvers": "^3.1.1",
     "@react-pdf/renderer": "^3.1.12",
+    "@tremor/react": "^3.6.6",
     "axios": "^1.4.0",
     "chakra-hook-form": "^0.4.2",
     "dotenv": "^16.3.1",
@@ -40,5 +42,10 @@
     "react-spring": "^9.7.2",
     "use-debounce": "^9.0.4",
     "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.28",
+    "tailwindcss": "^3.3.3"
   }
 }

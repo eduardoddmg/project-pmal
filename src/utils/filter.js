@@ -10,3 +10,15 @@ export const filterByValue = (array, searchObject) => {
     });
   });
 };
+
+export const removeDuplicatesByField = (arr, field) => {
+  const uniqueArray = arr.reduce((acc, obj) => {
+    const existingObject = acc.find(item => item[field] === obj[field]);
+    if (!existingObject) {
+      acc.push(obj);
+    }
+    return acc;
+  }, []);
+
+  return uniqueArray;
+}

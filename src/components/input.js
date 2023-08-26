@@ -12,6 +12,7 @@ import {
   NumberInputField,
   NumberInputStepper,
   Select as SelectChakra,
+  Checkbox as CheckboxChakra
 } from "@chakra-ui/react";
 import { forwardRef } from "react";
 import { PatternFormat } from "react-number-format";
@@ -34,12 +35,12 @@ export const Input = forwardRef((props, ref) => {
 });
 
 export const Checkbox = forwardRef((props, ref) => {
-  const { label, type, ...rest } = props;
+  const { title, ...rest } = props;
 
   return (
-    <Form.Group className="mb-3">
-      <Form.Check ref={ref} type={type} label={label} {...rest} />
-    </Form.Group>
+    <CheckboxChakra size='md' colorScheme='green' {...rest} ref={ref}>
+    {title}
+  </CheckboxChakra>
   );
 });
 

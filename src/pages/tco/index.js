@@ -32,7 +32,9 @@ const TcoPage = () => {
   const fetchData = async () => {
     setLoading(true);
     const result = await readAll("tco");
-    setTcoList(result);
+    const subs = opm.find(item => item.name === auth.opm).sub;
+    console.log(subs);
+    setTcoList(result.filter(item => subs.includes(item.responsavel_peticionamento)));
     setLoading(false);
   };
 
@@ -113,6 +115,7 @@ const TcoPage = () => {
         view={view}
         edit={edit}
         remove={remove}
+        showActions
       />
       <ModalFilterTco
         opms={opm.find((item) => auth.opm === item.name).sub}

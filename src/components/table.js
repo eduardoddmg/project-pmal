@@ -11,6 +11,7 @@ export const Table = ({
   edit,
   remove,
   children,
+  showActions, 
   ...rest
 }) => {
   if (!loading && data?.length === 0)
@@ -37,7 +38,7 @@ export const Table = ({
                   {columns?.map((column, index) => {
                     return <Chakra.Td key={index}>{item[column.accessor]}</Chakra.Td>;
                   })}
-                  <Chakra.Td>
+                  <Chakra.Td display={!showActions && "none"}>
                     <Chakra.Button
                       colorScheme="blue"
                       variant="ghost"
@@ -47,7 +48,7 @@ export const Table = ({
                       <AiFillInfoCircle />
                     </Chakra.Button>
                   </Chakra.Td>
-                  <Chakra.Td>
+                  <Chakra.Td display={!showActions && "none"}>
                     <Chakra.Button
                       colorScheme="orange"
                       variant="ghost"
@@ -57,7 +58,7 @@ export const Table = ({
                       <AiFillEdit />
                     </Chakra.Button>
                   </Chakra.Td>
-                  <Chakra.Td>
+                  <Chakra.Td display={!showActions && "none"}>
                     <Chakra.Button
                       colorScheme="red"
                       variant="ghost"

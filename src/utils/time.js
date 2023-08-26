@@ -39,3 +39,16 @@ export const defaultDate = () => {
   const defaultDate = new Date();
   return defaultDate.toISOString().split("T")[0];
 };
+
+export const formatDateToMonthYear = (dateString) => {
+  const months = [
+    "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+    "Jul", "Ago", "Set", "Out", "Nov", "Dez"
+  ];
+
+  const [day, month, year] = dateString.split("/");
+  const monthIndex = parseInt(month) - 1;
+  const monthName = months[monthIndex];
+
+  return `${monthName} ${year}`;
+}

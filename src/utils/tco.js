@@ -26,6 +26,7 @@ export const funcs = {
   sum_time: (tcoList) => tcoList?.reduce((total, item) => item.duration + total, 0),
 };
 
+
 export const cards = [
   {
     color: "green",

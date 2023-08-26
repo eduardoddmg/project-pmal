@@ -1,6 +1,6 @@
 import * as Chakra from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { ButtonLink, HeadComp, Input } from "@/components";
+import { ButtonLink, Checkbox, HeadComp, Input } from "@/components";
 import { login } from "@/firebase";
 import { useAuth } from "@/context";
 import { WithoutAuth } from "@/hooks";
@@ -28,7 +28,7 @@ const Login = () => {
     setLoading(true);
 
     console.log(data);
-    await auth.login(data.email, data.password);
+    await auth.login(data.email, data.password, data.remember);
 
     setLoading(false);
   };
@@ -61,6 +61,7 @@ const Login = () => {
             errors={errors?.password}
             {...register("password")}
           />
+          <Checkbox title="Mantenha-me conectado" {...register("remember")} mb={5} />
           <Chakra.Button
             colorScheme="blue"
             size="lg"

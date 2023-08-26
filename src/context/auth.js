@@ -1,8 +1,8 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 export const AuthContext = createContext({});
 
-import { login as loginFirebase } from "@/firebase";
+import { getUserByToken, login as loginFirebase } from "@/firebase";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
@@ -11,26 +11,44 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const [opm, setOpm] = useState("");
   const [admin, setAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const toast = useToast();
 
   const router = useRouter();
 
-  const login = async (username, password) => {
+  useEffect(() => {
+    setLoading(true);
+    
+    const storageToken = localStorage.getItem("token");
+    if (storageToken) relogin(storageToken);
+    
+  }, []);
+
+  const relogin = async (storageToken) => {
+    const result = await getUserByToken(storageToken);
+    if (result.success) {
+      setOpm(result.opm);
+      setAdmin(result.admin);
+      setToken(result.token);
+    }
+    setLoading(false);
+  }
+
+  const login = async (username, password, remember) => {
     const result = await loginFirebase(username, password);
     toast({
       title: result.message,
-        status: result.status,
+      status: result.status,
       duration: 2000,
     });
-
-    console.log(result);
 
     if (result.success) {
       setUsername(result.username);
       setToken(result.token);
       setOpm(result.opm);
 
+      if (remember) localStorage.setItem("token", result.token);
 
       if (result.admin) setAdmin(true);
       else setAdmin(false);
@@ -43,6 +61,8 @@ export const AuthProvider = ({ children }) => {
     setToken("");
     setOpm("");
     setAdmin(false);
+
+    localStorage.setItem("token", "");
   };
 
   return (
@@ -50,10 +70,11 @@ export const AuthProvider = ({ children }) => {
       value={{
         username,
         token,
+        opm,
+        admin,
+        loading,
         login,
         logout,
-        opm,
-        admin
       }}
     >
       {children}
