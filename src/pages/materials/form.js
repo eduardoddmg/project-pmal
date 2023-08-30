@@ -7,6 +7,8 @@ import { useAuth } from "@/context";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { defaultDate, parseDateToBr } from "@/utils";
+import { infracoes, opms } from "@/data";
+import estados from "@/data/cidades";
 
 const FormMaterials = () => {
   const {
@@ -26,25 +28,19 @@ const FormMaterials = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    
+
     console.log(data);
     data.userId = auth.token;
-    data.date_apreensao = parseDateToBr(data.date_apreensao);
-
-    if (data.status === "cust") {
-      data.date_freedom = "-";
-    } else {
-      data.date_freedom = parseDateToBr(data.date_freedom);
-    }
-
-    console.log(data);
+    data.date_tco = parseDateToBr(data.date_tco);
+    data.date_peticionamento = parseDateToBr(data.date_peticionamento);
+    data.date_liberacao = parseDateToBr(data.date_liberacao);
 
     if (router.query.id)
       await update("materials", router.query.id, data).then(() =>
         router.push("/materials")
       );
     else await create("materials", data).then(() => router.push("/materials"));
-    
+
     setLoading(false);
   };
 
@@ -65,50 +61,25 @@ const FormMaterials = () => {
         Registro - Apreensão de Materiais
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
+      <Select title="Cidade" {...register("city")} isRequired>
+          {estados.cidades.map((item, index) => (
+            <option value={item} key={index}>
+              {item}
+            </option>
+          ))}
+        </Select>
         <Input
-          title="Data apreensão"
+          title="Número TCO"
+          type="text"
+          errors={errors?.n_tco}
+          {...register("n_tco")}
+        />
+        <Input
+          title="Data TCO"
           type="date"
-          errors={errors?.date_apreensao}
-          {...register("date_apreensao")}
+          errors={errors?.date_tco}
+          {...register("date_tco")}
           defaultValue={defaultDate()}
-        />
-        <Select title="City" {...register("city")}>
-          <option value="maceio">Maceió</option>
-          <option value="penedo">Penedo</option>
-        </Select>
-        <Input
-          title="COP"
-          type="text"
-          errors={errors?.cop}
-          {...register("cop")}
-        />
-        <Input
-          title="Autor"
-          type="text"
-          errors={errors?.autor}
-          {...register("autor")}
-        />
-        <Input
-          title="Marca / tipo"
-          type="text"
-          errors={errors?.marca_tipo}
-          {...register("marca_tipo")}
-        />
-        <Input
-          title="Modelo/SN"
-          type="text"
-          errors={errors?.modelo}
-          {...register("modelo")}
-        />
-        <Select title="Depósito" {...register("deposito")}>
-          <option value="interno">Interno</option>
-          <option value="externo">externo</option>
-        </Select>
-        <Input
-          title="Nº processo judicial"
-          type="text"
-          errors={errors?.n_process}
-          {...register("n_process")}
         />
         <Input
           title="PM Responsável - Nome "
@@ -122,20 +93,96 @@ const FormMaterials = () => {
           errors={errors?.pm_mat}
           {...register("pm_mat")}
         />
-        <Select title="Status" {...register("status")}>
-          <option value="cust">Cust</option>
-          <option value="lib">Lib</option>
+        <Select title="Unidade de origem" {...register("unidade_origem")}>
+          {opms
+            .find((item) => item.name === auth.opm)
+            .sub.map((item, index) => {
+              return (
+                <option value={item} key={index}>
+                  {item}
+                </option>
+              );
+            })}
         </Select>
-        {showInput === "lib" && (
-          <Input
-            title="Data liberação"
-            type="date"
-            errors={errors?.date_freedom}
-            {...register("date_freedom")}
-            defaultValue={defaultDate()}
-          />
-        )}
-        <Button isLoading={loading} colorScheme="blue" size="lg" width="100%" mb={4} type="submit">
+        <Select
+          title="Infração Penal"
+          {...register("infracao_penal")}
+          isRequired
+        >
+          {infracoes.map((item, index) => (
+            <option value={item.name} key={index}>
+              {item.name}
+            </option>
+          ))}
+        </Select>
+        <Input
+          title="Autor"
+          type="text"
+          errors={errors?.autor}
+          {...register("autor")}
+        />
+        <Input
+          title="Juízo de destino"
+          type="text"
+          errors={errors?.juizo_destino}
+          {...register("juizo_destino")}
+        />
+        <Input
+          title="Data Peticionamento"
+          type="date"
+          errors={errors?.date_peticionamento}
+          {...register("date_peticionamento")}
+          defaultValue={defaultDate()}
+        />
+        <Input
+          title="Nº processo judicial"
+          type="text"
+          errors={errors?.n_process}
+          {...register("n_process")}
+        />
+        <Input
+          title="Nome do material"
+          type="text"
+          errors={errors?.name_material}
+          {...register("name_material")}
+        />
+        <Input
+          title="Descrição do material"
+          type="text"
+          errors={errors?.description_material}
+          {...register("description_material")}
+        />
+        <Input
+          title="Local"
+          type="text"
+          errors={errors?.local_material}
+          {...register("local_material")}
+        />
+        <Select title="Decisão" {...register("decisao")}>
+          <option value="Liberado">Liberado</option>
+          <option value="Custeado">Custeado</option>
+        </Select>
+        <Input
+          title="Data Liberação"
+          type="date"
+          errors={errors?.date_liberacao}
+          {...register("date_liberacao")}
+          defaultValue={defaultDate()}
+        />
+        <Input
+          title="Local - Liberacao"
+          type="text"
+          errors={errors?.local_material_liberacao}
+          {...register("local_material_liberacao")}
+        />
+        <Button
+          isLoading={loading}
+          colorScheme="blue"
+          size="lg"
+          width="100%"
+          mb={4}
+          type="submit"
+        >
           Registro
         </Button>
       </form>

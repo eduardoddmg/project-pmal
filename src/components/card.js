@@ -1,5 +1,6 @@
 import * as Chakra from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import CountUp from "react-countup";
 import { animated, useSpring, config } from "react-spring";
 
 export const Card = ({ href, title, subtitle, icon, bg, ...rest }) => {
@@ -61,7 +62,7 @@ export const CardValue = ({ title, value, color }) => {
           <Chakra.Badge colorScheme={color || "white"}>{title}</Chakra.Badge>
         </Chakra.StatLabel>
         <Chakra.StatNumber>
-            {value.toFixed(2)}
+          <CountUp end={value.toFixed(2)} duration={2} />
         </Chakra.StatNumber>
       </Chakra.Stat>
     </Chakra.Card>

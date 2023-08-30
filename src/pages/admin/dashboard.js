@@ -1,4 +1,10 @@
-import { AreaChart, BarChart, CardValue, DonutChart, Table } from "@/components";
+import {
+  AreaChart,
+  BarChart,
+  CardValue,
+  DonutChart,
+  Table,
+} from "@/components";
 import { opms } from "@/data";
 import { readAll } from "@/firebase";
 import { WithAuth } from "@/hooks";
@@ -83,24 +89,28 @@ const Page = () => {
       />
       <Wrap justify="space-between" w="full" spacing={5}>
         <DonutChart
+          loading={loading}
           title="Gasolina (Litros)"
           data={comandos}
           category="Gasolina"
           valueFormatter={valueFormatter}
         />
         <DonutChart
+          loading={loading}
           title="Distância (KM)"
           data={comandos}
           category="Distância"
           valueFormatter={valueFormatter}
         />
         <DonutChart
+          loading={loading}
           title="Dinheiro (R$)"
           data={comandos}
           category="Dinheiro"
           valueFormatter={valueFormatter}
         />
         <DonutChart
+          loading={loading}
           title="Tempo (minutos)"
           data={comandos}
           category="Tempo"
@@ -108,6 +118,7 @@ const Page = () => {
         />
       </Wrap>
       <BarChart
+        loading={loading}
         title="Economia"
         subtitle="Acompanhe no gráfico abaixo a ecomia com a implantação do TCO"
         data={comandos}
@@ -116,6 +127,7 @@ const Page = () => {
         dataFormatter={valueFormatter}
       />
       <AreaChart
+        loading={loading}
         title="Dashboard"
         data={comandosTime}
         categories={["Distância", "Gasolina", "Tempo", "Dinheiro"]}
@@ -127,4 +139,3 @@ const Page = () => {
 };
 
 export default WithAuth(Page);
-

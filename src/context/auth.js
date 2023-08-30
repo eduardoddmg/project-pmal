@@ -19,21 +19,24 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     setLoading(true);
-    
+
     const storageToken = localStorage.getItem("token");
+    console.log(storageToken);
     if (storageToken) relogin(storageToken);
-    
+
+    else  setLoading(false)
   }, []);
 
   const relogin = async (storageToken) => {
     const result = await getUserByToken(storageToken);
+
     if (result.success) {
       setOpm(result.opm);
       setAdmin(result.admin);
       setToken(result.token);
-    }
+    } else logout();
     setLoading(false);
-  }
+  };
 
   const login = async (username, password, remember) => {
     const result = await loginFirebase(username, password);

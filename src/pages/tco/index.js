@@ -13,7 +13,7 @@ import * as Chakra from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FiRefreshCcw } from "react-icons/fi";
 import { AiFillFileExcel, AiFillFilter } from "react-icons/ai";
-import { parseDateToEn, columns, cards } from "@/utils";
+import { parseDateToEn, columnsTco, cards } from "@/utils";
 import queryString from "query-string";
 import { CSVLink } from "react-csv";
 import { useForm } from "react-hook-form";
@@ -111,7 +111,7 @@ const TcoPage = () => {
         colorScheme="gray"
         loading={loading}
         data={tcoList}
-        columns={columns}
+        columns={columnsTco}
         view={view}
         edit={edit}
         remove={remove}

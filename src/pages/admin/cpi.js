@@ -1,8 +1,22 @@
-import { AreaChart, BarChart, CardValue, DonutChart, Table } from "@/components";
+import {
+  Accordion,
+  AreaChart,
+  BarChart,
+  CardValue,
+  DonutChart,
+  Table,
+} from "@/components";
 import { opms } from "@/data";
 import { readAll } from "@/firebase";
 import { WithAuth } from "@/hooks";
-import { cards, columns, formatDateToMonthYear, funcs, removeDuplicatesByField } from "@/utils";
+import {
+  cards,
+  columns,
+  columnsTco,
+  formatDateToMonthYear,
+  funcs,
+  removeDuplicatesByField,
+} from "@/utils";
 import { Stack, Wrap } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
@@ -31,22 +45,26 @@ const Page = () => {
 
   const batalhoes =
     tcoList &&
-    removeDuplicatesByField(tcoFilter("CPI").map((item) => ({
-      name: item.responsavel_peticionamento,
-      date: item.date,
-      Gasolina: tcoList
-        ? funcs.sum_dist(tcoFilter(item.responsavel_peticionamento)) / 11
-        : 0,
-      Distância: tcoList
-        ? funcs.sum_dist(tcoFilter(item.responsavel_peticionamento))
-        : 0,
-      Dinheiro: tcoList
-        ? (funcs.sum_dist(tcoFilter(item.responsavel_peticionamento)) * 5) / 11
-        : 0,
-      Tempo: tcoList
-        ? funcs.sum_time(tcoFilter(item.responsavel_peticionamento))
-        : 0,
-    })), "name");
+    removeDuplicatesByField(
+      tcoFilter("CPI").map((item) => ({
+        name: item.responsavel_peticionamento,
+        date: item.date,
+        Gasolina: tcoList
+          ? funcs.sum_dist(tcoFilter(item.responsavel_peticionamento)) / 11
+          : 0,
+        Distância: tcoList
+          ? funcs.sum_dist(tcoFilter(item.responsavel_peticionamento))
+          : 0,
+        Dinheiro: tcoList
+          ? (funcs.sum_dist(tcoFilter(item.responsavel_peticionamento)) * 5) /
+            11
+          : 0,
+        Tempo: tcoList
+          ? funcs.sum_time(tcoFilter(item.responsavel_peticionamento))
+          : 0,
+      })),
+      "name"
+    );
 
   console.log(batalhoes);
 
@@ -60,67 +78,74 @@ const Page = () => {
 
   return (
     <Stack spacing={5} p={5}>
-      <Wrap>
-        {cards.map((card, index) => (
-          <CardValue
-            key={index}
-            color={card.color}
-            title={card.title}
-            value={card.value(tcoList)}
-          />
-        ))}
-      </Wrap>
-      <Table
-        variant="striped"
-        colorScheme="gray"
-        loading={loading}
-        data={tcoList}
-        columns={columns}
-        showActions={false}
-      />
-      {batalhoes && (
-        <Wrap justify="space-between" w="full" spacing={5}>
-          <DonutChart
-            title="Gasolina (Litros)"
-            data={batalhoes}
-            category="Gasolina"
-            valueFormatter={valueFormatter}
-          />
-          <DonutChart
-            title="Distância (KM)"
-            data={batalhoes}
-            category="Distância"
-            valueFormatter={valueFormatter}
-          />
-          <DonutChart
-            title="Dinheiro (R$)"
-            data={batalhoes}
-            category="Dinheiro"
-            valueFormatter={valueFormatter}
-          />
-          <DonutChart
-            title="Tempo (minutos)"
-            data={batalhoes}
-            category="Tempo"
-            valueFormatter={valueFormatter}
-          />
+        <Wrap>
+          {cards.map((card, index) => (
+            <CardValue
+              key={index}
+              color={card.color}
+              title={card.title}
+              value={card.value(tcoFilter("CPI"))}
+            />
+          ))}
         </Wrap>
+        <Table
+          variant="striped"
+          colorScheme="gray"
+          loading={loading}
+          data={tcoFilter("CPI")}
+          columns={columnsTco}
+          showActions={false}
+        />
+
+      {batalhoes && (
+          <Wrap justify="space-between" w="full" spacing={5}>
+            <DonutChart
+              loading={loading}
+              title="Gasolina (Litros)"
+              data={batalhoes}
+              category="Gasolina"
+              valueFormatter={valueFormatter}
+            />
+            <DonutChart
+              loading={loading}
+              title="Distância (KM)"
+              data={batalhoes}
+              category="Distância"
+              valueFormatter={valueFormatter}
+            />
+            <DonutChart
+              loading={loading}
+              title="Dinheiro (R$)"
+              data={batalhoes}
+              category="Dinheiro"
+              valueFormatter={valueFormatter}
+            />
+            <DonutChart
+              loading={loading}
+              title="Tempo (minutos)"
+              data={batalhoes}
+              category="Tempo"
+              valueFormatter={valueFormatter}
+            />
+          </Wrap>
       )}
-      <BarChart
-        title="Economia"
-        subtitle="Acompanhe no gráfico abaixo a ecomia com a implantação do TCO"
-        data={batalhoes}
-        categories={["Dinheiro", "Tempo", "Distância", "Gasolina"]}
-        colors={["blue", "green", "yellow", "orange"]}
-        dataFormatter={valueFormatter}
-      />
-      <AreaChart
-        title="Dashboard CPI"
-        data={batalhoes}
-        categories={["Distância", "Gasolina", "Tempo", "Dinheiro"]}
-        colors={["orange", "blue", "red", "purple"]}
-        dataFormatter={valueFormatter}
-      />
+        <BarChart
+          loading={loading}
+          title="Economia"
+          subtitle="Acompanhe no gráfico abaixo a ecomia com a implantação do TCO"
+          data={batalhoes}
+          categories={["Dinheiro", "Tempo", "Distância", "Gasolina"]}
+          colors={["blue", "green", "yellow", "orange"]}
+          dataFormatter={valueFormatter}
+        />
+        <AreaChart
+          loading={loading}
+          title="Dashboard CPI"
+          data={batalhoes}
+          categories={["Distância", "Gasolina", "Tempo", "Dinheiro"]}
+          colors={["orange", "blue", "red", "purple"]}
+          dataFormatter={valueFormatter}
+        />
     </Stack>
   );
 };

@@ -1,4 +1,4 @@
-export const columns = [
+export const columnsTco = [
   {
     Header: "Data",
     accessor: "date",

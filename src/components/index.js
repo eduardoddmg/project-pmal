@@ -10,3 +10,4 @@ export * from './navigation';
 export * from './signature';
 export * from './modal';
 export * from './chart';
+export * from './accordion';
