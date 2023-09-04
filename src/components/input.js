@@ -12,9 +12,11 @@ import {
   NumberInputField,
   NumberInputStepper,
   Select as SelectChakra,
-  Checkbox as CheckboxChakra
+  Checkbox as CheckboxChakra,
+  Image,
 } from "@chakra-ui/react";
-import { forwardRef } from "react";
+import { useRouter } from "next/router";
+import { forwardRef, useRef, useState } from "react";
 import { PatternFormat } from "react-number-format";
 
 export const Input = forwardRef((props, ref) => {
@@ -38,9 +40,9 @@ export const Checkbox = forwardRef((props, ref) => {
   const { title, ...rest } = props;
 
   return (
-    <CheckboxChakra size='md' colorScheme='green' {...rest} ref={ref}>
-    {title}
-  </CheckboxChakra>
+    <CheckboxChakra size="md" colorScheme="green" {...rest} ref={ref}>
+      {title}
+    </CheckboxChakra>
   );
 });
 
@@ -58,7 +60,15 @@ export const Select = forwardRef((props, ref) => {
 });
 
 export const InputNumberMoney = forwardRef((props, ref) => {
-  const { isRequired, children, title, defaultValue, precision, step, ...rest } = props;
+  const {
+    isRequired,
+    children,
+    title,
+    defaultValue,
+    precision,
+    step,
+    ...rest
+  } = props;
 
   return (
     <FormControl mb={5} isRequired={isRequired}>
@@ -98,3 +108,51 @@ export const InputNumber = forwardRef((props, ref) => {
     </FormControl>
   );
 });
+
+export const InputImage = ({setSelectedFile, key }) => {
+  const router = useRouter();
+  
+  const [previewImage, setPreviewImage] = useState(
+    router.query[key] ||
+      "https://demos.creative-tim.com/vue-white-dashboard-pro/img/image_placeholder.jpg"
+  );
+  const hiddenFileInput = useRef(null);
+
+  const handleImg = () => {
+    hiddenFileInput.current.click();
+  };
+
+  const handleImgChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  return (
+    <>
+      <Image
+        my={5}
+        boxSize="200px"
+        objectFit="cover"
+        src={previewImage}
+        onClick={handleImg}
+        cursor="pointer"
+        _hover={{
+          opacity: 0.5,
+        }}
+      />
+      <input
+        type="file"
+        ref={hiddenFileInput}
+        onChange={(e) => handleImgChange(e)}
+        style={{ display: "none" }}
+      />
+    </>
+  );
+};

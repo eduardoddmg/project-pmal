@@ -1,13 +1,14 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import { WithAuth } from "@/hooks";
-import { Stack } from "@chakra-ui/react";
+import { Stack, Wrap } from "@chakra-ui/react";
 import { Card } from "@/components";
 import { BsMap } from "react-icons/bs";
 
 const SimpleMap = () => {
   return (
-    <Stack p={10}>
+      <Wrap w="full" spacing={5} my={10} mx={5} justify={["center", "center", "start"]}>
+
       <Card
         href="/map/map-intensidade"
         title="Implantação TCO"
@@ -15,7 +16,14 @@ const SimpleMap = () => {
         bg="green.600"
         icon={<BsMap fontSize="50px" color="white" />}
       />
-    </Stack>
+      <Card
+        href="/map/delegacias"
+        title="Delegacias"
+        subtitle="Veja onde fica cada delegacia do estado"
+        bg="red.600"
+        icon={<BsMap fontSize="50px" color="white" />}
+        />
+        </Wrap>
   );
 };
 

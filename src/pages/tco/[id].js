@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as Chakra from "@chakra-ui/react";
 import { WithAuth } from "@/hooks";
-import { Loading } from "@/components";
+import { Loading, ModalImage } from "@/components";
 import { AiFillFilePdf } from "react-icons/ai";
 import {
   PDFDownloadLink,
@@ -55,6 +55,9 @@ const PageId = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const modalSignature = Chakra.useDisclosure();
+  const modalAutor = Chakra.useDisclosure();
+
   const fetchData = async () => {
     setLoading(true);
 
@@ -69,21 +72,10 @@ const PageId = () => {
   }, []);
 
   const edit = () => {
-    const parsed = {
-      id: data.id,
-      date: parseDateToEn(data.date),
-      infracao_penal: data.infracao_penal,
-      bairro: data.bairro,
-      n_tco: data.n_tco,
-      n_process: data.n_process,
-      obs: data.obs,
-      city: data.city,
-      lat: data.lat,
-      long: data.long,
-      delegacia: data.delegacia,
-    };
 
-    router.push(`/tco/form?${queryString.stringify(parsed)}`);
+    data.date = parseDateToEn(data.date);
+
+    router.push(`/tco/form?${queryString.stringify(data)}`);
   };
   const remove = async () => {
     setLoading(true);
@@ -96,6 +88,18 @@ const PageId = () => {
 
   return (
     <Chakra.Stack p={5}>
+      <ModalImage
+        url={data?.imgUrl}
+        onOpen={modalAutor.onOpen}
+        isOpen={modalAutor.isOpen}
+        onClose={modalAutor.onClose}
+      />
+      <ModalImage
+        url={data?.signatureImgUrl}
+        onOpen={modalSignature.onOpen}
+        isOpen={modalSignature.isOpen}
+        onClose={modalSignature.onClose}
+      />
       <PDFDownloadLink
         document={<MyPdfDocument data={data} />}
         fileName="report.pdf"
@@ -115,6 +119,19 @@ const PageId = () => {
       <Card heading="Distância" text={data?.dist.toFixed(0) + " KM"} />
       <Card heading="Número do processo" text={data?.n_process} />
       <Card heading="Número do TCO" text={data?.n_tco} />
+      <Chakra.Image
+        boxSize="200px"
+        objectFit="cover"
+        cursor="pointer"
+        src={data?.imgUrl}
+        onClick={modalAutor.onOpen}
+      />
+      <Chakra.Image
+        objectFit="cover"
+        cursor="pointer"
+        src={data?.signatureImgUrl}
+        onClick={modalSignature.onOpen}
+      />
       <Chakra.Wrap>
         <Chakra.Button onClick={edit} colorScheme="orange">
           Editar

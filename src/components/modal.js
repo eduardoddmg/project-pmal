@@ -18,16 +18,31 @@ export const Modal = ({ title, isOpen, onClose, onOpen, children }) => {
   );
 };
 
-export const ModalFilterTco = ({ opms, isOpen, onClose, onOpen, tcoList, setTcoList }) => {
+export const ModalImage = ({ url, isOpen, onClose, onOpen }) => {
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} onOpen={onOpen}>
+      <Chakra.Image src={url} />
+    </Modal>
+  );
+};
+
+export const ModalFilterTco = ({
+  opms,
+  isOpen,
+  onClose,
+  onOpen,
+  tcoList,
+  setTcoList,
+}) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
     setValue,
-    reset
+    reset,
   } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     setTcoList(filterByValue(tcoList, data));
     console.log(filterByValue(tcoList, data));
     console.log(data);
@@ -38,9 +53,13 @@ export const ModalFilterTco = ({ opms, isOpen, onClose, onOpen, tcoList, setTcoL
   return (
     <Modal title="Filtro TCO" isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
       <Chakra.Stack as="form" onSubmit={handleSubmit(onSubmit)}>
-        <Select {...register("responsavel_peticionamento")} title="OPM"> 
-        <option value="">{"Selecione"}</option>
-            {opms.map((opm, index) => <option key={index} value={opm}>{opm}</option>)}
+        <Select {...register("responsavel_peticionamento")} title="OPM">
+          <option value="">{"Selecione"}</option>
+          {opms.map((opm, index) => (
+            <option key={index} value={opm}>
+              {opm}
+            </option>
+          ))}
         </Select>
         <Input
           title="Data"
@@ -61,7 +80,7 @@ export const ModalFilterTco = ({ opms, isOpen, onClose, onOpen, tcoList, setTcoL
           {...register("n_process")}
         />
         <Chakra.Button colorScheme="blue" type="submit">
-            Enviar
+          Enviar
         </Chakra.Button>
       </Chakra.Stack>
     </Modal>

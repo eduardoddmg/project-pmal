@@ -52,3 +52,16 @@ export const formatDateToMonthYear = (dateString) => {
 
   return `${monthName} ${year}`;
 }
+
+export function calculateTravelTime(distanceKm, averageSpeedKmPerHour) {
+  if (distanceKm <= 0 || averageSpeedKmPerHour <= 0) {
+      return 0;
+  }
+
+  const timeInHours = distanceKm / averageSpeedKmPerHour;
+
+  const hours = Math.floor(timeInHours);
+  const minutes = Math.floor((timeInHours - hours) * 60);
+
+  return minutes;
+}

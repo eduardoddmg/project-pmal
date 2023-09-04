@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import opm from "@/data/opm.json";
 import { signUp } from "@/firebase";
+import { WithAuth } from "@/hooks";
 
 const Admin = () => {
   const {
@@ -86,4 +87,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default WithAuth(Admin);

@@ -18,10 +18,14 @@ export const signUp = async (email, password, opm) => {
     );
     const user = userCredential.user;
 
+    const comandos = ["CPC", "CPI", "CPAI-1", "CPAI-2", "CPAI-3"];
+
+
     create("users", {
       idUser: user.uid,
       email,
       opm,
+      admin: comandos.includes(opm)
     });
 
     console.log("Usuário registrado com sucesso:", user.uid);

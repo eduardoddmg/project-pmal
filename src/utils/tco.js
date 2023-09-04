@@ -29,6 +29,11 @@ export const funcs = {
 
 export const cards = [
   {
+    color: "orange",
+    title: "TCOs lavrados",
+    value: (tcoList) =>  tcoList ? tcoList.length : 0,
+  },
+  {
     color: "green",
     title: "Km economizados",
     value: (tcoList) =>  tcoList ? funcs.sum_dist(tcoList) : 0,
