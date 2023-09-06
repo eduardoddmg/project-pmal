@@ -28,20 +28,6 @@ const Home = () => {
           bg="green.600"
           icon={<BsFillEnvelopePaperFill fontSize="50px" color="white" />}
         />
-        <Card
-          href="/materials"
-          title="Apreensão de materiais"
-          subtitle="Gerenciamento de apreensão de materiais na PMAL"
-          bg="orange.500"
-          icon={<SiMaterialdesign fontSize="50px" color="white" />}
-        />
-        <Card
-          href="/map"
-          title="Localização da polícia"
-          subtitle="Conheça toda a localização da polícia"
-          bg="red.500"
-          icon={<BsFillGeoAltFill fontSize="50px" color="white" />}
-        />
         {auth.admin && <Card
           href="/admin"
           title="Controle do administrador"

@@ -133,6 +133,9 @@ const PageId = () => {
         onClick={modalSignature.onOpen}
       />
       <Chakra.Wrap>
+        <Chakra.Button onClick={() => router.push("/tco")}>
+          Voltar
+        </Chakra.Button>
         <Chakra.Button onClick={edit} colorScheme="orange">
           Editar
         </Chakra.Button>

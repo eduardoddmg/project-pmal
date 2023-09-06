@@ -58,8 +58,6 @@ export const tco = async (
   toast,
   setLoading
 ) => {
-  setLoading(true);
-  try {
     data.userId = auth.token;
     data.date = parseDateToBr(data.date);
     data.lat = parseFloat(data.lat);
@@ -81,7 +79,6 @@ export const tco = async (
     const base64Response = await fetch(signatureDataUrl);
     const blob = await base64Response.blob();
     const signatureImgUrl = await uploadImage(signatureStorageRef, blob);
-    data.signatureImgUrl = signatureImgUrl;
 
     if (router.query.id) {
       await update("tco", router.query.id, data);
@@ -93,6 +90,7 @@ export const tco = async (
         isClosable: true,
       });
     } else {
+      data.signatureImgUrl = signatureImgUrl;
       await create("tco", data);
       router.push("/tco");
       toast({
@@ -102,15 +100,4 @@ export const tco = async (
         isClosable: true,
       });
     }
-  } catch (error) {
-    console.log(error);
-    toast({
-      title: "Algo deu errado",
-      status: "error",
-      duration: 9000,
-      isClosable: true,
-    });
-  } finally {
-    setLoading(false);
-  }
 };

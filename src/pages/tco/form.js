@@ -1,6 +1,13 @@
-import { Button, Heading, Stack, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Heading,
+  Image,
+  Stack,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { HeadComp, Input, InputImage, Select } from "@/components";
+import { HeadComp, Input, InputImage, ModalImage, Select } from "@/components";
 import { WithAuth } from "@/hooks";
 import { useAuth } from "@/context";
 import { useRouter } from "next/router";
@@ -33,11 +40,30 @@ const FormExpenses = () => {
   const [imgAutor, setImgAutor] = useState("");
 
   const toast = useToast();
+  const modalSignature = useDisclosure();
 
   const onSubmit = async (data) => {
-    tco(data, auth, imgAutor, sigCanvas, router, toast, setLoading);
+    try {
+      setLoading(true);
+      tco(data, auth, imgAutor, sigCanvas, router, toast, setLoading);
+    } catch (error) {
+      setLoading(true);
+      toast({
+        title: "Erro",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
+  const sigCanvas = useRef(null);
+
+  const clearSignature = () => {
+    sigCanvas.current.clear();
+  };
   useEffect(() => {
     const routerQuery = router.query;
 
@@ -64,14 +90,14 @@ const FormExpenses = () => {
     setLoadingCoord(false);
   };
 
-  const sigCanvas = useRef(null);
-
-  const clearSignature = () => {
-    sigCanvas.current.clear();
-  };
-
   return (
     <Stack p={[2, 20]} w="95%" mx="auto">
+      <ModalImage
+        url={router.query.signatureImgUrl}
+        onOpen={modalSignature.onOpen}
+        isOpen={modalSignature.isOpen}
+        onClose={modalSignature.onClose}
+      />
       <HeadComp title="TCO" />
       <Heading as="h2" textAlign="center" mb={6}>
         Registro - TCO
@@ -177,15 +203,24 @@ const FormExpenses = () => {
             </option>
           ))}
         </Select>
-        <div>
-          <ReactSignatureCanvas
-            penColor="black"
-            canvasProps={{ width: 1200, height: 200 }}
-            ref={sigCanvas}
+        {!router.query.id ? (
+          <div>
+            <ReactSignatureCanvas
+              penColor="black"
+              canvasProps={{ width: 1200, height: 200 }}
+              ref={sigCanvas}
+            />
+            <button onClick={clearSignature}>Limpar Assinatura</button>
+          </div>
+        ) : (
+          <Image
+            objectFit="cover"
+            cursor="pointer"
+            src={router.query.signatureImgUrl}
+            onClick={modalSignature.onOpen}
           />
-          <button onClick={clearSignature}>Limpar Assinatura</button>
-        </div>
-        <InputImage setimgAutor={setImgAutor} key="imgUrl" />
+        )}
+        <InputImage setSelectedFile={setImgAutor} key="imgUrl" />
         <Button
           isLoading={loading}
           colorScheme="blue"
