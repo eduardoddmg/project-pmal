@@ -15,7 +15,7 @@ const Home = () => {
     <Chakra.Flex p={10} direction="column" align="center" justify="center">
       <HeadComp title="Sistema faz-tudo" />
       <Chakra.Heading as="h1" size="xl" textAlign="center" mb={3}>
-        {opm.find(item => item.name === auth.opm).name}
+        {auth.opm || auth.comando || (auth.admin && "ADMINISTRADOR")}
       </Chakra.Heading>
       <Chakra.Text fontSize="lg" textAlign="center">
         Aqui você pode gerenciar algumas coisas importantes

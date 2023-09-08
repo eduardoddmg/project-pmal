@@ -5,3 +5,5 @@ export * from './tco';
 export * from './filter';
 export * as message from './message';
 
+export * from "./columns"
+export * from "./comandos"

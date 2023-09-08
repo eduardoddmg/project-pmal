@@ -4,7 +4,7 @@ import { WithAuth } from "@/hooks";
 import { Flex, Heading, Stack, VStack, Wrap } from "@chakra-ui/react";
 import { Card } from "@/components";
 import { BsMap, BsPeople } from "react-icons/bs";
-import { AiFillDashboard } from "react-icons/ai";
+import { AiFillDashboard, AiTwotoneDashboard } from "react-icons/ai";
 
 const Admin = () => {
   return (
@@ -12,46 +12,18 @@ const Admin = () => {
       <Heading>Administrador</Heading>
       <Wrap p={10} w="full" spacing={5}>
         <Card
-          href="/admin/register-user"
-          title="Cadastrar usuários"
-          subtitle="Cadastre usuários de comando ou OPM"
+          href="/admin/users"
+          title="Usuários"
+          subtitle="Controle os usuários do sistema"
           bg="green.600"
           icon={<BsPeople fontSize="50px" color="white" />}
         />
         <Card
-          href="/admin/cpc"
-          title="CPC"
-          subtitle="Confira o relatório de implantação do TCO"
-          bg="red.600"
-          icon={<AiFillDashboard fontSize="50px" color="white" />}
-        />
-        <Card
-          href="/admin/cpi"
-          title="CPI"
-          subtitle="Confira o relatório de implantação do TCO"
+          href="/admin/dashboard"
+          title="Dashboard"
+          subtitle="Tenha acesso ao dashboard do sistema"
           bg="orange.600"
-          icon={<AiFillDashboard fontSize="50px" color="white" />}
-        />
-        <Card
-          href="/admin/cpai1"
-          title="CPAI-1"
-          subtitle="Confira o relatório de implantação do TCO"
-          bg="yellow.600"
-          icon={<AiFillDashboard fontSize="50px" color="white" />}
-        />
-        <Card
-          href="/admin/cpai2"
-          title="CPAI-2"
-          subtitle="Confira o relatório de implantação do TCO"
-          bg="green.600"
-          icon={<AiFillDashboard fontSize="50px" color="white" />}
-        />
-        <Card
-          href="/admin/cpai3"
-          title="CPAI-3"
-          subtitle="Confira o relatório de implantação do TCO"
-          bg="gray.600"
-          icon={<AiFillDashboard fontSize="50px" color="white" />}
+          icon={<AiTwotoneDashboard fontSize="50px" color="white" />}
         />
       </Wrap>
     </VStack>

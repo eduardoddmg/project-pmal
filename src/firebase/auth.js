@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   updateProfile,
@@ -9,8 +10,9 @@ import { message } from "@/utils";
 import { create, readOne } from "./crud";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
-export const signUp = async (email, password, opm) => {
+export const signUp = async (data) => {
   try {
+    const { email, password, opm, comandos, role } = data;
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -18,17 +20,15 @@ export const signUp = async (email, password, opm) => {
     );
     const user = userCredential.user;
 
-    const comandos = ["CPC", "CPI", "CPAI-1", "CPAI-2", "CPAI-3"];
-
-
-    create("users", {
+    const result = await create("users", {
       idUser: user.uid,
       email,
-      opm,
-      admin: comandos.includes(opm)
+      opm: role === "Comando" ? null : opm,
+      comandos: role === "OPM" ? null : comandos,
+      role,
     });
 
-    console.log("Usuário registrado com sucesso:", user.uid);
+    if (!result.success) return result;
 
     return {
       success: true,
@@ -37,6 +37,8 @@ export const signUp = async (email, password, opm) => {
     };
   } catch (error) {
     const errorCode = error.code;
+
+    console.log(error);
 
     return {
       success: false,
@@ -66,6 +68,7 @@ export const login = async (email, password) => {
       message: message.success.accountLoggedIn,
       status: "success",
       opm: result.opm,
+      comando: result.comandos,
       admin: result.admin || false,
     };
   } catch (error) {
@@ -109,6 +112,7 @@ export const getUserByToken = async (token) => {
       message: "Bem-vindo de volta",
       status: "success",
       opm: result.opm,
+      comando: result.comandos,
       admin: result.admin || false,
     };
   } catch (error) {
@@ -119,5 +123,24 @@ export const getUserByToken = async (token) => {
       message: message.error[errorCode],
       status: "error",
     };
+  }
+};
+
+export const removeUserByEmail = async (email) => {
+  try {
+    // Use a consulta para buscar um usuário pelo email
+    const users = await listUsers(auth, {
+      email: email,
+    });
+
+    if (users.users.length > 0) {
+
+      await deleteUser(auth, users.users[0].uid);
+      console.log(`Usuário com o email ${email} excluído com sucesso.`);
+    } else {
+      console.log(`Usuário com o email ${email} não encontrado.`);
+    }
+  } catch (error) {
+    console.error("Erro ao excluir o usuário por email:", error);
   }
 };

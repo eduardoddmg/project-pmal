@@ -22,6 +22,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as schema from "@/schema";
 import ReactSignatureCanvas from "react-signature-canvas";
 import { tco } from "@/forms";
+import { organograma } from "@/data";
 
 const FormExpenses = () => {
   const {
@@ -45,7 +46,7 @@ const FormExpenses = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      tco(data, auth, imgAutor, sigCanvas, router, toast, setLoading);
+      await tco(data, auth, imgAutor, sigCanvas, router, toast, setLoading);
     } catch (error) {
       setLoading(true);
       toast({
@@ -186,15 +187,23 @@ const FormExpenses = () => {
           title="Responsável peticionamento"
           {...register("responsavel_peticionamento")}
         >
-          {opm
-            .find((item) => item.name === auth.opm)
-            .sub.map((item, index) => {
-              return (
-                <option value={item} key={index}>
-                  {item}
-                </option>
-              );
-            })}
+          {auth.admin ? (
+            organograma.map((item) =>
+              item.sub.map((opm) => <option value={opm}>{opm}</option>)
+            )
+          ) : auth.comando ? (
+            organograma
+              .find((item) => item.name === auth.comando)
+              .sub.map((item, index) => {
+                return (
+                  <option value={item} key={index}>
+                    {item}
+                  </option>
+                );
+              })
+          ) : (
+            <option value={auth.opm}>{auth.opm}</option>
+          )}
         </Select>
         <Select title="Delegacia" {...register("delegacia")} isRequired>
           {delegacias.features.map((item, index) => (
@@ -220,7 +229,7 @@ const FormExpenses = () => {
             onClick={modalSignature.onOpen}
           />
         )}
-        <InputImage setSelectedFile={setImgAutor} key="imgUrl" />
+        <InputImage setSelectedFile={setImgAutor} accessor="imgUrl" x="10" />
         <Button
           isLoading={loading}
           colorScheme="blue"

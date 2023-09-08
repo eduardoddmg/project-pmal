@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [token, setToken] = useState("");
   const [opm, setOpm] = useState("");
+  const [comando, setComando] = useState("");
   const [admin, setAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -32,6 +33,7 @@ export const AuthProvider = ({ children }) => {
 
     if (result.success) {
       setOpm(result.opm);
+      setComando(result.comando);
       setAdmin(result.admin);
       setToken(result.token);
     } else logout();
@@ -50,6 +52,7 @@ export const AuthProvider = ({ children }) => {
       setUsername(result.username);
       setToken(result.token);
       setOpm(result.opm);
+      setComando(result.comando);
 
       if (remember) localStorage.setItem("token", result.token);
 
@@ -64,6 +67,7 @@ export const AuthProvider = ({ children }) => {
     setToken("");
     setOpm("");
     setAdmin(false);
+    setComando('');
 
     localStorage.setItem("token", "");
   };
@@ -76,6 +80,7 @@ export const AuthProvider = ({ children }) => {
         opm,
         admin,
         loading,
+        comando,
         login,
         logout,
       }}

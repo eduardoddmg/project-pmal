@@ -18,6 +18,9 @@ export const Table = ({
   remove,
   children,
   showActions,
+  hiddenView,
+  hiddenDelete,
+  hiddenEdit,
   ...rest
 }) => {
   const [itemsPerPage, setItemsPerPage] = React.useState(3);
@@ -67,6 +70,7 @@ export const Table = ({
                     })}
                     <Chakra.Td display={!showActions && "none"}>
                       <Chakra.Button
+                        display={hiddenView && "none"}
                         colorScheme="blue"
                         variant="ghost"
                         fontSize="30px"
@@ -77,6 +81,7 @@ export const Table = ({
                     </Chakra.Td>
                     <Chakra.Td display={!showActions && "none"}>
                       <Chakra.Button
+                        display={hiddenEdit && "none"}
                         colorScheme="orange"
                         variant="ghost"
                         fontSize="30px"
@@ -87,6 +92,7 @@ export const Table = ({
                     </Chakra.Td>
                     <Chakra.Td display={!showActions && "none"}>
                       <Chakra.Button
+                        display={hiddenDelete && "none"}
                         colorScheme="red"
                         variant="ghost"
                         fontSize="30px"
@@ -101,38 +107,40 @@ export const Table = ({
             </Chakra.Tbody>
           </Chakra.Table>
         </Chakra.TableContainer>
-        {data && data.length > 0 && <Chakra.Stack>
-          <Chakra.Flex justify="space-between"  >
-            <Select w="20%" onChange={(e) => setItemsPerPage(e.target.value)}>
-              <option value={itemsPerPage}>Selecione</option>
-              <option value={3}>3</option>
-              <option value={5}>5</option>
-              <option value={10}>10</option>
-              <option value={20}>20</option>
-              <option value={50}>50</option>
-              <option value={100}>100</option>
-            </Select>
-            <Chakra.Flex justifyContent="flex-end" gap={5} alignSelf="center">
-              <Chakra.Button
-                colorScheme="blue"
-                onClick={handlePreviousPage}
-                isDisabled={currentPage === 1}
-              >
-                <ArrowLeftIcon />
-              </Chakra.Button>
-              <Chakra.Circle>
-                <Chakra.Text>{currentPage}</Chakra.Text>
-              </Chakra.Circle>
-              <Chakra.Button
-                colorScheme="blue"
-                onClick={handleNextPage}
-                isDisabled={endIndex >= data.length}
-              >
-                <ArrowRightIcon />
-              </Chakra.Button>
+        {data && data.length > 0 && (
+          <Chakra.Stack>
+            <Chakra.Flex justify="space-between">
+              <Select w="20%" onChange={(e) => setItemsPerPage(e.target.value)}>
+                <option value={itemsPerPage}>Selecione</option>
+                <option value={3}>3</option>
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </Select>
+              <Chakra.Flex justifyContent="flex-end" gap={5} alignSelf="center">
+                <Chakra.Button
+                  colorScheme="blue"
+                  onClick={handlePreviousPage}
+                  isDisabled={currentPage === 1}
+                >
+                  <ArrowLeftIcon />
+                </Chakra.Button>
+                <Chakra.Circle>
+                  <Chakra.Text>{currentPage}</Chakra.Text>
+                </Chakra.Circle>
+                <Chakra.Button
+                  colorScheme="blue"
+                  onClick={handleNextPage}
+                  isDisabled={endIndex >= data.length}
+                >
+                  <ArrowRightIcon />
+                </Chakra.Button>
+              </Chakra.Flex>
             </Chakra.Flex>
-          </Chakra.Flex>
-        </Chakra.Stack>}
+          </Chakra.Stack>
+        )}
       </>
     );
   else return <Loading />;

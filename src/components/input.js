@@ -14,10 +14,42 @@ import {
   Select as SelectChakra,
   Checkbox as CheckboxChakra,
   Image,
+  InputRightElement,
+  Button,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { PatternFormat } from "react-number-format";
+import { Icon } from "@chakra-ui/react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+
+export const InputPassword = forwardRef((props, ref) => {
+  const { title, errors, isRequired, ...rest } = props;
+
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+
+  return (
+    <FormControl isRequired={isRequired} mb={3} isInvalid={errors}>
+      <FormLabel>{title}</FormLabel>
+      <InputGroup size="md">
+        <InputChakra
+          ref={ref}
+          pr="4.5rem"
+          type={show ? "text" : "password"}
+          placeholder="Enter password"
+          {...rest}
+        />
+        <InputRightElement width="4.5rem">
+          <Button h="1.75rem" size="sm" onClick={handleClick}>
+            {show ? <Icon as={FiEyeOff} /> : <Icon as={FiEye} />}
+          </Button>
+        </InputRightElement>
+      </InputGroup>
+      <FormErrorMessage>{errors?.message}</FormErrorMessage>
+    </FormControl>
+  );
+});
 
 export const Input = forwardRef((props, ref) => {
   const { title, errors, type, isRequired, ...rest } = props;
@@ -109,11 +141,11 @@ export const InputNumber = forwardRef((props, ref) => {
   );
 });
 
-export const InputImage = ({setSelectedFile, key }) => {
+export const InputImage = ({ setSelectedFile, accessor }) => {
   const router = useRouter();
-  
+
   const [previewImage, setPreviewImage] = useState(
-    router.query[key] ||
+    router.query[accessor] ||
       "https://demos.creative-tim.com/vue-white-dashboard-pro/img/image_placeholder.jpg"
   );
   const hiddenFileInput = useRef(null);

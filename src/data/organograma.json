@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Comando de Policiamento Metropolitano",
+    "sub": [
+      "01º Batalhão",
+      "04º Batalhão",
+      "05º Batalhão",
+      "08º Batalhão",
+      "12º Batalhão",
+      "13º Batalhão",
+      "02º Companhia",
+      "04º Companhia",
+      "05º Companhia"
+    ]
+  },
+  {
+    "name": "Comando de Policiamento da Região Sertão",
+    "sub": ["07º Batalhão", "09º Batalhão", "06º Companhia"]
+  },
+  {
+    "name": "Comando de Policiamento da Região Agreste",
+    "sub": ["03º Batalhão", "10º Batalhão", "03º Companhia", "07º Companhia"]
+  },
+  {
+    "name": "Comando de Policiamento da Região Norte e Zona da Mata",
+    "sub": ["02º Batalhão", "06º Batalhão", "14º Batalhão", "08º Companhia"]
+  },
+  {
+    "name": "Comando de Policiamento da Região Sul",
+    "sub": ["11º Batalhão", "01º Companhia", "09º Companhia", "10º Companhia"]
+  },
+  {
+    "name": "Comando de Policiamento Especializado",
+    "sub": [
+      "Batalhão de Policiamento Rodoviário",
+      "Batalhão de Policiamento de Trânsito",
+      "Batalhão de Policiamento Escolar",
+      "Batalhão de Policiamento Ambiental",
+      "Companhia de Policia Militar - Fazendária"
+    ]
+  },
+  {
+    "name": "Comando de Policiamento de Missões Especiais",
+    "sub": [
+      "Batalhão de operações especiais",
+      "Companhia de Policiamento de Choque",
+      "Batalhão de Ronda Ostensiva Tática Motorizada",
+      "Regimento de Polícia Montada",
+      "Companhia de Operações Policiais Especiais no Sertão",
+      "Ronda de Ação Intensiva Ostensiva"
+    ]
+  }
+]

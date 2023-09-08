@@ -21,4 +21,4 @@ export const removeDuplicatesByField = (arr, field) => {
   }, []);
 
   return uniqueArray;
-}
+};

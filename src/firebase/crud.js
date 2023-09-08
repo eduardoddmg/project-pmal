@@ -1,4 +1,4 @@
-import { formatDate, parseSecondsToDate } from "@/utils";
+import { formatDate, message, parseSecondsToDate } from "@/utils";
 import { db } from "./config";
 import {
   getFirestore,
@@ -16,8 +16,8 @@ export const readAll = async (collectionName) => {
   const querySnapshot = await getDocs(collection(db, collectionName));
   const dataArray = querySnapshot.docs.map((doc) => {
     const data = doc.data();
-    data.id = doc.id; 
-    data.updatedAt = parseSecondsToDate(data.updatedAt.seconds);
+    data.id = doc.id;
+    data.updatedAt = data.updatedAt ? parseSecondsToDate(data.updatedAt.seconds) : null;
     return data;
   });
   console.log(dataArray);
@@ -25,7 +25,6 @@ export const readAll = async (collectionName) => {
 };
 
 export const readOne = async (collectionName, documentId) => {
-
   console.log(collectionName, documentId);
 
   const documentRef = doc(db, collectionName, documentId);
@@ -44,10 +43,26 @@ export const create = async (collectionName, newData) => {
     newData.creaetdAt = serverTimestamp();
     newData.updatedAt = serverTimestamp();
 
-    console.log(db);
+    console.log(newData);
+
     const docRef = await addDoc(collection(db, collectionName), newData);
+
+    return {
+      success: true,
+      message: "Documento criado com sucesso",
+      status: "success",
+      docRef,
+    };
   } catch (error) {
-    console.error("Erro ao criar documento:", error);
+    const errorCode = error.code;
+
+    console.log(error);
+
+    return {
+      success: false,
+      message: message.error[errorCode],
+      status: "error",
+    };
   }
 };
 
@@ -62,9 +77,8 @@ export const remove = async (collectionName, documentId) => {
 
 export const update = async (collectionName, documentId, newData) => {
   try {
-
     newData.updatedAt = serverTimestamp();
-    console.log(newData)
+    console.log(newData);
     await updateDoc(doc(db, collectionName, documentId), newData);
   } catch (error) {
     console.error("Erro ao atualizar documento:", error);

@@ -1,12 +1,17 @@
 import * as Chakra from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { ButtonLink, HeadComp, Input, Select } from "@/components";
+import {
+  ButtonLink,
+  HeadComp,
+  Input,
+  InputPassword,
+  Select,
+} from "@/components";
 import { useAuth } from "@/context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as schema from "@/schema";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import opm from "@/data/opm.json";
 import { signUp } from "@/firebase";
 import { WithAuth } from "@/hooks";
 import organograma from "@/data/organograma";
@@ -18,6 +23,7 @@ const Admin = () => {
     register,
     formState: { errors },
     watch,
+    setValue,
   } = useForm({ resolver: yupResolver(schema.login) });
 
   const showRole = watch("role", "OPM");
@@ -31,7 +37,6 @@ const Admin = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    
 
     console.log(data);
 
@@ -48,6 +53,16 @@ const Admin = () => {
 
     setLoading(false);
   };
+
+  useEffect(() => {
+    const routerQuery = router.query;
+
+    const routerQueryKeys = Object.keys(routerQuery);
+
+    routerQueryKeys.forEach((key) => {
+      setValue(key, routerQuery[key]);
+    });
+  }, []);
 
   const comandos = organograma.map((item) => item.name);
   const unidades = sortArray([].concat(...organograma.map((item) => item.sub)));
@@ -73,9 +88,14 @@ const Admin = () => {
             errors={errors?.email}
             {...register("email")}
           />
-          <Input
+          {/* <Input
             title="Senha"
             type="password"
+            errors={errors?.password}
+            {...register("password")}
+          /> */}
+          <InputPassword
+            title="Senha"
             errors={errors?.password}
             {...register("password")}
           />

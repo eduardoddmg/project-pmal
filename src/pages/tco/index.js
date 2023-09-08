@@ -26,6 +26,7 @@ import opm from "@/data/opm";
 import { useAuth } from "@/context";
 import { IoMdClose } from "react-icons/io";
 import { parse } from "dotenv";
+import { organograma } from "@/data";
 
 const TcoPage = () => {
   const [tcoList, setTcoList] = useState(null);
@@ -41,7 +42,9 @@ const TcoPage = () => {
   const fetchData = async () => {
     setLoading(true);
     const result = await readAll("tco");
-    const subs = opm.find((item) => item.name === auth.opm).sub;
+    const subs = auth.comando
+      ? organograma.find((item) => item.name === auth.comando).sub
+      : [auth.opm];
     console.log(subs);
     setTcoList(
       result
@@ -94,28 +97,11 @@ const TcoPage = () => {
         </Chakra.Wrap>
       )}
       <Chakra.HStack>
-        <CSVLink data={tcoList || []} filename="tco">
-          <Chakra.Button
-            leftIcon={<AiFillFileExcel />}
-            colorScheme="green"
-            alignSelf="start"
-          >
-            Baixar
-          </Chakra.Button>
-        </CSVLink>
         <ButtonLink colorScheme="green" alignSelf="start" href="/tco/form">
           Criar
         </ButtonLink>
         <Chakra.Button onClick={fetchData}>
           <FiRefreshCcw />
-        </Chakra.Button>
-        <Chakra.Button
-          leftIcon={<AiFillFilter />}
-          colorScheme="blue"
-          alignSelf="start"
-          onClick={onOpen}
-        >
-          Filtros
         </Chakra.Button>
       </Chakra.HStack>
       <Table
@@ -128,14 +114,6 @@ const TcoPage = () => {
         edit={edit}
         remove={remove}
         showActions
-      />
-      <ModalFilterTco
-        opms={opm.find((item) => auth.opm === item.name).sub}
-        isOpen={isOpen}
-        onOpen={onOpen}
-        onClose={onClose}
-        tcoList={tcoList}
-        setTcoList={setTcoList}
       />
     </Chakra.Stack>
   );
