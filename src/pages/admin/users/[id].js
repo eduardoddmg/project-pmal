@@ -2,9 +2,7 @@ import { readOne, remove as removeDoc } from "@/firebase";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as Chakra from "@chakra-ui/react";
-import { WithAuth } from "@/hooks";
 import { Loading } from "@/components";
-import queryString from "query-string";
 
 
 const Card = ({ heading, text }) => {

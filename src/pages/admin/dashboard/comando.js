@@ -1,23 +1,16 @@
 import {
-    AreaChart,
     BarChart,
-    CardValue,
     DonutChart,
-    Table,
   } from "@/components";
-  import { opms, organograma } from "@/data";
+  import { organograma } from "@/data";
   import { readAll } from "@/firebase";
   import { WithAuth } from "@/hooks";
-  import { cards, columns, funcs } from "@/utils";
+  import { funcs } from "@/utils";
   import {
-    Center,
     Flex,
-    HStack,
     Heading,
     Stack,
     VStack,
-    Wrap,
-    WrapItem,
   } from "@chakra-ui/react";
   import { useEffect, useState } from "react";
   

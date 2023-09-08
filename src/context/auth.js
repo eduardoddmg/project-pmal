@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
 
     const storageToken = localStorage.getItem("token");
-    console.log(storageToken);
     if (storageToken) relogin(storageToken);
 
     else  setLoading(false)

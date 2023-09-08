@@ -1,10 +1,9 @@
 import React from "react";
-import GoogleMapReact from "google-map-react";
 import { WithAuth } from "@/hooks";
-import { Flex, Heading, Stack, VStack, Wrap } from "@chakra-ui/react";
+import { Heading, VStack, Wrap } from "@chakra-ui/react";
 import { Card } from "@/components";
-import { BsMap, BsPeople } from "react-icons/bs";
-import { AiFillDashboard, AiTwotoneDashboard } from "react-icons/ai";
+import { BsPeople } from "react-icons/bs";
+import { AiTwotoneDashboard } from "react-icons/ai";
 
 const Admin = () => {
   return (

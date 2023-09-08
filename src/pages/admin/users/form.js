@@ -7,13 +7,11 @@ import {
   InputPassword,
   Select,
 } from "@/components";
-import { useAuth } from "@/context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as schema from "@/schema";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { signUp } from "@/firebase";
-import { WithAuth } from "@/hooks";
 import organograma from "@/data/organograma";
 import sortArray from "sort-array";
 
@@ -28,7 +26,6 @@ const Admin = () => {
 
   const showRole = watch("role", "OPM");
 
-  const auth = useAuth();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -88,12 +85,6 @@ const Admin = () => {
             errors={errors?.email}
             {...register("email")}
           />
-          {/* <Input
-            title="Senha"
-            type="password"
-            errors={errors?.password}
-            {...register("password")}
-          /> */}
           <InputPassword
             title="Senha"
             errors={errors?.password}

@@ -1,10 +1,9 @@
 import { Card, HeadComp } from "@/components";
 import { useAuth } from "@/context";
-import { WithAuth, WithoutAuth } from "@/hooks";
+import { WithAuth } from "@/hooks";
 import * as Chakra from "@chakra-ui/react";
-import { BsFillEnvelopePaperFill, BsFillGeoAltFill } from "react-icons/bs";
-import { SiAdminer, SiMaterialdesign } from "react-icons/si";
-import opm from "@/data/opm";
+import { BsFillEnvelopePaperFill } from "react-icons/bs";
+import { SiAdminer } from "react-icons/si";
 
 const Home = () => {
   const auth = useAuth();
