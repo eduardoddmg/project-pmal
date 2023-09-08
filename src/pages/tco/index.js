@@ -47,9 +47,11 @@ const TcoPage = () => {
       : [auth.opm];
     console.log(subs);
     setTcoList(
-      result
-        .sort((a, b) => a.date - b.date)
-        .filter((item) => subs.includes(item.responsavel_peticionamento))
+      auth.admin
+        ? result
+        : result
+            .sort((a, b) => a.date - b.date)
+            .filter((item) => subs.includes(item.responsavel_peticionamento))
     );
     setLoading(false);
   };
