@@ -137,7 +137,6 @@ const FormExpenses = () => {
           type="text"
           errors={errors?.bairro}
           {...register("bairro")}
-          defaultValue="Poço"
         />
         <Input
           isRequired
@@ -145,7 +144,6 @@ const FormExpenses = () => {
           type="text"
           errors={errors?.n_tco}
           {...register("n_tco")}
-          defaultValue="48435215315"
         />
         <Input
           isRequired
@@ -153,7 +151,6 @@ const FormExpenses = () => {
           type="text"
           errors={errors?.n_process}
           {...register("n_process")}
-          defaultValue="546664"
         />
         <Input
           title="Observação"
