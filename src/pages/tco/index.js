@@ -60,8 +60,6 @@ const TcoPage = () => {
     fetchData();
   }, []);
 
-  const { isOpen, onOpen, onClose } = Chakra.useDisclosure();
-
   const view = (id) => router.push(`/tco/${id}`);
 
   const edit = (data) => {
@@ -76,7 +74,7 @@ const TcoPage = () => {
 
   return (
     <Chakra.Stack p={5}>
-      <HeadComp title="TCO" />
+      <HeadComp title="TCO PMAL" />
       <Chakra.Button
         display={loading && "none"}
         leftIcon={showCards ? <IoMdClose /> : <AiOutlinePlusCircle />}

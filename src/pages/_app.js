@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <link rel="icon" href="project-management.png" sizes="any" />
+        <link rel="icon" href="logo.png" sizes="any" />
       </Head>
       <ContextProvider>
         <NextProgress options={{ showSpinner: false, color: "#ffffff" }} />

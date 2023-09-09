@@ -66,7 +66,7 @@ const Admin = () => {
 
   return (
     <Chakra.Flex py={20} align="center" justify="center">
-      <HeadComp title="Registro" description="Adicione usuários no sistema" />
+      <HeadComp title="TCO PMAL" description="Adicione usuários no sistema" />
       <Chakra.Box
         bg="white"
         p={8}

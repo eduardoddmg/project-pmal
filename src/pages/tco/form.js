@@ -93,6 +93,7 @@ const FormExpenses = () => {
 
   return (
     <Stack p={[2, 20]} w="95%" mx="auto">
+      <HeadComp title="TCO PMAL" />
       <ModalImage
         url={router.query.signatureImgUrl}
         onOpen={modalSignature.onOpen}

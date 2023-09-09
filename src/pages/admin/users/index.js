@@ -40,7 +40,7 @@ import {
   
     return (
       <Chakra.Stack p={5}>
-        <HeadComp title="TCO" />
+        <HeadComp title="TCO PMAL" />
         <Chakra.HStack>
           <ButtonLink colorScheme="green" alignSelf="start" href="/admin/users/form">
             Criar

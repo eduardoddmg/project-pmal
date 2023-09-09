@@ -1,13 +1,14 @@
 import React from "react";
 import { WithAuth } from "@/hooks";
 import { Heading, VStack, Wrap } from "@chakra-ui/react";
-import { Card } from "@/components";
+import { Card, HeadComp } from "@/components";
 import { BsPeople } from "react-icons/bs";
 import { AiTwotoneDashboard } from "react-icons/ai";
 
 const Admin = () => {
   return (
     <VStack my={10}>
+      <HeadComp title="TCO PMAL" />
       <Heading>Administrador</Heading>
       <Wrap p={[2, 10]} w="full" spacing={5}>
         <Card

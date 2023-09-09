@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as Chakra from "@chakra-ui/react";
 import { WithAuth } from "@/hooks";
-import { Loading, ModalImage } from "@/components";
+import { HeadComp, Loading, ModalImage } from "@/components";
 import { AiFillFilePdf } from "react-icons/ai";
 import {
   PDFDownloadLink,
@@ -88,6 +88,7 @@ const PageId = () => {
 
   return (
     <Chakra.Stack p={5}>
+      <HeadComp title="TCO PMAL" />
       <ModalImage
         url={data?.imgUrl}
         onOpen={modalAutor.onOpen}
@@ -100,18 +101,6 @@ const PageId = () => {
         isOpen={modalSignature.isOpen}
         onClose={modalSignature.onClose}
       />
-      <PDFDownloadLink
-        document={<MyPdfDocument data={data} />}
-        fileName="report.pdf"
-      >
-        <Chakra.Button
-          alignSelf="start"
-          colorScheme="red"
-          rightIcon={<AiFillFilePdf />}
-        >
-          PDF
-        </Chakra.Button>
-      </PDFDownloadLink>
       <Card heading="Infração penal" text={data?.infracao_penal} />
       <Card heading="Cidade" text={data?.city} />
       <Card heading="Bairro" text={data?.bairro} />

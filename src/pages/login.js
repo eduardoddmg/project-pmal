@@ -35,7 +35,7 @@ const Login = () => {
 
   return (
     <Chakra.Flex py={20} align="center" justify="center" bg="blue.900">
-      <HeadComp title="Login" description="Faça login no nosso sistema" />
+      <HeadComp title="TCO PMAL" description="Faça login no nosso sistema" />
 
       <Chakra.VStack
         bg="white"

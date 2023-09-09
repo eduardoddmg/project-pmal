@@ -1,6 +1,7 @@
 import {
     BarChart,
     DonutChart,
+    HeadComp,
   } from "@/components";
   import { organograma } from "@/data";
   import { readAll } from "@/firebase";
@@ -65,6 +66,7 @@ import {
   
     return (
       <VStack p={5} spacing={10}>
+      <HeadComp title="TCO PMAL" />
         <Heading>Dashboard</Heading>
         {statistics && (
           <Flex w="full" justifyContent="space-between" wrap="wrap" gap={5}>

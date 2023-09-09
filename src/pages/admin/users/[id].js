@@ -2,12 +2,13 @@ import { readOne, remove as removeDoc } from "@/firebase";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as Chakra from "@chakra-ui/react";
-import { Loading } from "@/components";
+import { HeadComp, Loading } from "@/components";
 
 
 const Card = ({ heading, text }) => {
   return (
     <Chakra.Wrap w={["100%", "80%"]} py={2} spacing={0}>
+      <HeadComp title="TCO PMAL" />
       <Chakra.Text
         fontWeight="bold"
         py={5}
