@@ -58,46 +58,50 @@ export const tco = async (
   toast,
   setLoading
 ) => {
-    data.userId = auth.token;
-    data.date = parseDateToBr(data.date);
-    data.lat = parseFloat(data.lat);
-    data.long = parseFloat(data.long);
+  console.log(data);
+  data.userId = auth.token;
+  data.date = parseDateToBr(data.date);
+  data.lat = parseFloat(data.lat);
+  data.long = parseFloat(data.long);
 
-    const dist = await fetchData(data);
-    data.dist = dist;
-    data.duration = util.calculateTravelTime(dist, 80);
+  console.log(selectedFile);
 
-    
-    const signatureStorageRef = ref(
-      storage,
-      `assinatura-autor-TCO: ${new Date().getTime()}.png`
-    );
-    
-    if (router.query.id) {
-      await update("tco", router.query.id, data);
-      router.push("/tco");
-      toast({
-        title: "TCO atualizado com sucesso",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-    } else {
-      const storageRef = ref(storage, selectedFile.name);
-      const imgUrl = await uploadImage(storageRef, selectedFile);
-      data.imgUrl = imgUrl;
-      const signatureDataUrl = sigCanvas.current.toDataURL("image/png");
-      const base64Response = await fetch(signatureDataUrl);
-      const blob = await base64Response.blob();
-      const signatureImgUrl = await uploadImage(signatureStorageRef, blob);
-      data.signatureImgUrl = signatureImgUrl;
-      await create("tco", data);
-      router.push("/tco");
-      toast({
-        title: "TCO cadastrado com sucesso",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
+  if (selectedFile) {
+    const storageRef = ref(storage, selectedFile.name);
+    const imgUrl = await uploadImage(storageRef, selectedFile);
+    data.imgUrl = imgUrl;
+  }
+  const dist = await fetchData(data);
+  data.dist = dist;
+  data.duration = util.calculateTravelTime(dist, 80);
+
+  const signatureStorageRef = ref(
+    storage,
+    `assinatura-autor-TCO: ${new Date().getTime()}.png`
+  );
+
+  if (router.query.id) {
+    await update("tco", router.query.id, data);
+    router.push("/tco");
+    toast({
+      title: "TCO atualizado com sucesso",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+  } else {
+    const signatureDataUrl = sigCanvas.current.toDataURL("image/png");
+    const base64Response = await fetch(signatureDataUrl);
+    const blob = await base64Response.blob();
+    const signatureImgUrl = await uploadImage(signatureStorageRef, blob);
+    data.signatureImgUrl = signatureImgUrl;
+    await create("tco", data);
+    router.push("/tco");
+    toast({
+      title: "TCO cadastrado com sucesso",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+  }
 };
