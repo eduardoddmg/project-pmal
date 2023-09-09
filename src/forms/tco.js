@@ -67,10 +67,7 @@ export const tco = async (
     data.dist = dist;
     data.duration = util.calculateTravelTime(dist, 80);
 
-    const storageRef = ref(storage, selectedFile.name);
-    const imgUrl = await uploadImage(storageRef, selectedFile);
-    data.imgUrl = imgUrl;
-
+    
     const signatureStorageRef = ref(
       storage,
       `assinatura-autor-TCO: ${new Date().getTime()}.png`
@@ -86,6 +83,9 @@ export const tco = async (
         isClosable: true,
       });
     } else {
+      const storageRef = ref(storage, selectedFile.name);
+      const imgUrl = await uploadImage(storageRef, selectedFile);
+      data.imgUrl = imgUrl;
       const signatureDataUrl = sigCanvas.current.toDataURL("image/png");
       const base64Response = await fetch(signatureDataUrl);
       const blob = await base64Response.blob();
