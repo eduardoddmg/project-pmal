@@ -9,7 +9,7 @@ const Admin = () => {
   return (
     <VStack my={10}>
       <Heading>Dashboard</Heading>
-      <Wrap p={10} w="full" spacing={5}>
+      <Wrap p={[2, 10]} w="full" spacing={5}>
         <Card
           href="/admin/dashboard/comando"
           title="Dashboard por Comando"

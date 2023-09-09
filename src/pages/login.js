@@ -34,10 +34,10 @@ const Login = () => {
   };
 
   return (
-    <Chakra.Flex py={20} align="center" justify="center">
+    <Chakra.Flex py={20} align="center" justify="center" bg="blue.900">
       <HeadComp title="Login" description="Faça login no nosso sistema" />
 
-      <Chakra.Box
+      <Chakra.VStack
         bg="white"
         p={8}
         rounded="md"
@@ -45,10 +45,11 @@ const Login = () => {
         w={["100%", "80%", "50%"]}
         width="100%"
       >
+        <Chakra.Image src="logo.png" w="20%" />
         <Chakra.Heading as="h2" textAlign="center" mb={6}>
           Login
         </Chakra.Heading>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Chakra.Stack as="form" w="full" onSubmit={handleSubmit(onSubmit)}>
           <Input
             title="Email"
             type="email"
@@ -61,7 +62,7 @@ const Login = () => {
             errors={errors?.password}
             {...register("password")}
           />
-          <Checkbox title="Mantenha-me conectado" {...register("remember")} mb={5} />
+          <Checkbox title="Mantenha-me conectado" {...register("remember")} mb={5} colorScheme="blue" />
           <Chakra.Button
             colorScheme="blue"
             size="lg"
@@ -72,7 +73,7 @@ const Login = () => {
           >
             Login
           </Chakra.Button>
-        </form>
+        </Chakra.Stack>
         <Chakra.Text textAlign="center" pt={3}>
           Esqueceu a sua senha?{" "}
           <ButtonLink variant="link" href="/forgot-password" color="blue.500">
@@ -80,7 +81,7 @@ const Login = () => {
             Clique aqui{" "}
           </ButtonLink>
         </Chakra.Text>
-      </Chakra.Box>
+      </Chakra.VStack>
     </Chakra.Flex>
   );
 };

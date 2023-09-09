@@ -55,7 +55,7 @@ export const Input = forwardRef((props, ref) => {
   const { title, errors, type, isRequired, ...rest } = props;
 
   return (
-    <FormControl isRequired={isRequired} mb={3} isInvalid={errors}>
+    <FormControl isRequired={isRequired} mb={3} isInvalid={errors} w="full">
       <FormLabel>{title}</FormLabel>
       <InputChakra
         ref={ref}

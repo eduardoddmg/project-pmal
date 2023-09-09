@@ -7,7 +7,7 @@ export const Card = ({ href, title, subtitle, icon, bg, ...rest }) => {
   const router = useRouter();
   return (
     <Chakra.VStack
-      w={["100%", "80%", "30%"]}
+      w={["100%", "100%", "30%"]}
       cursor="pointer"
       onClick={() => router.push(href)}
       borderRadius={5}

@@ -11,8 +11,8 @@ const Home = () => {
   console.log(auth);
 
   return (
-    <Chakra.Flex p={10} direction="column" align="center" justify="center">
-      <HeadComp title="Sistema faz-tudo" />
+    <Chakra.Flex p={[2, 10]} direction="column" align="center" justify="center">
+      <HeadComp title="TCO PMAL" />
       <Chakra.Heading as="h1" size="xl" textAlign="center" mb={3}>
         {auth.opm || auth.comando || (auth.admin && "ADMINISTRADOR")}
       </Chakra.Heading>

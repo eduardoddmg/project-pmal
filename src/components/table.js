@@ -110,7 +110,7 @@ export const Table = ({
         {data && data.length > 0 && (
           <Chakra.Stack>
             <Chakra.Flex justify="space-between">
-              <Select w="20%" onChange={(e) => setItemsPerPage(e.target.value)}>
+              <Select w={["100%", "20%"]} onChange={(e) => setItemsPerPage(e.target.value)}>
                 <option value={itemsPerPage}>Selecione</option>
                 <option value={3}>3</option>
                 <option value={5}>5</option>

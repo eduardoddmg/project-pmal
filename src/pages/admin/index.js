@@ -9,7 +9,7 @@ const Admin = () => {
   return (
     <VStack my={10}>
       <Heading>Administrador</Heading>
-      <Wrap p={10} w="full" spacing={5}>
+      <Wrap p={[2, 10]} w="full" spacing={5}>
         <Card
           href="/admin/users"
           title="Usuários"

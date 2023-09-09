@@ -68,7 +68,7 @@ import {
         <Heading>Dashboard</Heading>
         {statistics && (
           <Flex w="full" justifyContent="space-between" wrap="wrap" gap={5}>
-            <Stack w="48%">
+            <Stack w={["100%", "48%"]}>
               <DonutChart
                 show
                 loading={loading}
@@ -78,7 +78,7 @@ import {
                 valueFormatter={valueFormatter}
               />
             </Stack>
-            <Stack w="48%">
+            <Stack w={["100%", "48%"]}>
               <DonutChart
                 show
                 loading={loading}
@@ -88,7 +88,7 @@ import {
                 valueFormatter={valueFormatter}
               />
             </Stack>
-            <Stack w="48%">
+            <Stack w={["100%", "48%"]}>
               <DonutChart
                 show
                 loading={loading}
@@ -98,7 +98,7 @@ import {
                 valueFormatter={valueFormatter}
               />
             </Stack>
-            <Stack w="48%">
+            <Stack w={["100%", "48%"]}>
               <DonutChart
                 show
                 loading={loading}
