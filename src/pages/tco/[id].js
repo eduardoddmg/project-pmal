@@ -74,6 +74,7 @@ const PageId = () => {
   const edit = () => {
 
     data.date = parseDateToEn(data.date);
+    data.id = router.query.id;
 
     router.push(`/tco/form?${queryString.stringify(data)}`);
   };
