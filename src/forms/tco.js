@@ -75,11 +75,7 @@ export const tco = async (
       storage,
       `assinatura-autor-TCO: ${new Date().getTime()}.png`
     );
-    const signatureDataUrl = sigCanvas.current.toDataURL("image/png");
-    const base64Response = await fetch(signatureDataUrl);
-    const blob = await base64Response.blob();
-    const signatureImgUrl = await uploadImage(signatureStorageRef, blob);
-
+    
     if (router.query.id) {
       await update("tco", router.query.id, data);
       router.push("/tco");
@@ -90,6 +86,10 @@ export const tco = async (
         isClosable: true,
       });
     } else {
+      const signatureDataUrl = sigCanvas.current.toDataURL("image/png");
+      const base64Response = await fetch(signatureDataUrl);
+      const blob = await base64Response.blob();
+      const signatureImgUrl = await uploadImage(signatureStorageRef, blob);
       data.signatureImgUrl = signatureImgUrl;
       await create("tco", data);
       router.push("/tco");
