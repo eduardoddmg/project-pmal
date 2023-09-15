@@ -4,6 +4,7 @@ import { Heading, VStack, Wrap } from "@chakra-ui/react";
 import { Card, HeadComp } from "@/components";
 import { BsPeople } from "react-icons/bs";
 import { AiTwotoneDashboard } from "react-icons/ai";
+import { SiMapbox } from "react-icons/si";
 
 const Admin = () => {
   return (
@@ -24,6 +25,13 @@ const Admin = () => {
           subtitle="Tenha acesso ao dashboard do sistema por OPM"
           bg="orange.600"
           icon={<AiTwotoneDashboard fontSize="50px" color="white" />}
+        />
+        <Card
+          href="/admin/dashboard/city"
+          title="Dashboard por Cidade"
+          subtitle="Tenha acesso ao dashboard do sistema por Cidade"
+          bg="orange.600"
+          icon={<SiMapbox fontSize="50px" color="white" />}
         />
       </Wrap>
     </VStack>

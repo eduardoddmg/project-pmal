@@ -3,6 +3,7 @@ import {
   Heading,
   Image,
   Stack,
+  Text,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
@@ -212,22 +213,43 @@ const FormExpenses = () => {
         </Select>
         {!router.query.id ? (
           <div>
+            <Text>Assinatura PM</Text>
             <ReactSignatureCanvas
               penColor="black"
               canvasProps={{ width: 1200, height: 200 }}
               ref={sigCanvas}
-            />
+              />
             <button onClick={clearSignature}>Limpar Assinatura</button>
           </div>
         ) : (
+          <>
+          <Text>Assinatura PM</Text>
           <Image
             objectFit="cover"
             cursor="pointer"
             src={router.query.signatureImgUrl}
             onClick={modalSignature.onOpen}
-          />
+            />
+            </>
         )}
+            <Text>Imagem PM</Text>
         <InputImage setSelectedFile={setImgAutor} accessor="imgUrl" x="10" />
+        <Select title="Apreensão de material" {...register("apreensao_material")}>
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
+        </Select>
+        <Select title="Apreensão de material" {...register("apreensao_material")}>
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
+        </Select>
+        <Select title="Depósito" {...register("depósito")}>
+          <option value="interno">Interno</option>
+          <option value="externo">Externo</option>
+        </Select>
+        <Select title="Status" {...register("status")}>
+          <option value="custodia">Custódia</option>
+          <option value="liberado">Liberado</option>
+        </Select>
         <Button
           isLoading={loading}
           colorScheme="blue"
