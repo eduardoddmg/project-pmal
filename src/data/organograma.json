@@ -49,5 +49,12 @@
       "Companhia de Operações Policiais Especiais no Sertão",
       "Ronda de Ação Intensiva Ostensiva"
     ]
+  },
+  {
+    "name": "Comando de Testes",
+    "sub": [
+      "Testes 001",
+      "Testes 002"
+    ]
   }
 ]
