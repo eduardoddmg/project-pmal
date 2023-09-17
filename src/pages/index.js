@@ -3,6 +3,7 @@ import { useAuth } from "@/context";
 import { WithAuth } from "@/hooks";
 import * as Chakra from "@chakra-ui/react";
 import { BsFillEnvelopePaperFill } from "react-icons/bs";
+import { FiMapPin } from "react-icons/fi";
 import { SiAdminer } from "react-icons/si";
 
 const Home = () => {
@@ -46,6 +47,13 @@ const Home = () => {
           subtitle="Aqui é o gerenciador de TCO"
           bg="green.600"
           icon={<BsFillEnvelopePaperFill fontSize="50px" color="white" />}
+        />
+        <Card
+          href="/map"
+          title="Mapas"
+          subtitle="Aqui você pode visualizar alguns mapas"
+          bg="orange.600"
+          icon={<FiMapPin fontSize="50px" color="white" />}
         />
         {auth.admin && (
           <Card

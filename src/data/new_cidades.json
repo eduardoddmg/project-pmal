@@ -1,0 +1,279 @@
+[
+    {
+      "name": "01º Batalhão",
+      "sub": [
+        "Pontal da Barra",
+        "Trapiche da Barra",
+        "Prado",
+        "Vergel do Lago",
+        "Ponta Grossa",
+        "Bom Parto",
+        "Levada",
+        "Centro",
+        "Farol",
+        "Jaraguá",
+        "Poço",
+        "Ponta da Terra",
+        "Pajuçara",
+        "Ponta Verde",
+        "Jatiúca",
+        "Mangabeiras"
+      ]
+    },
+    {
+      "name": "04º Batalhão",
+      "sub": [
+        "Bom Parto",
+        "Bebedouro",
+        "Chã de Bebedouro",
+        "Chã da Jaqueira",
+        "Clima Bom",
+        "Farol",
+        "Fernão Velho",
+        "Gruta de Lourdes",
+        "Mutange",
+        "Petrópolis",
+        "Pinheiro",
+        "Pintanguinha",
+        "Rio Novo",
+        "Santa Amélia",
+        "Tabuleiro dos Martins"
+      ]
+    },
+    {
+      "name": "05º Batalhão",
+      "sub": [
+        "Benedito Bentes",
+        "Antares"
+      ]
+    },
+    {
+      "name": "08º Batalhão",
+      "sub": [
+        "Rio Largo",
+        "Satuba",
+        "Santa Luzia do Norte",
+        "Coqueiro Seco"
+      ]
+    },
+    {
+      "name": "12º Batalhão",
+      "sub": [
+        "Cidade Universitária",
+        "Santos Drummont"
+      ]
+    },
+    {
+      "name": "13º Batalhão",
+      "sub": [
+        "Serraria",
+        "Barro Duro",
+        "Feitosa",
+        "Jacintinho",
+        "São Jorge",
+        "Cruz das Almas",
+        "Jacarecica",
+        "Guaxuma",
+        "Garça Torta"
+      ]
+    },
+    {
+      "name": "02ª Companhia",
+      "sub": [
+        "Paripueira",
+        "Barra de Santo Antônio",
+        "Maceió",
+        "Ipioca",
+        "Pescaria",
+        "Riacho Doce"
+      ]
+    },
+    {
+      "name": "04ª Companhia",
+      "sub": [
+        "Marechal Deodoro",
+        "Barra de São Miguel"
+      ]
+    },
+    {
+      "name": "05ª Companhia",
+      "sub": [
+        "Antares",
+        "Tabuleiro dos Martins",
+        "Santa Lucia",
+        "Jardim Petropolis",
+        "Canaa",
+        "Ouro Preto",
+        "Santo Amaro"
+      ]
+    },
+    {
+      "name": "07º Batalhão",
+      "sub": [
+        "Santana do Ipanema",
+        "Olivença",
+        "Olho D´Água das Flores",
+        "Pão de Açúcar",
+        "Palestina",
+        "São José da Tapera",
+        "Senador Rui Palmeira",
+        "Carneiros",
+        "Maravilha",
+        "Poço das Trincheiras",
+        "Ouro Branco",
+        "Dois Riachos"
+      ]
+    },
+    {
+      "name": "09º Batalhão",
+      "sub": [
+        "Delmiro Gouveia",
+        "Água Branca",
+        "Canapi",
+        "Inhapi",
+        "Mata Grande",
+        "Pariconha",
+        "Olho D'Água do Casado",
+        "Piranhas"
+      ]
+    },
+    {
+      "name": "06ª Companhia",
+      "sub": [
+        "Batalha",
+        "Belo Monte",
+        "Monteirópolis",
+        "Jaramataia",
+        "Major Isidoro",
+        "Jacaré dos Homens"
+      ]
+    },
+    {
+      "name": "03º Batalhão",
+      "sub": [
+        "Arapiraca",
+        "Coité do Nóia",
+        "Craíbas",
+        "Feira Grande",
+        "Limoeiro de Anadia",
+        "Taquarana"
+      ]
+    },
+    {
+      "name": "10º Batalhão",
+      "sub": [
+        "Palmeira dos Índios",
+        "Belém",
+        "Cacimbinhas",
+        "Estrela de Alagoas",
+        "Igaci",
+        "Mariobondo",
+        "Mar Vermelho",
+        "Minador do Negrão",
+        "Paulo Jacinto",
+        "Quebrangulo",
+        "Tanque D'Arca"
+      ]
+    },
+    {
+      "name": "03ª Companhia",
+      "sub": [
+        "Atalaia",
+        "Capela",
+        "Cajueiro",
+        "Viçosa",
+        "Chã Preta",
+        "Pindoba"
+      ]
+    },
+    {
+      "name": "07ª Companhia",
+      "sub": [
+        "Girau do Ponciano",
+        "Campo Grande",
+        "Lagoa da Canoa",
+        "Olho D'Água",
+        "Traipu"
+      ]
+    },
+    {
+      "name": "02º Batalhão",
+      "sub": [
+        "União dos Palmares",
+        "Branquinha",
+        "Ibateguara",
+        "Murici",
+        "Santana do Mundáu",
+        "São José da Laje"
+      ]
+    },
+    {
+      "name": "06º Batalhão",
+      "sub": [
+        "Maragogi",
+        "Japaratinga",
+        "Porto Calvo",
+        "Matriz do Camaragibe"
+      ]
+    },
+    {
+      "name": "14º Batalhão",
+      "sub": [
+        "Joaquim Gomes",
+        "Campestre",
+        "Colônia de Leopoldina",
+        "Flexeiras",
+        "Jacuípe",
+        "Jundiá",
+        "Novo Lino",
+        "Messias"
+      ]
+    },
+    {
+      "name": "08ª Companhia",
+      "sub": [
+        "São Luís de Quitunde",
+        "Passo de Camaragibe",
+        "Porto de Pedras",
+        "São Miguel dos Milagres"
+      ]
+    },
+    {
+      "name": "11º Batalhão",
+      "sub": [
+        "Penedo",
+        "Igreja Nova",
+        "Piaçabuçu",
+        "Porto Real do Colégio",
+        "São Brás"
+      ]
+    },
+    {
+      "name": "01ª Companhia",
+      "sub": [
+        "São Miguel dos Campos",
+        "Anadia",
+        "Boca da Mata",
+        "Campo Alegre"
+      ]
+    },
+    {
+      "name": "09ª Companhia",
+      "sub": [
+        "Coruripe",
+        "Feliz Deserto",
+        "Jequiá da Praia",
+        "Roteiro"
+      ]
+    },
+    {
+      "name": "10ª Companhia",
+      "sub": [
+        "Teotônio Vilela",
+        "Campo Alegre (Luziápolis)",
+        "Junqueiro",
+        "São Sebastião"
+      ]
+    }
+  ]
+  
