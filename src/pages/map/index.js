@@ -24,25 +24,36 @@ const Page = () => {
   };
 
   return (
-    <Wrap w="full" spacing={5} mx={5} my={10} justify={["center", "center", "start"]}>
-        <HeadComp title="Mapas" />
-      {files.map((file, index) => (
-        <VStack
-          key={index}
-          w={["100%", "100%", "30%"]}
-          cursor="pointer"
-          onClick={() => handleDownload(file)}
-          borderRadius={5}
-          p={7}
-          textAlign="center"
-          color="white"
-          bg={file.color}
-        >
-          <Icon as={DownloadIcon} fontSize="45px" />
-          <Heading color="white">{file.name}</Heading>
-        </VStack>
-      ))}
-    </Wrap>
+    <VStack py={10} px={5}>
+      <HeadComp title="Mapas" />
+      <Heading as="h1" size="xl" textAlign="center" mb={3}>
+        MAPAS
+      </Heading>
+      <Wrap
+        w="full"
+        spacing={5}
+        mx={5}
+        my={10}
+        justify={["center", "center", "start"]}
+      >
+        {files.map((file, index) => (
+          <VStack
+            key={index}
+            w={["100%", "100%", "30%"]}
+            cursor="pointer"
+            onClick={() => handleDownload(file)}
+            borderRadius={5}
+            p={7}
+            textAlign="center"
+            color="white"
+            bg={file.color}
+          >
+            <Icon as={DownloadIcon} fontSize="45px" />
+            <Heading color="white">{file.name}</Heading>
+          </VStack>
+        ))}
+      </Wrap>
+    </VStack>
   );
 };
 
