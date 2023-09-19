@@ -4,17 +4,40 @@ import { Box, Button, Heading, Icon, VStack, Wrap } from "@chakra-ui/react";
 import { DownloadIcon } from "@chakra-ui/icons";
 import { WithAuth } from "@/hooks";
 import { HeadComp } from "@/components";
+import { FiMap, FiMapPin } from "react-icons/fi";
+import { BsMap } from "react-icons/bs";
+import { SiMapbox } from "react-icons/si";
 
 const files = [
   {
-    name: "Mapa TCO atualizado [colorido]",
-    url: "/files/mapa-colorido.pdf",
+    name: "Mapa TCO atualizado",
+    url: "/files/mapa-pb.pdf",
     color: "green.500",
+    icon: FiMap
   },
   {
-    name: "Mapa TCO atualizado [preto e branco]",
-    url: "/files/mapa-pb.pdf",
+    name: "TCO Agreste",
+    url: "/files/agreste.pdf",
+    color: "red.500",
+    icon: BsMap
+  },
+  {
+    name: "TCO Norte e Zona da Mata",
+    url: "/files/norte-zonadamata.pdf",
+    color: "purple.500",
+    icon: FiMapPin
+  },
+  {
+    name: "TCO Sul",
+    url: "/files/sul.pdf",
     color: "yellow.500",
+    icon: SiMapbox
+  },
+  {
+    name: "TCO Sertão",
+    url: "/files/sul.pdf",
+    color: "orange.500",
+    icon: FiMap
   },
 ];
 
@@ -34,7 +57,8 @@ const Page = () => {
         spacing={5}
         mx={5}
         my={10}
-        justify={["center", "center", "start"]}
+        justifyContent={["center", "center", "space-between"]}
+        alignContent="flex-start"
       >
         {files.map((file, index) => (
           <VStack
@@ -48,7 +72,7 @@ const Page = () => {
             color="white"
             bg={file.color}
           >
-            <Icon as={DownloadIcon} fontSize="45px" />
+            <Icon as={file.icon} fontSize="45px" />
             <Heading color="white">{file.name}</Heading>
           </VStack>
         ))}

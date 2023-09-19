@@ -24,6 +24,7 @@ import * as schema from "@/schema";
 import ReactSignatureCanvas from "react-signature-canvas";
 import { tco } from "@/forms";
 import { organograma } from "@/data";
+import new_cidades from "@/data/new_cidades";
 
 const FormExpenses = () => {
   const {
@@ -31,7 +32,10 @@ const FormExpenses = () => {
     register,
     formState: { errors },
     setValue,
+    watch,
   } = useForm({ resolver: yupResolver(schema.tco) });
+
+  const watchOpm = watch("responsavel_peticionamento");
 
   const auth = useAuth();
   const router = useRouter();
@@ -92,6 +96,17 @@ const FormExpenses = () => {
     setLoadingCoord(false);
   };
 
+  // const cidades = auth.opm ? new_cidades.find(item => item.name === auth.opm).sub : organograma.find(item => item.name === auth.comando).sub.reduce((acumulador, item) => {
+  //   const items = new_cidades.find(cidade => cidade.name === item).sub;
+  //   console.log(item, items);
+  //   return acumulador.concat(items);
+  // }, []);
+
+  const cidades = watchOpm
+    ? new_cidades.find((item) => item.name === watchOpm).sub
+    : null;
+  console.log(cidades);
+
   return (
     <Stack p={[2, 20]} w="95%" mx="auto">
       <HeadComp title="TCO PMAL" />
@@ -125,8 +140,38 @@ const FormExpenses = () => {
             </option>
           ))}
         </Select>
-        <Select title="Cidade" {...register("city")} isRequired>
-          {estado.cidades.map((item, index) => (
+        <Select
+          isRequired
+          title="Responsável peticionamento"
+          {...register("responsavel_peticionamento")}
+        >
+          <option value="">Selecione...</option>
+          {auth.admin ? (
+            organograma.map((item) =>
+              item.sub.map((opm) => <option value={opm}>{opm}</option>)
+            )
+          ) : auth.comando ? (
+            organograma
+              .find((item) => item.name === auth.comando)
+              .sub.map((item, index) => {
+                return (
+                  <option value={item} key={index}>
+                    {item}
+                  </option>
+                );
+              })
+          ) : (
+            <option value={auth.opm}>{auth.opm}</option>
+          )}
+        </Select>
+        <Select
+          title="Cidade"
+          {...register("city")}
+          isRequired
+          helper={!watchOpm && "Primeiro selecione o item acima"}
+        >
+          {!watchOpm && <option value="">Selecione...</option>}
+          {cidades?.map((item, index) => (
             <option value={item} key={index}>
               {item}
             </option>
@@ -181,29 +226,6 @@ const FormExpenses = () => {
         >
           Gerar coordenadas
         </Button>
-        <Select
-          isRequired
-          title="Responsável peticionamento"
-          {...register("responsavel_peticionamento")}
-        >
-          {auth.admin ? (
-            organograma.map((item) =>
-              item.sub.map((opm) => <option value={opm}>{opm}</option>)
-            )
-          ) : auth.comando ? (
-            organograma
-              .find((item) => item.name === auth.comando)
-              .sub.map((item, index) => {
-                return (
-                  <option value={item} key={index}>
-                    {item}
-                  </option>
-                );
-              })
-          ) : (
-            <option value={auth.opm}>{auth.opm}</option>
-          )}
-        </Select>
         <Select title="Delegacia" {...register("delegacia")} isRequired>
           {delegacias.features.map((item, index) => (
             <option value={item.properties.nome} key={index}>
@@ -218,31 +240,30 @@ const FormExpenses = () => {
               penColor="black"
               canvasProps={{ width: 1200, height: 200 }}
               ref={sigCanvas}
-              />
+            />
             <button onClick={clearSignature}>Limpar Assinatura</button>
           </div>
         ) : (
           <>
-          <Text>Assinatura PM</Text>
-          <Image
-            objectFit="cover"
-            cursor="pointer"
-            src={router.query.signatureImgUrl}
-            onClick={modalSignature.onOpen}
+            <Text>Assinatura PM</Text>
+            <Image
+              objectFit="cover"
+              cursor="pointer"
+              src={router.query.signatureImgUrl}
+              onClick={modalSignature.onOpen}
             />
-            </>
+          </>
         )}
-            <Text>Imagem PM</Text>
+        <Text>Imagem PM</Text>
         <InputImage setSelectedFile={setImgAutor} accessor="imgUrl" x="10" />
-        <Select title="Apreensão de material" {...register("apreensao_material")}>
+        <Select
+          title="Apreensão de material"
+          {...register("apreensao_material")}
+        >
           <option value="sim">Sim</option>
           <option value="nao">Não</option>
         </Select>
-        <Select title="Apreensão de material" {...register("apreensao_material")}>
-          <option value="sim">Sim</option>
-          <option value="nao">Não</option>
-        </Select>
-        <Select title="Depósito" {...register("depósito")}>
+        <Select title="Depósito" {...register("deposito")}>
           <option value="interno">Interno</option>
           <option value="externo">Externo</option>
         </Select>

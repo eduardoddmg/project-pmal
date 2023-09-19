@@ -16,12 +16,15 @@ import {
   Image,
   InputRightElement,
   Button,
+  FormHelperText,
+  Tooltip,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { PatternFormat } from "react-number-format";
 import { Icon } from "@chakra-ui/react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { BsInfoCircle } from "react-icons/bs";
 
 export const InputPassword = forwardRef((props, ref) => {
   const { title, errors, isRequired, ...rest } = props;
@@ -52,11 +55,16 @@ export const InputPassword = forwardRef((props, ref) => {
 });
 
 export const Input = forwardRef((props, ref) => {
-  const { title, errors, type, isRequired, ...rest } = props;
+  const { title, tooltip, errors, type, isRequired, ...rest } = props;
 
   return (
     <FormControl isRequired={isRequired} mb={3} isInvalid={errors} w="full">
-      <FormLabel>{title}</FormLabel>
+      <FormLabel>
+        {title} {"  "}
+        {tooltip && <Tooltip label={tooltip}>
+          <Icon as={BsInfoCircle} />
+        </Tooltip>}
+      </FormLabel>
       <InputChakra
         ref={ref}
         type={type}
@@ -79,14 +87,20 @@ export const Checkbox = forwardRef((props, ref) => {
 });
 
 export const Select = forwardRef((props, ref) => {
-  const { children, title, isRequired, ...rest } = props;
+  const { children, tooltip, title, helper, isRequired, ...rest } = props;
 
   return (
     <FormControl mb={5} isRequired={isRequired}>
-      <FormLabel>{title}</FormLabel>
+      <FormLabel>
+        {title} {"  "}
+        {tooltip && <Tooltip label={tooltip}>
+          <Icon as={BsInfoCircle} />
+        </Tooltip>}
+      </FormLabel>
       <SelectChakra ref={ref} {...rest}>
         {children}
       </SelectChakra>
+      <FormHelperText>{helper}</FormHelperText>
     </FormControl>
   );
 });

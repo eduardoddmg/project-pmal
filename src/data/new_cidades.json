@@ -2,49 +2,19 @@
     {
       "name": "01º Batalhão",
       "sub": [
-        "Pontal da Barra",
-        "Trapiche da Barra",
-        "Prado",
-        "Vergel do Lago",
-        "Ponta Grossa",
-        "Bom Parto",
-        "Levada",
-        "Centro",
-        "Farol",
-        "Jaraguá",
-        "Poço",
-        "Ponta da Terra",
-        "Pajuçara",
-        "Ponta Verde",
-        "Jatiúca",
-        "Mangabeiras"
+        "Maceió"
       ]
     },
     {
       "name": "04º Batalhão",
       "sub": [
-        "Bom Parto",
-        "Bebedouro",
-        "Chã de Bebedouro",
-        "Chã da Jaqueira",
-        "Clima Bom",
-        "Farol",
-        "Fernão Velho",
-        "Gruta de Lourdes",
-        "Mutange",
-        "Petrópolis",
-        "Pinheiro",
-        "Pintanguinha",
-        "Rio Novo",
-        "Santa Amélia",
-        "Tabuleiro dos Martins"
+        "Maceió"
       ]
     },
     {
       "name": "05º Batalhão",
       "sub": [
-        "Benedito Bentes",
-        "Antares"
+        "Maceió"
       ]
     },
     {
@@ -59,52 +29,34 @@
     {
       "name": "12º Batalhão",
       "sub": [
-        "Cidade Universitária",
-        "Santos Drummont"
+        "Maceió"
       ]
     },
     {
       "name": "13º Batalhão",
       "sub": [
-        "Serraria",
-        "Barro Duro",
-        "Feitosa",
-        "Jacintinho",
-        "São Jorge",
-        "Cruz das Almas",
-        "Jacarecica",
-        "Guaxuma",
-        "Garça Torta"
+        "Maceió"
       ]
     },
     {
-      "name": "02ª Companhia",
+      "name": "02º Companhia",
       "sub": [
         "Paripueira",
         "Barra de Santo Antônio",
-        "Maceió",
-        "Ipioca",
-        "Pescaria",
-        "Riacho Doce"
+        "Maceió"
       ]
     },
     {
-      "name": "04ª Companhia",
+      "name": "04º Companhia",
       "sub": [
         "Marechal Deodoro",
         "Barra de São Miguel"
       ]
     },
     {
-      "name": "05ª Companhia",
+      "name": "05º Companhia",
       "sub": [
-        "Antares",
-        "Tabuleiro dos Martins",
-        "Santa Lucia",
-        "Jardim Petropolis",
-        "Canaa",
-        "Ouro Preto",
-        "Santo Amaro"
+        "Maceió"
       ]
     },
     {
@@ -138,7 +90,7 @@
       ]
     },
     {
-      "name": "06ª Companhia",
+      "name": "06º Companhia",
       "sub": [
         "Batalha",
         "Belo Monte",
@@ -176,7 +128,7 @@
       ]
     },
     {
-      "name": "03ª Companhia",
+      "name": "03º Companhia",
       "sub": [
         "Atalaia",
         "Capela",
@@ -187,7 +139,7 @@
       ]
     },
     {
-      "name": "07ª Companhia",
+      "name": "07º Companhia",
       "sub": [
         "Girau do Ponciano",
         "Campo Grande",
@@ -230,7 +182,7 @@
       ]
     },
     {
-      "name": "08ª Companhia",
+      "name": "08º Companhia",
       "sub": [
         "São Luís de Quitunde",
         "Passo de Camaragibe",
@@ -249,7 +201,7 @@
       ]
     },
     {
-      "name": "01ª Companhia",
+      "name": "01º Companhia",
       "sub": [
         "São Miguel dos Campos",
         "Anadia",
@@ -258,7 +210,7 @@
       ]
     },
     {
-      "name": "09ª Companhia",
+      "name": "09º Companhia",
       "sub": [
         "Coruripe",
         "Feliz Deserto",
@@ -267,7 +219,7 @@
       ]
     },
     {
-      "name": "10ª Companhia",
+      "name": "10º Companhia",
       "sub": [
         "Teotônio Vilela",
         "Campo Alegre (Luziápolis)",
