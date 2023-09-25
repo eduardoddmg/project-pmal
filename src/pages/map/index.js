@@ -16,43 +16,43 @@ const files = [
     icon: FiMap
   },
   {
-    name: "TCO Agreste",
+    name: "Agreste",
     url: "/files/agreste.pdf",
     color: "red.500",
     icon: BsMap
   },
   {
-    name: "TCO Norte e Zona da Mata",
+    name: "Norte e Zona da Mata",
     url: "/files/norte-zonadamata.pdf",
     color: "purple.500",
     icon: FiMapPin
   },
   {
-    name: "TCO Sul",
+    name: "Sul",
     url: "/files/sul.pdf",
     color: "yellow.500",
     icon: SiMapbox
   },
   {
-    name: "TCO Sertão",
+    name: "Sertão",
     url: "/files/sertao.pdf",
     color: "orange.500",
     icon: FiMap
   },
   {
-    name: "TCO metropolitano",
+    name: "Metropolitano",
     url: "/files/metropolitano.pdf",
     color: "blue.500",
     icon: FiMap
   },
   {
-    name: "TCO geral",
+    name: "Geral",
     url: "/files/geral.pdf",
     color: "red.500",
     icon: FiMap
   },
   {
-    name: "TCO comandos",
+    name: "Comandos",
     url: "/files/comandos.pdf",
     color: "green.500",
     icon: FiMap
