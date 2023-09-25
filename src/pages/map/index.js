@@ -42,19 +42,19 @@ const files = [
   {
     name: "TCO metropolitano",
     url: "/files/metropolitano.pdf",
-    color: "orange.500",
+    color: "blue.500",
     icon: FiMap
   },
   {
     name: "TCO geral",
     url: "/files/geral.pdf",
-    color: "orange.500",
+    color: "red.500",
     icon: FiMap
   },
   {
     name: "TCO comandos",
     url: "/files/comandos.pdf",
-    color: "orange.500",
+    color: "green.500",
     icon: FiMap
   },
 ];
