@@ -35,7 +35,25 @@ const files = [
   },
   {
     name: "TCO Sertão",
-    url: "/files/sul.pdf",
+    url: "/files/sertao.pdf",
+    color: "orange.500",
+    icon: FiMap
+  },
+  {
+    name: "TCO metropolitano",
+    url: "/files/metropolitano.pdf",
+    color: "orange.500",
+    icon: FiMap
+  },
+  {
+    name: "TCO geral",
+    url: "/files/geral.pdf",
+    color: "orange.500",
+    icon: FiMap
+  },
+  {
+    name: "TCO comandos",
+    url: "/files/comandos.pdf",
     color: "orange.500",
     icon: FiMap
   },
