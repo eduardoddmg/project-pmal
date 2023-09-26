@@ -1,4 +1,4 @@
-import { create, storage, update, uploadImage } from "@/firebase";
+import { create, readByField, storage, update, uploadImage } from "@/firebase";
 import { parseDateToBr } from "@/utils";
 import delegacias from "@/data/delegacias";
 import * as util from "@/utils";
@@ -95,13 +95,24 @@ export const tco = async (
     const blob = await base64Response.blob();
     const signatureImgUrl = await uploadImage(signatureStorageRef, blob);
     data.signatureImgUrl = signatureImgUrl;
-    await create("tco", data);
-    router.push("/tco");
-    toast({
-      title: "TCO cadastrado com sucesso",
-      status: "success",
-      duration: 5000,
-      isClosable: true,
-    });
+    const existsTco = await readByField("tco", "n_tco", data.n_tco);
+    if (existsTco) {
+      toast({
+        title: "TCO já cadastrado",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    } else {
+
+      await create("tco", data);
+      // router.push("/tco");
+      toast({
+        title: "TCO cadastrado com sucesso",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
   }
 };

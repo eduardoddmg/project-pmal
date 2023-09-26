@@ -10,6 +10,8 @@ import {
   updateDoc,
   serverTimestamp,
   getDoc,
+  query,
+  where,
 } from "firebase/firestore";
 
 export const readAll = async (collectionName) => {
@@ -24,6 +26,19 @@ export const readAll = async (collectionName) => {
   return dataArray;
 };
 
+export const readByField = async (collectionName, field, value) => {
+  const q = query(collection(db, collectionName), where(field, "==", value));
+  const qSnapshot = await getDocs(q);
+  const dataArray = qSnapshot.docs.map((doc) => {
+    const data = doc.data();
+    data.id = doc.id;
+    data.updatedAt = data.updatedAt ? parseSecondsToDate(data.updatedAt.seconds) : null;
+    return data;
+  }) || null;
+  console.log(dataArray);
+  return dataArray[0] || null;
+}
+
 export const readOne = async (collectionName, documentId) => {
   console.log(collectionName, documentId);
 
@@ -34,7 +49,7 @@ export const readOne = async (collectionName, documentId) => {
     console.log(data);
     return data;
   } else {
-    console.log("Documento não encontrado!");
+    return null;
   }
 };
 

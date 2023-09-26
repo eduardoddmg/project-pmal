@@ -23,7 +23,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as schema from "@/schema";
 import ReactSignatureCanvas from "react-signature-canvas";
 import { tco } from "@/forms";
-import { organograma } from "@/data";
+import { cidades as cities, organograma } from "@/data";
 import new_cidades from "@/data/new_cidades";
 
 const FormExpenses = () => {
@@ -53,6 +53,7 @@ const FormExpenses = () => {
       setLoading(true);
       await tco(data, auth, imgAutor, sigCanvas, router, toast, setLoading);
     } catch (error) {
+      console.log(error);
       setLoading(true);
       toast({
         title: "Erro",
@@ -96,15 +97,18 @@ const FormExpenses = () => {
     setLoadingCoord(false);
   };
 
-  // const cidades = auth.opm ? new_cidades.find(item => item.name === auth.opm).sub : organograma.find(item => item.name === auth.comando).sub.reduce((acumulador, item) => {
-  //   const items = new_cidades.find(cidade => cidade.name === item).sub;
-  //   console.log(item, items);
-  //   return acumulador.concat(items);
-  // }, []);
+  const findParent = organograma.find((item) =>
+    item.sub.includes(watchOpm)
+  )?.name;
+  const cidades =
+    findParent === "Comando de Policiamento Especializado" ||
+    findParent === "Comando de Policiamento de Missões Especiais"
+      ? cities.cidades
+      : watchOpm
+      ? new_cidades.find((item) => item.name === watchOpm).sub
+      : null;
 
-  const cidades = watchOpm
-    ? new_cidades.find((item) => item.name === watchOpm).sub
-    : null;
+  console.log(findParent);
   console.log(cidades);
 
   return (

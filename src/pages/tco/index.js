@@ -27,6 +27,7 @@ import { useAuth } from "@/context";
 import { IoMdClose } from "react-icons/io";
 import { parse } from "dotenv";
 import { organograma } from "@/data";
+import sortArray from "sort-array";
 
 const TcoPage = () => {
   const [tcoList, setTcoList] = useState(null);
@@ -45,12 +46,17 @@ const TcoPage = () => {
     const subs = auth.comando
       ? organograma.find((item) => item.name === auth.comando).sub
       : [auth.opm];
-    console.log(subs);
+    result.map(item => item.n_tco = parseInt(item.n_tco))
     setTcoList(
       auth.admin
-        ? result
-        : result
-            .sort((a, b) => a.date - b.date)
+        ? sortArray(result, {
+          by: ["responsavel_peticionamento", "n_tco"],
+          order: ["asc", "asc"],
+        })
+        : sortArray(result, {
+          by: ["responsavel_peticionamento", "n_tco"],
+          order: ["asc", "asc"],
+        })
             .filter((item) => subs.includes(item.responsavel_peticionamento))
     );
     setLoading(false);

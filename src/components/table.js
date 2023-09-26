@@ -48,7 +48,7 @@ export const Table = ({
   if (!loading)
     return (
       <>
-        <Chakra.TableContainer>
+        <Chakra.TableContainer w="full">
           <Chakra.Table overflow="scroll" {...rest}>
             <Chakra.Thead>
               <Chakra.Tr>
@@ -108,7 +108,7 @@ export const Table = ({
           </Chakra.Table>
         </Chakra.TableContainer>
         {data && data.length > 0 && (
-          <Chakra.Stack>
+          <Chakra.Stack w="full">
             <Chakra.Flex justify="space-between">
               <Select w={["100%", "20%"]} onChange={(e) => setItemsPerPage(e.target.value)}>
                 <option value={itemsPerPage}>Selecione</option>
