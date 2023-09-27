@@ -2,6 +2,7 @@ import { Card, HeadComp } from "@/components";
 import { useAuth } from "@/context";
 import { WithAuth } from "@/hooks";
 import * as Chakra from "@chakra-ui/react";
+import { AiFillQuestionCircle } from "react-icons/ai";
 import { BsFillEnvelopePaperFill } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { SiAdminer } from "react-icons/si";
@@ -64,6 +65,13 @@ const Home = () => {
             icon={<SiAdminer fontSize="50px" color="white" />}
           />
         )}
+        <Card
+          href="/about"
+          title="Sobre"
+          subtitle="Conheça um pouco dos bastidores"
+          bg="blue.600"
+          icon={<AiFillQuestionCircle fontSize="50px" color="white" />}
+        />
       </Chakra.Wrap>
     </Chakra.Flex>
   );
