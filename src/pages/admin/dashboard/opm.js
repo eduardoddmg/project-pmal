@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import sortArray from "sort-array";
+import new_cidades from "@/data/new_cidades"
 
 const Page = () => {
   const [tco, setTco] = useState(null);
@@ -51,8 +52,12 @@ const Page = () => {
       const filter = result.filter(
         (item) => item.responsavel_peticionamento === opm
       );
+
+      const item = new_cidades.find(cidade => cidade.name === opm);
+      console.log(item?.sub[0]);
+
       return {
-        name: opm,
+        name: `${opm} (${item?.sub[0]})`,
         Distância: funcs.sum_dist(filter).toFixed(1),
         Duração: funcs.sum_time(filter).toFixed(1),
         Gasolina: (funcs.sum_dist(filter) / 11).toFixed(1),
