@@ -275,6 +275,18 @@ const FormExpenses = () => {
           <option value="custodia">Custódia</option>
           <option value="liberado">Liberado</option>
         </Select>
+        <Input
+          title="Nome do PM"
+          type="text"
+          errors={errors.pm_name}
+          {...register("pm_name")}
+        />
+        <Input
+          title="Matrícula do PM"
+          type="text"
+          errors={errors.pm_mat}
+          {...register("pm_mat")}
+        />
         <Button
           isLoading={loading}
           colorScheme="blue"

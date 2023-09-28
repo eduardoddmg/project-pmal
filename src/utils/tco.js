@@ -2,7 +2,7 @@
 
 export const funcs = {
   sum_dist: (tcoList) =>  tcoList?.reduce((total, item) => item.dist + total, 0),
-  sum_time: (tcoList) => tcoList?.reduce((total, item) => item.duration + total, 0),
+  sum_time: (tcoList) => tcoList?.reduce((total, item) => item.duration + 240 + total, 0)/60,
 };
 
 
@@ -29,7 +29,7 @@ export const cards = [
   },
   {
     color: "purple",
-    title: "Tempo economizado (minutos)",
+    title: "Tempo economizado (horas)",
     value: (tcoList) => tcoList ? funcs.sum_time(tcoList) : 0,
   },
 ];

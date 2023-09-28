@@ -71,7 +71,10 @@ const TcoPage = () => {
   const edit = (data) => {
     data.date = parseDateToEn(data.date);
 
-    router.push(`/tco/form?${queryString.stringify(data)}`);
+    // router.push(`/tco/form?${queryString.stringify(data)}`);
+    const url = `/tco/form?${queryString.stringify(data)}`;
+    window.open(url, "_blank");
+
   };
   const remove = (id) => {
     removeDoc("tco", id);
