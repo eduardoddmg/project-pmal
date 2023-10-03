@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { FiRefreshCcw } from "react-icons/fi";
 import {
   AiFillFileExcel,
+  AiFillFilePdf,
   AiFillFilter,
   AiOutlinePlusCircle,
 } from "react-icons/ai";
@@ -28,6 +29,109 @@ import { IoMdClose } from "react-icons/io";
 import { parse } from "dotenv";
 import { organograma } from "@/data";
 import sortArray from "sort-array";
+import {
+  PDFDownloadLink,
+  Page,
+  Text,
+  Document,
+  View,
+  StyleSheet,
+} from "@react-pdf/renderer";
+
+const styles = StyleSheet.create({
+  page: {
+    flexDirection: "column",
+    backgroundColor: "#ffffff",
+  },
+  section: {
+    flexDirection: "column",
+    gap: 10,
+    margin: 10,
+    padding: 10,
+  },
+  heading: {
+    fontWeight: "bold",
+    backgroundColor: "#f0f0f0",
+    padding: 5,
+  },
+  text: {
+    fontSize: "10px"
+  },
+  containerPrincipal: {
+    flexDirection: "row",
+  },
+  containerTextPrincipal: {
+    width: "50%",
+    padding: 10,
+    justifyContent: "center",
+    backgroundColor: "#E2E8F0",
+  },
+  containerTextSecondary: {
+    width: "50%",
+    padding: 10,
+    justifyContent: "center",
+    backgroundColor: "#EDF2F7",
+  },
+});
+
+const MyPdfDocument = ({ data }) => { 
+  const dataCards = [
+    {
+      heading: "Infração Penal",
+      accessor: "infracao_penal"
+    },
+     {
+      heading: "Cidade",
+      accessor: "city"
+    },
+     {
+      heading: "Bairro",
+      accessor: "bairro"
+    },
+     {
+      heading: "Delegacia",
+      accessor: "delegacia"
+    },
+     {
+      heading: "Distância (KM)",
+      accessor: "dist"
+    },
+    {
+      heading: "Latitude",
+      accessor: "lat"
+    },
+    {
+      heading: "Longitude",
+      accessor: "long"
+    },
+     {
+      heading: "Número do processo",
+      accessor: "n_process"
+    },
+    {
+      heading: "Número do TCO",
+      accessor: "n_tco"
+    },
+  ]
+  return (
+  <Document>
+    {data?.map(item => <Page size="A4" style={styles.page}>
+      <View style={styles.section}>
+        <View style={{ marginBottom: 40 }}>
+          <Text style={{ textAlign: "center" }}>TCO - {item?.n_tco}</Text>
+        </View>
+        {dataCards?.map(card => <View style={styles.containerPrincipal}>
+          <View style={styles.containerTextPrincipal}>
+            <Text style={styles.text}>{card.heading}</Text>
+          </View>
+          <View style={styles.containerTextSecondary}>
+            <Text style={styles.text}>{item?.[card.accessor]}</Text>
+          </View>
+        </View>)}
+      </View>
+    </Page>)}
+  </Document>
+)};
 
 const TcoPage = () => {
   const [tcoList, setTcoList] = useState(null);
@@ -112,6 +216,18 @@ const TcoPage = () => {
         <Chakra.Button onClick={fetchData}>
           <FiRefreshCcw />
         </Chakra.Button>
+        <PDFDownloadLink
+        document={<MyPdfDocument data={tcoList} />}
+        fileName={"TCO relatorio.pdf"}
+      >
+        <Chakra.Button
+          alignSelf="start"
+          colorScheme="red"
+          rightIcon={<AiFillFilePdf />}
+        >
+          PDF
+        </Chakra.Button>
+      </PDFDownloadLink>
       </Chakra.HStack>
       <Table
         variant="striped"
