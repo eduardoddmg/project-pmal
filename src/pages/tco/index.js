@@ -150,7 +150,8 @@ const TcoPage = () => {
     const subs = auth.comando
       ? organograma.find((item) => item.name === auth.comando).sub
       : [auth.opm];
-    result.map(item => item.n_tco = parseInt(item.n_tco))
+    result.map(item => item.n_tco = parseInt(item.n_tco));
+    result.map(item => item.dist = item.toFixed(1);
     setTcoList(
       auth.admin
         ? sortArray(result, {
