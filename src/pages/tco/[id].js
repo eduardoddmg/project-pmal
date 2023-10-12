@@ -185,6 +185,8 @@ const PageId = () => {
         </Chakra.Button>
       </PDFDownloadLink>
       <Card heading="Infração penal" text={data?.infracao_penal} />
+      <Card heading="Hora" text={data?.hour} />
+      <Card heading="Minutos" text={data?.minute} />
       <Card heading="Cidade" text={data?.city} />
       <Card heading="Bairro" text={data?.bairro} />
       <Card heading="Delegacia" text={data?.delegacia} />
@@ -194,6 +196,7 @@ const PageId = () => {
       <Card heading="Apreensão de material" text={data?.apreensao_material} />
       <Card heading="Depósito" text={data?.deposito} />
       <Card heading="Status" text={data?.status} />
+      <Card heading="Juizados" text={data?.juizados} />
       <Card heading="Nome do PM" text={data?.pm_name} />
       <Card heading="Matrícula do PM" text={data?.pm_mat} />
       <Chakra.Text>Imagem PM</Chakra.Text>

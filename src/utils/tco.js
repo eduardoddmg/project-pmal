@@ -1,7 +1,7 @@
 
 
 export const funcs = {
-  sum_dist: (tcoList) =>  tcoList?.reduce((total, item) => item.dist + total, 0),
+  sum_dist: (tcoList) =>  tcoList?.reduce((total, item) => parseInt(item.dist) + total, 0),
   sum_time: (tcoList) => tcoList?.reduce((total, item) => item.duration + 240 + total, 0)/60,
 };
 

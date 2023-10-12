@@ -1,0 +1,234 @@
+[
+  {
+    "name": "1º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Jatiúca e Mangabeiras",
+    "Juíza": "Dra. Maria Verônica Correia de Carvalho Souza Araújo",
+    "Chefe de Secretária": "José Souza Amaral",
+    "Endereço": "Av. comendador Gustavo Paiva, 2990",
+    "Bairro": "Mangabeiras Maceió-Al cep: 57032-901 (Maceió Shopping 3 andar)",
+    "Tel": "82 4009-3742 / 3743 / 3744 / 3745 / 3746",
+    "Email": "1jecc@tjal.jus.br"
+  },
+  {
+    "name": "2º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Centro, Levada e Prado",
+    "Juiz": "Dr. Jamil Amil Albuquerque de Hollanda Ferreira",
+    "Chefe de Secretária": "Agda Constância Soares de Oliveira Tenório Cavalcanti",
+    "Endereço": "Terminal Rodoviário João Paulo II, Avenida Governador Lamenha Filho, s/n",
+    "Bairro": "Feitosa, Maceió/AL., Cep: 57041-970",
+    "Tel": "(82) 99121-4096 e (82) 93235-9860",
+    "Email": "jecc2@tjal.jus.br"
+  },
+  {
+    "name": "3º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Ponta Grossa, Pontal da Barra, Vergel do Lago, Trapiche da Barra e Poço",
+    "Juiz": "Dr. Sérgio Roberto da Silva Carvalho",
+    "Chefe de Secretária": "Virginia de Albuquerque Silveira de Maya Gomes",
+    "Endereço": "Av. comendador Gustavo Paiva, 2990",
+    "Bairro": "Mangabeiras Maceió-Al cep: 57032-901 (Maceió Shopping 3 andar)",
+    "Tel": "82 2126-9700 / 82 2126-9701 / (82) 99361-1882 / (82) 4009-3655",
+    "Email": "jecc3@tjal.jus.br"
+  },
+  {
+    "name": "4º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Juiz": "-x-x-x-x-x-",
+    "Chefe de Secretária": "-x-x-x-x-x-",
+    "Endereço": "-x-x-x-x-x-",
+    "Bairro": "-x-x-x-x-x-",
+    "Tel": "-x-x-x-x-x-"
+  },
+  {
+    "name": "5º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Bebedouro, Chã da Jaqueira, Mutange, Petrópolis, Jardim Petrópolis, Santo Amaro, Chã de Bebedouro, Canaã, Ouro Preto, Bom Parto, Fernão Velho, Santa Amélia e Rio Novo",
+    "Juiz": "Dr. Nelson Tenório de Oliveira Neto",
+    "Chefe de Secretária": "Roseane Agra Lima",
+    "Endereço": "Terminal Rodoviário João Paulo II, s/n - Feitosa, Maceió/AL, Cep: 57043-000",
+    "Bairro": "Feitosa - AL, Cep: 57018-830",
+    "Tel": "82 4009-3575 / 4009-3578 / (82) 99106-1320",
+    "Email": "jecc5@tjal.jus.br"
+  },
+  {
+    "name": "6º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Barro Duro, Feitosa, e Jacintinho",
+    "Juíza": "Dra. Denise Lima Calheiros",
+    "Chefe de Secretária": "Fábio Aragão Rodrigues",
+    "Endereço": "Terminal Rodoviário João Paulo II - 2º Piso, Feitosa, Maceió/AL, Cep: 57043-000",
+    "Tel": "82 2126-9800 / (82) 99101-0493",
+    "Email": "jecc6@tjal.jus.br"
+  },
+  {
+    "name": "7º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Ipioca, Cruz das Almas, Riacho Doce, Guaxuma, Garça Torta, Jacarecica, Pescaria e São Jorge",
+    "Juíza": "Dra. Silvana Lessa Omena",
+    "Chefe de Secretária": "Emy Doriane Pedrosa Souza Peixoto",
+    "Endereço": "Loteamento Santo Onofre- Rua A, S/N",
+    "Bairro": "Cruz das Almas, por trás da UNIT - Maceió - AL, Cep: 57038-000",
+    "Tel": "(82) 2126 9862 / (82) 99101 5038 / (82) 2126-9850",
+    "Email": "jecc7@tjal.jus.br"
+  },
+  {
+    "name": "8º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Cidade Universitária, Tabuleiro dos Martins, Santos Dumont, e Clima Bom",
+    "Juiz": "Dr. Ricardo Jorge Cavalcante Lima",
+    "Chefe de Secretária": "Mirian Sarmento Lessa Monteiro de Melo",
+    "Endereço": "Forum Universitário Prof. José Cavalcanti Manso, Campus Universitário A. C. Simões - UFAL, BR 104, Km 97,6 - S/N",
+    "Bairro": "Tabuleiro dos Martins Maceió - AL Cep: 57.072-970",
+    "Tel": "82 4009-5700 / 4009-5709 / 4009-5705",
+    "Email": "jecc8@tjal.jus.br"
+  },
+  {
+    "name": "9º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Farol, Gruta de Lourdes, Pitanguinha, e Pinheiro",
+    "Juíza": "Dra. Adriana Carla Feitosa Martins",
+    "Chefe de Secretária": "Karla Patrícia de Almeida Farias",
+    "Endereço": "Rua Íris Alagoense, 103",
+    "Bairro": "Farol",
+    "Tel": "82 2126-4999 / (82) 99113-3552",
+    "Email": "jecc9@tjal.jus.br"
+  },
+  {
+    "name": "10º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Antares, Benedito Bentes, Santa Lúcia, e Serraria",
+    "Juiz": "Dra. Aida Cristina Lins Antunes",
+    "Chefe de Secretária": "José Alves da Cruz",
+    "Endereço": "Fórum Regional Benedito Bentes, Bairro: Benedito Bentes I Maceió/AL, Cep: 57084-040",
+    "Observações": "Próximo à prefeitura do Benedito Bentes I",
+    "Tel": "82 4009-5758 / (82) 99311-8647",
+    "Email": "jecc10@tjal.jus.br"
+  },
+  {
+    "name": "11º JUIZADO ESPECIAL CÍVEL DA CAPITAL",
+    "Jurisdição": "Jaraguá, Pontal da Terra, Pajuçara, e Ponta Verde",
+    "Juíza": "Drª. Sandra Janine Wanderley Cavalcante Maia",
+    "Chefe de Secretária": "Patrícia de Mendonça Gama",
+    "Endereço": "Terminal Rodoviário João Paulo II - 1º Piso, Feitosa, Maceió/AL, Cep: 57043-000",
+    "Tel": "82 2126-9813 / 9815 / (82) 99107-4845",
+    "Email": "jecc11@tjal.jus.br"
+  },
+  {
+    "name": "Juizado Especial Cível e Criminal de Acidentes de Trânsito (antigo 12º Juizado)",
+    "Jurisdição": "Comarca da Capital",
+    "Juiz": "Dra. Luciana Cavalcanti de Mello Sampaio",
+    "Chefe de Secretária": "Christiane Marrêta Sá",
+    "Endereço": "Av. Durval de Góes Monteiro, 829, Tabuleiro dos Martins, Cep: 57061-000",
+    "Tel": "82 2126-5300 / (82) 99336-4898",
+    "Email": "jecc12@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL CRIMINAL E DO TORCEDOR DA CAPITAL",
+    "Jurisdição": "Comarca da Capital",
+    "Juiz": "Dr. Cláudio José Gomes Lopes",
+    "Endereço": "Avenida Governador Lamenha Filho, s/n, Terminal Rodoviário João Paulo II, 1º Piso - CEP: 57043-000",
+    "Bairro": "Feitosa",
+    "Tel": "82 2126-9819/ 9820 / 9821 / 9822 / (82) 99106-4380",
+    "Email": "jecrimtorcedor@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL DA FAZENDA PÚBLICA",
+    "Jurisdição": "Comarca da Capital",
+    "Juiz": "Dr. Geraldo Tenório Silveira Júnior",
+    "Chefe de Secretária": "Giselle Barbosa Omena",
+    "Endereço": "Av Juca Sampaio, 206 - CEP 57045-365",
+    "Bairro": "Barro Duro",
+    "Tel": "4009-3760 / 98182-2707"
+  },
+  {
+    "name": "1º JUIZADO ESPECIAL CÍVEL DE ARAPIRACA",
+    "Jurisdição": "MUNICÍPIO DE ARAPIRACA e CRAÍBAS (Resolução Nº 10, de 26 de Março de 2019) Distribuição / Tel: (82) 3482-9503",
+    "Juiz": "Carolina Sampaio Valões da Rocha",
+    "Chefe de Secretaria": "José Messias Correia Silva",
+    "Endereço": "Av. Deputada Ceci Cunha, nº 127.",
+    "Bairro": "Alto do Cruzeiro, Arapiraca - AL.",
+    "CEP": "57314-000",
+    "Tel": "82 3482-1650/1655 / (82) 99187-2739 / (82) 99975-2093",
+    "Email": "jecc1arapiraca@tjal.jus.br"
+  },
+  {
+    "name": "2º JUIZADO ESPECIAL CÍVEL DE ARAPIRACA",
+    "Jurisdição": "MUNICÍPIO DE ARAPIRACA e CRAÍBAS (Resolução Nº 10, de 26 de Março de 2019) Distribuição / Tel: (82) 3482-9503",
+    "Juiz": "Durval Mendonça Júnior",
+    "Escrivã": "Janaína Barbosa de Medeiros Melo.",
+    "Endereço": "Av. Ventura de Farias, nº 600.",
+    "Bairro": "Eldourado, Arapiraca/AL.",
+    "CEP": "57316-100",
+    "Tel": "82 3482-1662 / 3482-1663 / (82) 99331-2296",
+    "Email": "jecc2arapiraca@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL CÍVEL E CRIMINAL E DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER DE DELMIRO GOUVEIA",
+    "Jurisdição": "Comarca de Delmiro Gouveia",
+    "Juiz": "Dra. Raquel David Torres de Oliveira",
+    "Escrivão": "José Carlos Souza",
+    "Endereço": "Rua José Oliveira Rocha, S/N.",
+    "Bairro": "Bairro Novo, Delmiro Gouveia - AL.",
+    "CEP": "57480-000",
+    "Tel": "82 3641-1118 e 82 3641-1926 / (82) 99371-3744 / (82) 99928-1487",
+    "Email": "jeccdelmiro@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL CÍVEL E CRIMINAL E DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER DE PALMEIRA DOS ÍNDIOS",
+    "Jurisdição": "Comarca de Palmeira dos Índios",
+    "Juiz": "Dra. Luana Cavalcante de Freitas",
+    "Escrivã": "Jorge Luís de Barros.",
+    "Endereço": "Rua José Pinto de Barros, 159.",
+    "Bairro": "Centro, Palmeira dos Índios - AL.",
+    "CEP": "57600-310",
+    "Tel": "82 3421-4510 / (82) 99112-1307 / (82) 99901- 5528 / (82) 3429-9251 / 9252",
+    "Email": "jeccpalmeira@tjal.jus.br / rafaelaoliveira@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL CÍVEL E CRIMINAL E DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER DE PENEDO",
+    "Jurisdição": "Comarca de Penedo.",
+    "Juiz": "Dr. José Eduardo Nobre Carlos",
+    "Escrivã substituta": "Luzia Barbosa Santos.",
+    "Endereço": "Rua Francisco Guerra, s/n.",
+    "Bairro": "Lagoa do Oiteiro, Penedo - AL.",
+    "CEP": "57200-000",
+    "Tel": "(82) 3551-3078 / (82) 99153-0076",
+    "Email": "jeccpenedo@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL CÍVEL E CRIMINAL E DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER DE RIO LARGO",
+    "Jurisdição": "Comarca de Rio Largo.",
+    "Juiz": "Dr. Carlos Eduardo Canuto Mendonça",
+    "Escrivã": "Esmeraldina Bezerra de Moura.",
+    "Endereço": "Rua Dona Judite Paiva, nº 34.",
+    "Bairro": "Centro Rio Largo - AL.",
+    "CEP": "57100-000",
+    "Tel": "82 4009-3055 / (82) 99311-6205",
+    "Email": "jeccderiolargo@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL CÍVEL E CRIMINAL E DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER DE SANTANA DO IPANEMA",
+    "Jurisdição": "Comarca de Santana do Ipanema.",
+    "Juiz": "Dra. Nathallye Costa Alcântara de Oliveira",
+    "Escrivã": "Renivaldo Avelino de Souza.",
+    "Endereço": "Rua Coronel Lucena Maranhão, nº 198.",
+    "Bairro": "Centro, Cep: 57500-000, Santana do Ipanema - AL.",
+    "Tel": "82 3621-1430 / (82) 99318-4710",
+    "Email": "jeccsantana@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL CÍVEL E CRIMINAL E DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER DE SÃO MIGUEL DOS CAMPOS",
+    "Jurisdição": "Comarca de São Miguel dos Campos.",
+    "Juiz": "Dra. Vilma Renata Jatobá de Carvalho",
+    "Escrivão": "Paulo Tavares",
+    "Endereço": "Rua Visconde de Sinimbú, nº 133.",
+    "Bairro": "Centro, São Miguel dos Campos - AL.",
+    "CEP": "57240-000",
+    "Tel": "82 3211-0224/0217/0218 / (82) 99430-1960",
+    "URL": "http://jecc.tripod.com.br",
+    "Email": "jeccsaomiguelcampos@tjal.jus.br"
+  },
+  {
+    "name": "JUIZADO ESPECIAL CÍVEL E CRIMINAL E DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER DE UNIÃO DOS PALMARES",
+    "Jurisdição": "Comarca de União dos Palmares.",
+    "Juiz": "Lígia Mont'Alverne Jucá Seabra",
+    "Escrivã": "Ana Paula Araújo Rodrigues Lins.",
+    "Endereço": "Rua Marechal Deodoro da Fonseca, nº 01 - Ed. do Fórum.",
+    "Bairro": "Centro União dos Palmares - AL.",
+    "CEP": "57800-000",
+    "Tel": "82 3281-1866 / (82) 99131-0958 / 3281-1332",
+    "Email": "jeccuniao@tjal.jus.br"
+  }
+]

@@ -21,12 +21,8 @@ import {
 } from "react-icons/ai";
 import { parseDateToEn, columnsTco, cards } from "@/utils";
 import queryString from "query-string";
-import { CSVLink } from "react-csv";
-import { useForm } from "react-hook-form";
-import opm from "@/data/opm";
 import { useAuth } from "@/context";
 import { IoMdClose } from "react-icons/io";
-import { parse } from "dotenv";
 import { organograma } from "@/data";
 import sortArray from "sort-array";
 import {
@@ -185,6 +181,8 @@ const TcoPage = () => {
     removeDoc("tco", id);
     fetchData();
   };
+
+  console.log(tcoList);
 
   return (
     <Chakra.Stack p={5}>

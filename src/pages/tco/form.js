@@ -23,7 +23,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as schema from "@/schema";
 import ReactSignatureCanvas from "react-signature-canvas";
 import { tco } from "@/forms";
-import { cidades as cities, organograma } from "@/data";
+import { cidades as cities, juizados, organograma } from "@/data";
 import new_cidades from "@/data/new_cidades";
 
 const FormExpenses = () => {
@@ -133,6 +133,18 @@ const FormExpenses = () => {
           {...register("date")}
           defaultValue={defaultDate()}
         />
+        <Input
+          title="Hora"
+          type="text"
+          errors={errors?.hour}
+          {...register("hour")}
+        />
+        <Input
+          title="Minutos"
+          type="text"
+          errors={errors?.minute}
+          {...register("minute")}
+        />
         <Select
           title="Infração Penal"
           {...register("infracao_penal")}
@@ -202,6 +214,11 @@ const FormExpenses = () => {
           errors={errors?.n_process}
           {...register("n_process")}
         />
+        <Select title="Juizados" {...register("juizados")}>
+          {juizados.map((juizado) => (
+            <option value={juizado.name}>{juizado.name}</option>
+          ))}
+        </Select>
         <Input
           title="Observação"
           type="text"

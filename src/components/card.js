@@ -62,7 +62,7 @@ export const CardValue = ({ title, value, color }) => {
           <Chakra.Badge colorScheme={color || "white"}>{title}</Chakra.Badge>
         </Chakra.StatLabel>
         <Chakra.StatNumber>
-          <CountUp end={value.toFixed(2)} duration={2} />
+          <CountUp end={value} duration={2} />
         </Chakra.StatNumber>
       </Chakra.Stat>
     </Chakra.Card>
