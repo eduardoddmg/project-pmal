@@ -292,6 +292,12 @@ const FormExpenses = () => {
           <option value="custodia">Custódia</option>
           <option value="liberado">Liberado</option>
         </Select>
+        <Input 
+          title="Endereço do material..."
+          {...register("endereco_material")}
+          type="text"
+          errors={errors.endereco_material}
+        />
         <Input
           title="Nome do PM"
           type="text"

@@ -196,6 +196,7 @@ const PageId = () => {
       <Card heading="Apreensão de material" text={data?.apreensao_material} />
       <Card heading="Depósito" text={data?.deposito} />
       <Card heading="Status" text={data?.status} />
+      <Card heading="Endereço do material" text={data?.endereco_material} />
       <Card heading="Juizados" text={data?.juizados} />
       <Card heading="Nome do PM" text={data?.pm_name} />
       <Card heading="Matrícula do PM" text={data?.pm_mat} />
